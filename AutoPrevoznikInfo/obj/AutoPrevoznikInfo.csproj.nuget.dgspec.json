@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\djord\\Desktop\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj": {}
+    "D:\\GIT\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\djord\\Desktop\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj": {
+    "D:\\GIT\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\djord\\Desktop\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj",
+        "projectUniqueName": "D:\\GIT\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj",
         "projectName": "AutoPrevoznikInfo",
-        "projectPath": "C:\\Users\\djord\\Desktop\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj",
+        "projectPath": "D:\\GIT\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj",
         "packagesPath": "C:\\Users\\djord\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\djord\\Desktop\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\obj\\",
+        "outputPath": "D:\\GIT\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

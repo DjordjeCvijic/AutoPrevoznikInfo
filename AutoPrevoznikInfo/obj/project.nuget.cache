@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C+CcTl5mout6bdspiedXyiwLUmC3PJdEvyBsQIOie1E7sjiASZzdZAYTbDJt43aybQCq9rtgUsjQLwkH0ERqdw==",
+  "dgSpecHash": "mWxqvOpt/jR9bWtvohueE51YDO7MIs+XWlcdyXV5yrX+1KrT3fwVGFbdea3U9Y8rHn1Vq+MxdhQr0HZUHmMWZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\djord\\Desktop\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj",
+  "projectFilePath": "D:\\GIT\\AutoPrevoznikInfo\\AutoPrevoznikInfo\\AutoPrevoznikInfo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\djord\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\djord\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
