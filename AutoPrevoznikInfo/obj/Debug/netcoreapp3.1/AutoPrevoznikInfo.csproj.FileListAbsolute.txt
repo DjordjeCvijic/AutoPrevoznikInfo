@@ -89,3 +89,4 @@ D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznik
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.LoginForm.resources
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.TrafficMenagerForm.resources
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.Properties.Resources.resources
+D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddDriverForm.resources

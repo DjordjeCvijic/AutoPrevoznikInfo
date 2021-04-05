@@ -25,10 +25,12 @@ namespace AutoPrevoznikInfo.DataAccess
                 result.Add(new Bus()
                 {
                    BusId= reader.GetInt32(0),
-                   NumberOfSeats= reader.GetInt32(1),
-                   NumberOfDoors= reader.GetInt32(2),
-                   GarageNumber=reader.GetString(3),
-                   BusType= reader.GetString(4)
+                    GarageNumber = reader.GetString(1),
+                    BusType = reader.GetString(2),
+                    NumberOfSeats = reader.GetInt32(3),
+                   NumberOfDoors= reader.GetInt32(4),
+                   Capacity= reader.GetInt32(5)
+
                 });
             }
             reader.Close();

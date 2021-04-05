@@ -1,4 +1,5 @@
-﻿using AutoPrevoznikInfo.Model;
+﻿using AutoPrevoznikInfo.DataAccess;
+using AutoPrevoznikInfo.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace AutoPrevoznikInfo
         private Worker loggedInWorker;
         private string selectedLanguage;
         private string selectedTheme = "W";
+        private WorkerDataAccess workerDA = new WorkerDataAccess();
         public TrafficMenagerForm(Worker w,string l)
         {
             InitializeComponent();
@@ -29,8 +31,9 @@ namespace AutoPrevoznikInfo
             tsmiEnglish.Click += new System.EventHandler(this.SetEnglishLanguage);
             tsmiWhiteTheme.Click += new System.EventHandler(this.SetWhiteTheme);
             tsmiDarkTheme.Click += new System.EventHandler(this.SetDarkTheme);
-
+            FillGridDrivers();
             SetLanguage();
+            this.dGVDrivers.ColumnHeadersDefaultCellStyle.SelectionBackColor = this.dGVDrivers.ColumnHeadersDefaultCellStyle.BackColor;
         }
         private void SetSerbianLanguage(object sender,EventArgs e)
         {
@@ -78,10 +81,17 @@ namespace AutoPrevoznikInfo
                 lblWorkerType.Text = "Menadzer saobracaja";
                 tabPage1.Text = "Vozaci";
                 tabPage2.Text = "Autobusi";
-
+                firstNameColumn.HeaderText = "Ime";
+                lastNameColumn.HeaderText = "Prezime";
+                userNameColumn.HeaderText = "Korisnicko ime";
+                phoneNumberColumn.HeaderText = "Telefon";
+                workerCodeColumn.HeaderText = "Sifra";
+                btnAddWorker.Text = "Dodaj vozaca";
+                btnUpdateDriver.Text = "Izmijeni podatke";
             }
             else
             {
+                
                 tSMILanguage.Text = "Language";
                 tSMTheme.Text = "Theme";
                 tsmiDarkTheme.Text = "Dark";
@@ -92,6 +102,13 @@ namespace AutoPrevoznikInfo
                 lblWorkerType.Text = "Traffic manager";
                 tabPage1.Text = "Drivers";
                 tabPage2.Text = "Buses";
+                firstNameColumn.HeaderText = "First name";
+                lastNameColumn.HeaderText = "Last name";
+                userNameColumn.HeaderText = "User name";
+                phoneNumberColumn.HeaderText = "Phone";
+                workerCodeColumn.HeaderText = "Code";
+                btnAddWorker.Text = "Add driver";
+                btnUpdateDriver.Text = "Update driver";
             }
         }
         private void SetTheme()
@@ -102,6 +119,48 @@ namespace AutoPrevoznikInfo
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FillGridDrivers()
+        {
+           
+            List<Driver> drivers = workerDA.GetDrivers();
+            dGVDrivers.Rows.Clear();
+            foreach(Driver d in drivers)
+            {
+                DataGridViewRow row = new DataGridViewRow()
+                {
+                    Tag = d
+                };
+                row.CreateCells(dGVDrivers, d.FirstName, d.LastName, d.Username, d.PhoneNumber, d.WorkerCode);
+                dGVDrivers.Rows.Add(row);
+            }
+          
+        }
+
+        private void btnAddWorker_Click(object sender, EventArgs e)
+        {
+            new AddDriverForm(null, selectedLanguage, selectedTheme).ShowDialog();
+            FillGridDrivers();
+        }
+
+        private void btnUpdateDriver_Click(object sender, EventArgs e)
+        {
+            Driver selectedDriver = (Driver)dGVDrivers.SelectedRows[0].Tag;
+            new AddDriverForm(selectedDriver, selectedLanguage, selectedTheme).ShowDialog();
+            FillGridDrivers();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Driver selectedDriver = (Driver)dGVDrivers.SelectedRows[0].Tag;
+            
+            DialogResult dr = MessageBox.Show("da li zelite izbrisati", "Brisanje", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                workerDA.DeleteDriver(selectedDriver);
+                FillGridDrivers();
+            }
         }
     }
 }
