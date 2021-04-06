@@ -152,12 +152,16 @@ namespace AutoPrevoznikInfo
             // 
             // btnLogout
             // 
+            this.btnLogout.BackColor = System.Drawing.Color.Silver;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Location = new System.Drawing.Point(23, 573);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(188, 46);
             this.btnLogout.TabIndex = 1;
+            this.btnLogout.TabStop = false;
             this.btnLogout.Text = "button1";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // pictureBox1
@@ -175,14 +179,15 @@ namespace AutoPrevoznikInfo
             this.tabControlRight.Controls.Add(this.tabPage1);
             this.tabControlRight.Controls.Add(this.tabPage2);
             this.tabControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControlRight.Location = new System.Drawing.Point(236, 28);
+            this.tabControlRight.Location = new System.Drawing.Point(243, 28);
             this.tabControlRight.Name = "tabControlRight";
             this.tabControlRight.SelectedIndex = 0;
-            this.tabControlRight.Size = new System.Drawing.Size(998, 648);
+            this.tabControlRight.Size = new System.Drawing.Size(991, 648);
             this.tabControlRight.TabIndex = 4;
             // 
             // tabPage1
             // 
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage1.Controls.Add(this.btnSendMessage);
             this.tabPage1.Controls.Add(this.btnDelete);
             this.tabPage1.Controls.Add(this.btnUpdateDriver);
@@ -191,49 +196,64 @@ namespace AutoPrevoznikInfo
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(990, 615);
+            this.tabPage1.Size = new System.Drawing.Size(983, 615);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Vozaci";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnSendMessage
             // 
+            this.btnSendMessage.BackColor = System.Drawing.Color.Silver;
+            this.btnSendMessage.FlatAppearance.BorderSize = 0;
+            this.btnSendMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMessage.Location = new System.Drawing.Point(797, 268);
             this.btnSendMessage.Name = "btnSendMessage";
             this.btnSendMessage.Size = new System.Drawing.Size(165, 29);
             this.btnSendMessage.TabIndex = 4;
+            this.btnSendMessage.TabStop = false;
             this.btnSendMessage.Text = "Posalji poruku";
-            this.btnSendMessage.UseVisualStyleBackColor = true;
+            this.btnSendMessage.UseVisualStyleBackColor = false;
             this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.Color.Silver;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Location = new System.Drawing.Point(797, 188);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(165, 29);
             this.btnDelete.TabIndex = 3;
+            this.btnDelete.TabStop = false;
             this.btnDelete.Text = "obrisi";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdateDriver
             // 
+            this.btnUpdateDriver.BackColor = System.Drawing.Color.Silver;
+            this.btnUpdateDriver.FlatAppearance.BorderSize = 0;
+            this.btnUpdateDriver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateDriver.Location = new System.Drawing.Point(797, 120);
             this.btnUpdateDriver.Name = "btnUpdateDriver";
             this.btnUpdateDriver.Size = new System.Drawing.Size(165, 29);
             this.btnUpdateDriver.TabIndex = 2;
             this.btnUpdateDriver.Text = "Izmijeni";
-            this.btnUpdateDriver.UseVisualStyleBackColor = true;
+            this.btnUpdateDriver.UseVisualStyleBackColor = false;
             this.btnUpdateDriver.Click += new System.EventHandler(this.btnUpdateDriver_Click);
             // 
             // btnAddWorker
             // 
+            this.btnAddWorker.BackColor = System.Drawing.Color.Silver;
+            this.btnAddWorker.FlatAppearance.BorderSize = 0;
+            this.btnAddWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddWorker.Location = new System.Drawing.Point(46, 361);
             this.btnAddWorker.Name = "btnAddWorker";
             this.btnAddWorker.Size = new System.Drawing.Size(119, 43);
             this.btnAddWorker.TabIndex = 1;
+            this.btnAddWorker.TabStop = false;
             this.btnAddWorker.Text = "dodaj vozaca";
-            this.btnAddWorker.UseVisualStyleBackColor = true;
+            this.btnAddWorker.UseVisualStyleBackColor = false;
             this.btnAddWorker.Click += new System.EventHandler(this.btnAddWorker_Click);
             // 
             // dGVDrivers
@@ -305,7 +325,7 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(990, 657);
+            this.tabPage2.Size = new System.Drawing.Size(983, 615);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Autobusi";
             this.tabPage2.UseVisualStyleBackColor = true;

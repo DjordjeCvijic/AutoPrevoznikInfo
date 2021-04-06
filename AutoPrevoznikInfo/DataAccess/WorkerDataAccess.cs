@@ -77,7 +77,7 @@ namespace AutoPrevoznikInfo.DataAccess
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                if (reader.GetString(7).Equals("V"))//ovo je lose odradjeno
+                if (reader.GetString(7).Equals("V"))
                 {
                     result.Add(new Driver()
                     {
@@ -90,7 +90,7 @@ namespace AutoPrevoznikInfo.DataAccess
                         PhoneNumber = reader.GetString(6),
                         WorkerType = reader.GetString(7),
                         Buses = new List<Bus>()
-                        //treba jos dodati listu buseva koje on vozi
+                        
                     }) ;
                 }
                 
@@ -343,6 +343,29 @@ namespace AutoPrevoznikInfo.DataAccess
             cmd.Parameters.AddWithValue("@workerID", driverToDelete.WorkerID);
             cmd.ExecuteReader();
             conn.Close();
+
+        }
+        public void DeleteDoorkeeper(Worker doorkeeperToDelete)
+        {
+            //brisanje iz doorkeeper
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM doorkeeper WHERE doorkeeperID=@doorkeeperID";
+            cmd.Parameters.AddWithValue("@doorkeeperID", doorkeeperToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+
+            //brisanje is worker
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM worker WHERE workerID=@workerID";
+            cmd.Parameters.AddWithValue("@workerID", doorkeeperToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+
 
         }
     }

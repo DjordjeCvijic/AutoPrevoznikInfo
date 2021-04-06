@@ -51,8 +51,8 @@ namespace AutoPrevoznikInfo
             this.phoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lBoxSenderList = new System.Windows.Forms.ListBox();
             this.tBoxMessage = new System.Windows.Forms.TextBox();
+            this.lBoxSenderList = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -170,10 +170,10 @@ namespace AutoPrevoznikInfo
             this.tabControlRight.Controls.Add(this.tabPage1);
             this.tabControlRight.Controls.Add(this.tabPage2);
             this.tabControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControlRight.Location = new System.Drawing.Point(236, 28);
+            this.tabControlRight.Location = new System.Drawing.Point(243, 28);
             this.tabControlRight.Name = "tabControlRight";
             this.tabControlRight.SelectedIndex = 0;
-            this.tabControlRight.Size = new System.Drawing.Size(998, 665);
+            this.tabControlRight.Size = new System.Drawing.Size(991, 665);
             this.tabControlRight.TabIndex = 5;
             // 
             // tabPage1
@@ -182,7 +182,7 @@ namespace AutoPrevoznikInfo
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(990, 632);
+            this.tabPage1.Size = new System.Drawing.Size(983, 632);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Raspored";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -263,6 +263,14 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Text = "Obavjestenja";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tBoxMessage
+            // 
+            this.tBoxMessage.Location = new System.Drawing.Point(361, 99);
+            this.tBoxMessage.Multiline = true;
+            this.tBoxMessage.Name = "tBoxMessage";
+            this.tBoxMessage.Size = new System.Drawing.Size(470, 424);
+            this.tBoxMessage.TabIndex = 1;
+            // 
             // lBoxSenderList
             // 
             this.lBoxSenderList.FormattingEnabled = true;
@@ -272,14 +280,6 @@ namespace AutoPrevoznikInfo
             this.lBoxSenderList.Size = new System.Drawing.Size(280, 424);
             this.lBoxSenderList.TabIndex = 0;
             this.lBoxSenderList.SelectedIndexChanged += new System.EventHandler(this.lBoxSenderList_SelectedIndexChanged);
-            // 
-            // tBoxMessage
-            // 
-            this.tBoxMessage.Location = new System.Drawing.Point(361, 99);
-            this.tBoxMessage.Multiline = true;
-            this.tBoxMessage.Name = "tBoxMessage";
-            this.tBoxMessage.Size = new System.Drawing.Size(470, 424);
-            this.tBoxMessage.TabIndex = 1;
             // 
             // DriverForm
             // 

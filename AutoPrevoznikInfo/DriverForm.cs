@@ -15,7 +15,7 @@ namespace AutoPrevoznikInfo
         private Worker loggedInWorker;
         private string selectedLanguage;
         private string selectedTheme="W";
-        private List<Model.Message> messageToShow;
+        
 
         public DriverForm(Worker w,string l)
         {
@@ -36,7 +36,7 @@ namespace AutoPrevoznikInfo
             lblWorkerName.Text = loggedInWorker.FirstName + " " + loggedInWorker.LastName;
 
             MessageDataAccess messageDA = new MessageDataAccess();
-            messageToShow = messageDA.GetWorkerMessages(loggedInWorker);
+             List<Model.Message>  messageToShow = messageDA.GetWorkerMessages(loggedInWorker);
             foreach(Model.Message mess in messageToShow)
             {
                 ItemHolder iHolder = new ItemHolder { value = mess, text =mess.FromWorker.FirstName+" "+ mess.FromWorker.LastName + " "+mess.Date };
@@ -106,6 +106,60 @@ namespace AutoPrevoznikInfo
         }
         private void SetTheme()
         {
+            if (selectedTheme.Equals("W"))
+            {
+                //meni na vrhu:
+                menuStrip1.BackColor = Control.DefaultBackColor;
+
+                tsmiSerbian.BackColor = Control.DefaultBackColor;
+                tsmiEnglish.BackColor = Control.DefaultBackColor;
+                tsmiWhiteTheme.BackColor = Control.DefaultBackColor;
+                tsmiDarkTheme.BackColor = Control.DefaultBackColor;
+
+                tSMILanguage.ForeColor = Color.Black;
+                tSMTheme.ForeColor = Color.Black;
+                tsmiDarkTheme.ForeColor = Color.Black;
+                tsmiWhiteTheme.ForeColor = Color.Black;
+                tsmiEnglish.ForeColor = Color.Black;
+                tsmiSerbian.ForeColor = Color.Black;
+
+                this.BackColor = Control.DefaultBackColor;
+
+                //lijevi meni
+                panelLeft.BackColor = Control.DefaultBackColor;
+                lblWorkerName.ForeColor = Color.Black;
+                lblWorkerType.ForeColor = Color.Black;
+                btnLogout.BackColor = Control.DefaultBackColor;
+                btnLogout.ForeColor = Color.Black;
+
+            }
+            else
+            {
+                menuStrip1.BackColor = Color.FromArgb(51, 51, 53);
+
+                tsmiSerbian.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiEnglish.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiWhiteTheme.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiDarkTheme.BackColor = Color.FromArgb(51, 51, 53);
+
+                tSMILanguage.ForeColor = Color.White;
+                tSMTheme.ForeColor = Color.White;
+                tsmiDarkTheme.ForeColor = Color.White;
+                tsmiWhiteTheme.ForeColor = Color.White;
+                tsmiEnglish.ForeColor = Color.White;
+                tsmiSerbian.ForeColor = Color.White;
+
+                this.BackColor = Color.FromArgb(51, 51, 53);
+
+                //lijevi meni
+                panelLeft.BackColor = Color.FromArgb(39, 38, 40);
+                lblWorkerName.ForeColor = Color.White;
+                lblWorkerType.ForeColor = Color.White;
+                btnLogout.BackColor = Color.FromArgb(163, 128, 209);
+                btnLogout.ForeColor = Color.White;
+
+
+            }
 
         }
 

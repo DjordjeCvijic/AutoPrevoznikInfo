@@ -44,6 +44,9 @@ namespace AutoPrevoznikInfo
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControlRight = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnSendMessage = new System.Windows.Forms.Button();
+            this.btnDeleteDoorkeeper = new System.Windows.Forms.Button();
+            this.btnUpdateDoorkeeper = new System.Windows.Forms.Button();
             this.btnAddDoorkeeper = new System.Windows.Forms.Button();
             this.dGVDoorkeepers = new System.Windows.Forms.DataGridView();
             this.firstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +55,6 @@ namespace AutoPrevoznikInfo
             this.phoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnUpdateDoorkeeper = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -147,12 +149,16 @@ namespace AutoPrevoznikInfo
             // 
             // btnLogout
             // 
+            this.btnLogout.BackColor = System.Drawing.Color.Silver;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Location = new System.Drawing.Point(23, 573);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(188, 46);
             this.btnLogout.TabIndex = 1;
+            this.btnLogout.TabStop = false;
             this.btnLogout.Text = "button1";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // pictureBox1
@@ -170,33 +176,82 @@ namespace AutoPrevoznikInfo
             this.tabControlRight.Controls.Add(this.tabPage1);
             this.tabControlRight.Controls.Add(this.tabPage2);
             this.tabControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControlRight.Location = new System.Drawing.Point(236, 28);
+            this.tabControlRight.Location = new System.Drawing.Point(243, 28);
             this.tabControlRight.Name = "tabControlRight";
             this.tabControlRight.SelectedIndex = 0;
-            this.tabControlRight.Size = new System.Drawing.Size(998, 636);
+            this.tabControlRight.Size = new System.Drawing.Size(991, 636);
             this.tabControlRight.TabIndex = 5;
             // 
             // tabPage1
             // 
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage1.Controls.Add(this.btnSendMessage);
+            this.tabPage1.Controls.Add(this.btnDeleteDoorkeeper);
             this.tabPage1.Controls.Add(this.btnUpdateDoorkeeper);
             this.tabPage1.Controls.Add(this.btnAddDoorkeeper);
             this.tabPage1.Controls.Add(this.dGVDoorkeepers);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(990, 603);
+            this.tabPage1.Size = new System.Drawing.Size(983, 603);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Vozaci";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnSendMessage
+            // 
+            this.btnSendMessage.BackColor = System.Drawing.Color.Silver;
+            this.btnSendMessage.FlatAppearance.BorderSize = 0;
+            this.btnSendMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendMessage.Location = new System.Drawing.Point(785, 278);
+            this.btnSendMessage.Name = "btnSendMessage";
+            this.btnSendMessage.Size = new System.Drawing.Size(168, 29);
+            this.btnSendMessage.TabIndex = 7;
+            this.btnSendMessage.TabStop = false;
+            this.btnSendMessage.Text = "posalji poruku";
+            this.btnSendMessage.UseVisualStyleBackColor = false;
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
+            // 
+            // btnDeleteDoorkeeper
+            // 
+            this.btnDeleteDoorkeeper.BackColor = System.Drawing.Color.Silver;
+            this.btnDeleteDoorkeeper.FlatAppearance.BorderSize = 0;
+            this.btnDeleteDoorkeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteDoorkeeper.Location = new System.Drawing.Point(785, 215);
+            this.btnDeleteDoorkeeper.Name = "btnDeleteDoorkeeper";
+            this.btnDeleteDoorkeeper.Size = new System.Drawing.Size(168, 29);
+            this.btnDeleteDoorkeeper.TabIndex = 6;
+            this.btnDeleteDoorkeeper.TabStop = false;
+            this.btnDeleteDoorkeeper.Text = "Obrisi";
+            this.btnDeleteDoorkeeper.UseVisualStyleBackColor = false;
+            this.btnDeleteDoorkeeper.Click += new System.EventHandler(this.btnDeleteDoorkeeper_Click);
+            // 
+            // btnUpdateDoorkeeper
+            // 
+            this.btnUpdateDoorkeeper.BackColor = System.Drawing.Color.Silver;
+            this.btnUpdateDoorkeeper.FlatAppearance.BorderSize = 0;
+            this.btnUpdateDoorkeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateDoorkeeper.Location = new System.Drawing.Point(785, 159);
+            this.btnUpdateDoorkeeper.Name = "btnUpdateDoorkeeper";
+            this.btnUpdateDoorkeeper.Size = new System.Drawing.Size(168, 30);
+            this.btnUpdateDoorkeeper.TabIndex = 5;
+            this.btnUpdateDoorkeeper.TabStop = false;
+            this.btnUpdateDoorkeeper.Text = "izmijeni";
+            this.btnUpdateDoorkeeper.UseVisualStyleBackColor = false;
+            this.btnUpdateDoorkeeper.Click += new System.EventHandler(this.btnUpdateDoorkeeper_Click);
+            // 
             // btnAddDoorkeeper
             // 
+            this.btnAddDoorkeeper.BackColor = System.Drawing.Color.Silver;
+            this.btnAddDoorkeeper.FlatAppearance.BorderSize = 0;
+            this.btnAddDoorkeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDoorkeeper.Location = new System.Drawing.Point(785, 94);
             this.btnAddDoorkeeper.Name = "btnAddDoorkeeper";
             this.btnAddDoorkeeper.Size = new System.Drawing.Size(168, 31);
             this.btnAddDoorkeeper.TabIndex = 4;
+            this.btnAddDoorkeeper.TabStop = false;
             this.btnAddDoorkeeper.Text = "dodaj";
-            this.btnAddDoorkeeper.UseVisualStyleBackColor = true;
+            this.btnAddDoorkeeper.UseVisualStyleBackColor = false;
             this.btnAddDoorkeeper.Click += new System.EventHandler(this.btnAddDoorkeeper_Click);
             // 
             // dGVDoorkeepers
@@ -268,20 +323,10 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(990, 603);
+            this.tabPage2.Size = new System.Drawing.Size(983, 603);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Autobusi";
+            this.tabPage2.Text = "neoznaceno";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateDoorkeeper
-            // 
-            this.btnUpdateDoorkeeper.Location = new System.Drawing.Point(785, 177);
-            this.btnUpdateDoorkeeper.Name = "btnUpdateDoorkeeper";
-            this.btnUpdateDoorkeeper.Size = new System.Drawing.Size(168, 30);
-            this.btnUpdateDoorkeeper.TabIndex = 5;
-            this.btnUpdateDoorkeeper.Text = "izmijeni";
-            this.btnUpdateDoorkeeper.UseVisualStyleBackColor = true;
-            this.btnUpdateDoorkeeper.Click += new System.EventHandler(this.btnUpdateDoorkeeper_Click);
             // 
             // DoorkeeperMenagerForm
             // 
@@ -334,5 +379,7 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnAddDoorkeeper;
         private System.Windows.Forms.Button btnUpdateDoorkeeper;
+        private System.Windows.Forms.Button btnDeleteDoorkeeper;
+        private System.Windows.Forms.Button btnSendMessage;
     }
 }

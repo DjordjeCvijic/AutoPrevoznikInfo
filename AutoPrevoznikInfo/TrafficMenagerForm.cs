@@ -26,6 +26,8 @@ namespace AutoPrevoznikInfo
 
         private void InitializeForm()
         {
+            
+
             lblWorkerName.Text = loggedInWorker.FirstName + " " + loggedInWorker.LastName;
             tsmiSerbian.Click += new System.EventHandler(this.SetSerbianLanguage);//dodavanje hendlera i metode
             tsmiEnglish.Click += new System.EventHandler(this.SetEnglishLanguage);
@@ -34,6 +36,13 @@ namespace AutoPrevoznikInfo
             FillGridDrivers();
             SetLanguage();
             this.dGVDrivers.ColumnHeadersDefaultCellStyle.SelectionBackColor = this.dGVDrivers.ColumnHeadersDefaultCellStyle.BackColor;
+
+            /*btnAddWorker.TabStop = false;
+            btnAddWorker.FlatStyle = FlatStyle.Flat;
+            btnAddWorker.FlatAppearance.BorderSize = 0;*/
+            SetTheme();
+
+           
         }
         private void SetSerbianLanguage(object sender,EventArgs e)
         {
@@ -115,7 +124,112 @@ namespace AutoPrevoznikInfo
         }
         private void SetTheme()
         {
+            if (selectedTheme.Equals("W"))
+            {
+                //meni na vrhu:
+                menuStrip1.BackColor = Color.Silver;
+                tsmiSerbian.BackColor = Control.DefaultBackColor;
+                tsmiEnglish.BackColor = Control.DefaultBackColor;
+                tsmiWhiteTheme.BackColor = Control.DefaultBackColor;
+                tsmiDarkTheme.BackColor = Control.DefaultBackColor;
 
+                tSMILanguage.ForeColor = Color.Black;
+                tSMTheme.ForeColor = Color.Black;
+                tsmiDarkTheme.ForeColor = Color.Black;
+                tsmiWhiteTheme.ForeColor = Color.Black;
+                tsmiEnglish.ForeColor = Color.Black;
+                tsmiSerbian.ForeColor = Color.Black;
+
+                this.BackColor = Control.DefaultBackColor;
+                //lijevi meni
+                panelLeft.BackColor = Control.DefaultBackColor;
+                lblWorkerName.ForeColor = Color.Black;
+                lblWorkerType.ForeColor = Color.Black;
+                btnLogout.BackColor =Color.Silver;
+                btnLogout.ForeColor = Color.Black;
+
+                //desni panel 1:
+                tabPage1.BackColor = Color.White;
+                btnAddWorker.BackColor = Color.Silver;
+                btnAddWorker.ForeColor = Color.Black;
+                btnDelete.BackColor = Color.Silver;
+                btnDelete.ForeColor = Color.Black;
+                btnUpdateDriver.BackColor = Color.Silver;
+                btnUpdateDriver.ForeColor = Color.Black;
+                btnSendMessage.BackColor = Color.Silver;
+                btnSendMessage.ForeColor = Color.Black;
+                setDataGridColor("W");
+
+            }
+            else
+            {
+                menuStrip1.BackColor = Color.FromArgb(51, 51, 53);
+
+                tsmiSerbian.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiEnglish.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiWhiteTheme.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiDarkTheme.BackColor = Color.FromArgb(51, 51, 53);
+
+                tSMILanguage.ForeColor = Color.White;
+                tSMTheme.ForeColor = Color.White;
+                tsmiDarkTheme.ForeColor = Color.White;
+                tsmiWhiteTheme.ForeColor = Color.White;
+                tsmiEnglish.ForeColor = Color.White;
+                tsmiSerbian.ForeColor = Color.White;
+
+                this.BackColor = Color.FromArgb(51, 51, 53);
+
+                //lijevi meni
+                panelLeft.BackColor = Color.FromArgb(39, 38, 40);
+                lblWorkerName.ForeColor = Color.White;
+                lblWorkerType.ForeColor = Color.White;
+                btnLogout.BackColor = Color.FromArgb(163, 128, 209);
+                btnLogout.ForeColor = Color.White;
+
+                //desni panel1:
+                tabPage1.BackColor= Color.FromArgb(39, 38, 40);
+                btnAddWorker.BackColor = Color.FromArgb(163, 128, 209);
+                btnAddWorker.ForeColor = Color.White;
+                btnDelete.BackColor = Color.FromArgb(163, 128, 209);
+                btnDelete.ForeColor = Color.White;
+                btnUpdateDriver.BackColor = Color.FromArgb(163, 128, 209);
+                btnUpdateDriver.ForeColor = Color.White;
+                btnSendMessage.BackColor = Color.FromArgb(163, 128, 209);
+                btnSendMessage.ForeColor = Color.White;
+                setDataGridColor("D");
+                }
+            }
+
+        private void setDataGridColor(string v)
+        {
+            if (v.Equals("W"))
+            {
+                dGVDrivers.BackgroundColor = Color.White;
+                dGVDrivers.ColumnHeadersDefaultCellStyle.BackColor = Color.Silver;
+                dGVDrivers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                dGVDrivers.ColumnHeadersDefaultCellStyle.SelectionBackColor = dGVDrivers.ColumnHeadersDefaultCellStyle.BackColor;
+                dGVDrivers.ForeColor = Color.Black;
+                for (int i = 0; i < dGVDrivers.RowCount; i++)
+                {
+                    for (int j = 0; j < dGVDrivers.ColumnCount; j++)
+                        dGVDrivers.Rows[i].Cells[j].Style.BackColor = Color.White;
+                }
+
+            }
+            else
+            {
+                dGVDrivers.BackgroundColor = Color.FromArgb(39, 38, 40);
+                dGVDrivers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(39, 38, 40);
+                dGVDrivers.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(163, 128, 209);
+                dGVDrivers.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(39, 38, 40);
+                dGVDrivers.ForeColor = Color.White;
+                for (int i = 0; i < dGVDrivers.RowCount; i++)
+                {
+                    for (int j = 0; j < dGVDrivers.ColumnCount; j++)
+                        dGVDrivers.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(51, 51, 53);
+                }
+            }
+            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

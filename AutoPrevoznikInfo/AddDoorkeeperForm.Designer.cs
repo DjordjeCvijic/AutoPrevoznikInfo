@@ -137,6 +137,7 @@ namespace AutoPrevoznikInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(521, 471);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tBoxPhoneNumber);

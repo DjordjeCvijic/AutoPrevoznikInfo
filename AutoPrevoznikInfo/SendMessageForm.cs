@@ -51,7 +51,7 @@ namespace AutoPrevoznikInfo
             try
             {
                 if (tBoxMessage.TextLength == 0)
-                    throw new ArgumentException("Korisnicko ime zauzeto. Molimo pokušajte ponovo. ");
+                    throw new ArgumentException("Poruka nije unesena. Molimo pokušajte ponovo. ");
                 Model.Message message = new Model.Message()
                 {
                     FromWorker = FromW,

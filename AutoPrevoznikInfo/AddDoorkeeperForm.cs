@@ -22,6 +22,7 @@ namespace AutoPrevoznikInfo
             SetTheme(theme);
             this.doorkeeperToUpdate = doorkeeperToUpdate;
             InitializeForm();
+            
         }
 
         private void InitializeForm()

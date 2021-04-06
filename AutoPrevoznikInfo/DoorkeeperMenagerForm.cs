@@ -35,6 +35,7 @@ namespace AutoPrevoznikInfo
             SetLanguage();
             FillGridDrivers();
             this.dGVDoorkeepers.ColumnHeadersDefaultCellStyle.SelectionBackColor = this.dGVDoorkeepers.ColumnHeadersDefaultCellStyle.BackColor;
+            SetTheme();
         }
 
         private void FillGridDrivers()
@@ -105,7 +106,7 @@ namespace AutoPrevoznikInfo
                 workerCodeColumn.HeaderText = "Sifra";
                 btnAddDoorkeeper.Text = "Dodaj portira";
                 btnUpdateDoorkeeper.Text = "Izmijeni portira";
-
+                btnSendMessage.Text = "Posalji poruku";
             }
             else
             {
@@ -126,11 +127,120 @@ namespace AutoPrevoznikInfo
                 workerCodeColumn.HeaderText = "Code";
                 btnAddDoorkeeper.Text = "Add doorkeeper";
                 btnUpdateDoorkeeper.Text = "Update doorkeeper";
+                btnSendMessage.Text = "Send message";
             }
         }
         private void SetTheme()
         {
+            if (selectedTheme.Equals("W"))
+            {
+                //meni na vrhu:
+                menuStrip1.BackColor = Control.DefaultBackColor;
 
+                tsmiSerbian.BackColor = Control.DefaultBackColor;
+                tsmiEnglish.BackColor = Control.DefaultBackColor;
+                tsmiWhiteTheme.BackColor = Control.DefaultBackColor;
+                tsmiDarkTheme.BackColor = Control.DefaultBackColor;
+
+                tSMILanguage.ForeColor = Color.Black;
+                tSMTheme.ForeColor = Color.Black;
+                tsmiDarkTheme.ForeColor = Color.Black;
+                tsmiWhiteTheme.ForeColor = Color.Black;
+                tsmiEnglish.ForeColor = Color.Black;
+                tsmiSerbian.ForeColor = Color.Black;
+
+                this.BackColor = Control.DefaultBackColor;
+
+                //lijevi meni
+                panelLeft.BackColor = Control.DefaultBackColor;
+                lblWorkerName.ForeColor = Color.Black;
+                lblWorkerType.ForeColor = Color.Black;
+                btnLogout.BackColor = Color.Silver;
+                btnLogout.ForeColor = Color.Black;
+
+                //desni panel 1:
+                tabPage1.BackColor = Color.White;
+                btnAddDoorkeeper.BackColor = Color.Silver;
+                btnAddDoorkeeper.ForeColor = Color.Black;
+                btnDeleteDoorkeeper.BackColor = Color.Silver;
+                btnDeleteDoorkeeper.ForeColor = Color.Black;
+                btnUpdateDoorkeeper.BackColor = Color.Silver;
+                btnUpdateDoorkeeper.ForeColor = Color.Black;
+                btnSendMessage.BackColor = Color.Silver;
+                btnSendMessage.ForeColor = Color.Black;
+                setDataGridColor("W");
+
+            }
+            else
+            {
+                menuStrip1.BackColor = Color.FromArgb(51, 51, 53);
+
+                tsmiSerbian.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiEnglish.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiWhiteTheme.BackColor = Color.FromArgb(51, 51, 53);
+                tsmiDarkTheme.BackColor = Color.FromArgb(51, 51, 53);
+
+                tSMILanguage.ForeColor = Color.White;
+                tSMTheme.ForeColor = Color.White;
+                tsmiDarkTheme.ForeColor = Color.White;
+                tsmiWhiteTheme.ForeColor = Color.White;
+                tsmiEnglish.ForeColor = Color.White;
+                tsmiSerbian.ForeColor = Color.White;
+
+                this.BackColor = Color.FromArgb(51, 51, 53);
+
+                //lijevi meni
+                panelLeft.BackColor = Color.FromArgb(39, 38, 40);
+                lblWorkerName.ForeColor = Color.White;
+                lblWorkerType.ForeColor = Color.White;
+                btnLogout.BackColor = Color.FromArgb(163, 128, 209);
+                btnLogout.ForeColor = Color.White;
+
+                //desni panel1:
+                tabPage1.BackColor = Color.FromArgb(39, 38, 40);
+                btnAddDoorkeeper.BackColor = Color.FromArgb(163, 128, 209);
+                btnAddDoorkeeper.ForeColor = Color.White;
+                btnDeleteDoorkeeper.BackColor = Color.FromArgb(163, 128, 209);
+                btnDeleteDoorkeeper.ForeColor = Color.White;
+                btnUpdateDoorkeeper.BackColor = Color.FromArgb(163, 128, 209);
+                btnUpdateDoorkeeper.ForeColor = Color.White;
+                btnSendMessage.BackColor = Color.FromArgb(163, 128, 209);
+                btnSendMessage.ForeColor = Color.White;
+                setDataGridColor("D");
+
+
+            }
+        }
+
+        private void setDataGridColor(string v)
+        {
+            if (v.Equals("W"))
+            {
+                dGVDoorkeepers.BackgroundColor = Color.White;
+                dGVDoorkeepers.ColumnHeadersDefaultCellStyle.BackColor = Color.Silver;
+                dGVDoorkeepers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                dGVDoorkeepers.ColumnHeadersDefaultCellStyle.SelectionBackColor = dGVDoorkeepers.ColumnHeadersDefaultCellStyle.BackColor;
+                dGVDoorkeepers.ForeColor = Color.Black;
+                for (int i = 0; i < dGVDoorkeepers.RowCount; i++)
+                {
+                    for (int j = 0; j < dGVDoorkeepers.ColumnCount; j++)
+                        dGVDoorkeepers.Rows[i].Cells[j].Style.BackColor = Color.White;
+                }
+
+            }
+            else
+            {
+                dGVDoorkeepers.BackgroundColor = Color.FromArgb(39, 38, 40);
+                dGVDoorkeepers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(39, 38, 40);
+                dGVDoorkeepers.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(163, 128, 209);
+                dGVDoorkeepers.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(39, 38, 40);
+                dGVDoorkeepers.ForeColor = Color.White;
+                for (int i = 0; i < dGVDoorkeepers.RowCount; i++)
+                {
+                    for (int j = 0; j < dGVDoorkeepers.ColumnCount; j++)
+                        dGVDoorkeepers.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(51, 51, 53);
+                }
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -150,6 +260,34 @@ namespace AutoPrevoznikInfo
             Worker selectedDoorkeeper = (Worker)dGVDoorkeepers.SelectedRows[0].Tag;
             new AddDoorkeeperForm(selectedDoorkeeper, selectedLanguage, selectedTheme).ShowDialog();
             FillGridDrivers();
+        }
+
+        private void btnDeleteDoorkeeper_Click(object sender, EventArgs e)
+        {
+            Worker selectedDoorkeeper = (Worker)dGVDoorkeepers.SelectedRows[0].Tag;
+            string messageText, headText;
+            if (selectedLanguage.Equals("S"))
+            {
+                messageText = "Da li zelite izbrisati portira?";
+                headText = "Brisanje";
+            }
+            else
+            {
+                messageText = "Do you want to delete the doorkeeper?";
+                headText = "Delete";
+            }
+            DialogResult dr = MessageBox.Show(messageText, headText, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                workerDA.DeleteDoorkeeper(selectedDoorkeeper);
+                FillGridDrivers();
+            }
+        }
+
+        private void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            Worker selectWorker = (Worker)dGVDoorkeepers.SelectedRows[0].Tag;
+            new SendMessageForm(loggedInWorker, selectWorker, selectedLanguage, selectedTheme).ShowDialog();
         }
     }
 }
