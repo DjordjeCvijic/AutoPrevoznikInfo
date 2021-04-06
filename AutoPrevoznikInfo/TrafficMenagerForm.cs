@@ -88,6 +88,7 @@ namespace AutoPrevoznikInfo
                 workerCodeColumn.HeaderText = "Sifra";
                 btnAddWorker.Text = "Dodaj vozaca";
                 btnUpdateDriver.Text = "Izmijeni podatke";
+                btnSendMessage.Text = "Posalji poruku";
             }
             else
             {
@@ -109,6 +110,7 @@ namespace AutoPrevoznikInfo
                 workerCodeColumn.HeaderText = "Code";
                 btnAddWorker.Text = "Add driver";
                 btnUpdateDriver.Text = "Update driver";
+                btnSendMessage.Text = "Send message";
             }
         }
         private void SetTheme()
@@ -154,13 +156,29 @@ namespace AutoPrevoznikInfo
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Driver selectedDriver = (Driver)dGVDrivers.SelectedRows[0].Tag;
-            
-            DialogResult dr = MessageBox.Show("da li zelite izbrisati", "Brisanje", MessageBoxButtons.YesNo);
+            string messageText, headText;
+            if (selectedLanguage.Equals("S"))
+            {
+                messageText = "Da li zelite izbrisati vozaca?";
+                headText = "Brisanje";
+            }
+            else
+            {
+                messageText = "Do you want to delete the driver?";
+                headText = "Delete";
+            }
+            DialogResult dr = MessageBox.Show(messageText, headText, MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 workerDA.DeleteDriver(selectedDriver);
                 FillGridDrivers();
             }
+        }
+
+        private void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            Driver selectedDriver = (Driver)dGVDrivers.SelectedRows[0].Tag;
+            new SendMessageForm(loggedInWorker, selectedDriver, selectedLanguage, selectedTheme).ShowDialog();
         }
     }
 }

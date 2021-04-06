@@ -44,6 +44,7 @@ namespace AutoPrevoznikInfo
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControlRight = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdateDriver = new System.Windows.Forms.Button();
             this.btnAddWorker = new System.Windows.Forms.Button();
             this.dGVDrivers = new System.Windows.Forms.DataGridView();
@@ -53,7 +54,7 @@ namespace AutoPrevoznikInfo
             this.phoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSendMessage = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -182,6 +183,7 @@ namespace AutoPrevoznikInfo
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnSendMessage);
             this.tabPage1.Controls.Add(this.btnDelete);
             this.tabPage1.Controls.Add(this.btnUpdateDriver);
             this.tabPage1.Controls.Add(this.btnAddWorker);
@@ -194,11 +196,21 @@ namespace AutoPrevoznikInfo
             this.tabPage1.Text = "Vozaci";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(797, 188);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(165, 29);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "obrisi";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // btnUpdateDriver
             // 
             this.btnUpdateDriver.Location = new System.Drawing.Point(797, 120);
             this.btnUpdateDriver.Name = "btnUpdateDriver";
-            this.btnUpdateDriver.Size = new System.Drawing.Size(94, 29);
+            this.btnUpdateDriver.Size = new System.Drawing.Size(165, 29);
             this.btnUpdateDriver.TabIndex = 2;
             this.btnUpdateDriver.Text = "Izmijeni";
             this.btnUpdateDriver.UseVisualStyleBackColor = true;
@@ -288,15 +300,15 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Text = "Autobusi";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnDelete
+            // btnSendMessage
             // 
-            this.btnDelete.Location = new System.Drawing.Point(797, 188);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(94, 29);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "obrisi";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnSendMessage.Location = new System.Drawing.Point(797, 268);
+            this.btnSendMessage.Name = "btnSendMessage";
+            this.btnSendMessage.Size = new System.Drawing.Size(165, 29);
+            this.btnSendMessage.TabIndex = 4;
+            this.btnSendMessage.Text = "Posalji poruku";
+            this.btnSendMessage.UseVisualStyleBackColor = true;
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
             // TrafficMenagerForm
             // 
@@ -351,5 +363,6 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.DataGridViewTextBoxColumn workerCodeColumn;
         private System.Windows.Forms.Button btnUpdateDriver;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSendMessage;
     }
 }

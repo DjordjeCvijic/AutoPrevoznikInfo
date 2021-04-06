@@ -196,7 +196,6 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox tBoxPassword;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox tBoxPhone;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ListBox lBoxTakeBus;

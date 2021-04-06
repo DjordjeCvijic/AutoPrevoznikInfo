@@ -38,6 +38,35 @@ namespace AutoPrevoznikInfo.DataAccess
             conn.Close();
             return result;
         }
+        public Worker GetWorkerWithID(int id)
+        {
+            Worker result=null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * from worker WHERE workerID=@workerID";
+            cmd.Parameters.AddWithValue("@workerID", id);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+
+                result=new Worker()
+                {
+                    WorkerID = reader.GetInt32(0),
+                    WorkerCode = reader.GetString(1),
+                    FirstName = reader.GetString(2),
+                    LastName = reader.GetString(3),
+                    Username = reader.GetString(4),
+                    Password = reader.GetString(5),
+                    PhoneNumber = reader.GetString(6),
+                    WorkerType = reader.GetString(7)
+                };
+            }
+            reader.Close();
+            conn.Close();
+            return result;
+
+        }
         public List<Driver> GetDrivers()
         {
             List<Driver> result = new List<Driver>();

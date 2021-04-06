@@ -80,6 +80,7 @@ namespace AutoPrevoznikInfo
             this.btnSend.TabIndex = 4;
             this.btnSend.Text = "button1";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // SendMessageForm
             // 
