@@ -11,46 +11,33 @@ using System.Windows.Forms;
 
 namespace AutoPrevoznikInfo
 {
-    public partial class AddDriverForm : Form
+    public partial class AddDoorkeeperForm : Form
     {
-        private Driver driverToUpdate;
+        private Worker doorkeeperToUpdate;
         private WorkerDataAccess workerDA = new WorkerDataAccess();
-        public AddDriverForm(Driver driver,string language,string theme)
+        public AddDoorkeeperForm(Worker doorkeeperToUpdate,string language,string theme)
         {
             InitializeComponent();
             SetLanguage(language);
             SetTheme(theme);
-            driverToUpdate = driver;
+            this.doorkeeperToUpdate = doorkeeperToUpdate;
             InitializeForm();
         }
 
         private void InitializeForm()
         {
-            BusDataAccess busDA = new BusDataAccess();
-            List<Bus> buses = busDA.GetBuses();
-            foreach(Bus b in buses)
+            if (doorkeeperToUpdate != null)
             {
-                ItemHolder iHolder = new ItemHolder { value = b, text = b.GarageNumber+ " "+b.BusType };
-                lBoxTakeBus.Items.Add(iHolder);
-                if (driverToUpdate != null)
-                {
-                    List<Bus> alreadySelected = driverToUpdate.Buses;
-                    foreach (Bus alreadySelectedBus in alreadySelected)
-                    {
-                        if (b.BusId == alreadySelectedBus.BusId)
-                        {
-                            lBoxTakeBus.SetSelected(lBoxTakeBus.Items.IndexOf(iHolder), true);
-                        }
-                    }
-                }
+                tBoxFirstName.Text = doorkeeperToUpdate.FirstName;
+                tBoxLastName.Text = doorkeeperToUpdate.LastName;
+                tBoxUsername.Text = doorkeeperToUpdate.Username;
+                tBoxPhoneNumber.Text = doorkeeperToUpdate.PhoneNumber;
             }
-            if (driverToUpdate != null)
-            {
-                tBoxFirstName.Text = driverToUpdate.FirstName;
-                tBoxLastName.Text = driverToUpdate.LastName;
-                tBoxUsername.Text = driverToUpdate.Username;
-                tBoxPhoneNumber.Text = driverToUpdate.PhoneNumber;
-            }
+        }
+
+        private void SetTheme(string theme)
+        {
+            
         }
 
         private void SetLanguage(string selectedLanguage)
@@ -62,7 +49,6 @@ namespace AutoPrevoznikInfo
                 lblUsername.Text = "Korisnicko ime:";
                 lblPassword.Text = "Lozinka:";
                 lblPhone.Text = "Broj telefona:";
-                lblTakeBus.Text = "Zaduzi autobuse:";
                 btnSave.Text = "Sacuvaj";
             }
             else
@@ -73,22 +59,17 @@ namespace AutoPrevoznikInfo
                 lblUsername.Text = "Username:";
                 lblPassword.Text = "Password:";
                 lblPhone.Text = "Phone number:";
-                lblTakeBus.Text = "Take buses:";
                 btnSave.Text = "Save";
 
             }
-        }
-        private void SetTheme(string selectedTheme)
-        {
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if(tBoxFirstName.TextLength==0 || tBoxLastName.TextLength == 0 || tBoxUsername.TextLength == 0 ||
-                    tBoxPassword.TextLength == 0 || tBoxPhoneNumber.TextLength == 0  )
+                if (tBoxFirstName.TextLength == 0 || tBoxLastName.TextLength == 0 || tBoxUsername.TextLength == 0 ||
+                    tBoxPassword.TextLength == 0 || tBoxPhoneNumber.TextLength == 0)
                     throw new ArgumentException("Neka polja nisu unesena. Molimo pokušajte ponovo. ");
 
                 string firstName = tBoxFirstName.Text;
@@ -96,13 +77,9 @@ namespace AutoPrevoznikInfo
                 string userName = tBoxUsername.Text;
                 string enteredPassword = tBoxPassword.Text;
                 string phoneNumber = tBoxPhoneNumber.Text;
-                if (!workerDA.CheckIfUsernameUnique(userName) && driverToUpdate == null)
+                if (!workerDA.CheckIfUsernameUnique(userName) && doorkeeperToUpdate == null)
                     throw new ArgumentException("Korisnicko ime zauzeto. Molimo pokušajte ponovo. ");
-                List<Bus> buses = new List<Bus>();
-                foreach (ItemHolder selectedItem in lBoxTakeBus.SelectedItems)
-                {
-                    buses.Add((Bus)selectedItem.value);
-                }
+                
 
                 byte[] salt1;
                 new RNGCryptoServiceProvider().GetBytes(salt1 = new byte[16]);
@@ -113,13 +90,11 @@ namespace AutoPrevoznikInfo
                 Array.Copy(hash1, 0, hashBytes1, 16, 20);
                 string passwordToSave = Convert.ToBase64String(hashBytes1);
 
-                
-                
-                if (driverToUpdate == null)
+                if (doorkeeperToUpdate == null)
                 {
                     int countOfWorkers = workerDA.CountWorkers();
                     string workerCodeToSave = "W" + (countOfWorkers + 1);
-                    Driver newDriver = new Driver
+                    Worker newDoorkeeper = new Worker
                     {
                         WorkerID = countOfWorkers + 1,
                         WorkerCode = workerCodeToSave,
@@ -128,32 +103,29 @@ namespace AutoPrevoznikInfo
                         Username = userName,
                         Password = passwordToSave,
                         PhoneNumber = phoneNumber,
-                        WorkerType = "V",
-                        Buses = buses
+                        WorkerType = "P"
 
                     };
-                    workerDA.AddDriver(newDriver);
+                    workerDA.AddDoorkeeper(newDoorkeeper);
                 }
                 else
                 {
-                    driverToUpdate.FirstName = firstName;
-                    driverToUpdate.LastName = lastName;
-                    driverToUpdate.Username = userName;
+                    doorkeeperToUpdate.FirstName = firstName;
+                    doorkeeperToUpdate.LastName = lastName;
+                    doorkeeperToUpdate.Username = userName;
                     if (!enteredPassword.Equals(""))
-                        driverToUpdate.Password = passwordToSave;
-                    driverToUpdate.PhoneNumber = phoneNumber;
-                    driverToUpdate.Buses = buses;
+                        doorkeeperToUpdate.Password = passwordToSave;
+                    doorkeeperToUpdate.PhoneNumber = phoneNumber;
 
-                    workerDA.UpdateDriver(driverToUpdate);
+                    workerDA.UpdateDoorkeeper(doorkeeperToUpdate);
                 }
-                
+
                 this.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
     }
 }

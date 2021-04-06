@@ -44,6 +44,7 @@ namespace AutoPrevoznikInfo
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControlRight = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnSendMessage = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdateDriver = new System.Windows.Forms.Button();
             this.btnAddWorker = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@ namespace AutoPrevoznikInfo
             this.phoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnSendMessage = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +71,7 @@ namespace AutoPrevoznikInfo
             this.tSMTheme});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1230, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1234, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,7 +129,7 @@ namespace AutoPrevoznikInfo
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 28);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(237, 690);
+            this.panelLeft.Size = new System.Drawing.Size(237, 648);
             this.panelLeft.TabIndex = 3;
             // 
             // lblWorkerType
@@ -175,10 +175,10 @@ namespace AutoPrevoznikInfo
             this.tabControlRight.Controls.Add(this.tabPage1);
             this.tabControlRight.Controls.Add(this.tabPage2);
             this.tabControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControlRight.Location = new System.Drawing.Point(232, 28);
+            this.tabControlRight.Location = new System.Drawing.Point(236, 28);
             this.tabControlRight.Name = "tabControlRight";
             this.tabControlRight.SelectedIndex = 0;
-            this.tabControlRight.Size = new System.Drawing.Size(998, 690);
+            this.tabControlRight.Size = new System.Drawing.Size(998, 648);
             this.tabControlRight.TabIndex = 4;
             // 
             // tabPage1
@@ -191,10 +191,20 @@ namespace AutoPrevoznikInfo
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(990, 657);
+            this.tabPage1.Size = new System.Drawing.Size(990, 615);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Vozaci";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnSendMessage
+            // 
+            this.btnSendMessage.Location = new System.Drawing.Point(797, 268);
+            this.btnSendMessage.Name = "btnSendMessage";
+            this.btnSendMessage.Size = new System.Drawing.Size(165, 29);
+            this.btnSendMessage.TabIndex = 4;
+            this.btnSendMessage.Text = "Posalji poruku";
+            this.btnSendMessage.UseVisualStyleBackColor = true;
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
             // btnDelete
             // 
@@ -300,21 +310,11 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Text = "Autobusi";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnSendMessage
-            // 
-            this.btnSendMessage.Location = new System.Drawing.Point(797, 268);
-            this.btnSendMessage.Name = "btnSendMessage";
-            this.btnSendMessage.Size = new System.Drawing.Size(165, 29);
-            this.btnSendMessage.TabIndex = 4;
-            this.btnSendMessage.Text = "Posalji poruku";
-            this.btnSendMessage.UseVisualStyleBackColor = true;
-            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
-            // 
             // TrafficMenagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1230, 718);
+            this.ClientSize = new System.Drawing.Size(1234, 676);
             this.Controls.Add(this.tabControlRight);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.menuStrip1);

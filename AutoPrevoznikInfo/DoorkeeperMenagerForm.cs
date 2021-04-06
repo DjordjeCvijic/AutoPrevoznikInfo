@@ -1,4 +1,5 @@
-﻿using AutoPrevoznikInfo.Model;
+﻿using AutoPrevoznikInfo.DataAccess;
+using AutoPrevoznikInfo.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace AutoPrevoznikInfo
         private Worker loggedInWorker;
         private string selectedLanguage;
         private string selectedTheme="W";
-
+        private WorkerDataAccess workerDA=new WorkerDataAccess();
         public DoorkeeperMenagerForm(Worker w,string l)
         {
             InitializeComponent();
@@ -26,13 +27,31 @@ namespace AutoPrevoznikInfo
 
         private void InitializeForm()
         {
-            label1.Text = loggedInWorker.FirstName;
+            lblWorkerName.Text = loggedInWorker.FirstName + " " + loggedInWorker.LastName;
             tsmiSerbian.Click += new System.EventHandler(this.SetSerbianLanguage);//dodavanje hendlera i metode
             tsmiEnglish.Click += new System.EventHandler(this.SetEnglishLanguage);
             tsmiWhiteTheme.Click += new System.EventHandler(this.SetWhiteTheme);
             tsmiDarkTheme.Click += new System.EventHandler(this.SetDarkTheme);
             SetLanguage();
+            FillGridDrivers();
+            this.dGVDoorkeepers.ColumnHeadersDefaultCellStyle.SelectionBackColor = this.dGVDoorkeepers.ColumnHeadersDefaultCellStyle.BackColor;
         }
+
+        private void FillGridDrivers()
+        {
+            List<Worker> doorkeepers = workerDA.GetDoorkeeper();
+            dGVDoorkeepers.Rows.Clear();
+            foreach (Worker w in doorkeepers)
+            {
+                DataGridViewRow row = new DataGridViewRow()
+                {
+                    Tag = w
+                };
+                row.CreateCells(dGVDoorkeepers, w.FirstName, w.LastName, w.Username, w.PhoneNumber, w.WorkerCode);
+                dGVDoorkeepers.Rows.Add(row);
+            }
+        }
+
         private void SetSerbianLanguage(object sender, EventArgs e)
         {
             if (!selectedLanguage.Equals("S"))
@@ -75,6 +94,17 @@ namespace AutoPrevoznikInfo
                 tsmiWhiteTheme.Text = "Svijetla";
                 tsmiEnglish.Text = "Engleski";
                 tsmiSerbian.Text = "Srpski";
+                btnLogout.Text = "Odjava";
+                lblWorkerType.Text = "Sef portira";
+                tabPage1.Text = "Portiri";
+                tabPage2.Text = "Autobusi";//
+                firstNameColumn.HeaderText = "Ime";
+                lastNameColumn.HeaderText = "Prezime";
+                userNameColumn.HeaderText = "Korisnicko ime";
+                phoneNumberColumn.HeaderText = "Telefon";
+                workerCodeColumn.HeaderText = "Sifra";
+                btnAddDoorkeeper.Text = "Dodaj portira";
+                btnUpdateDoorkeeper.Text = "Izmijeni portira";
 
             }
             else
@@ -85,11 +115,41 @@ namespace AutoPrevoznikInfo
                 tsmiWhiteTheme.Text = "White";
                 tsmiEnglish.Text = "English";
                 tsmiSerbian.Text = "Serbian";
+                btnLogout.Text = "Logout";
+                lblWorkerType.Text = "Doorkeeper Menager";
+                tabPage1.Text = "Doorkeepers";
+                tabPage2.Text = "Autobusi";//
+                firstNameColumn.HeaderText = "First name";
+                lastNameColumn.HeaderText = "Last name";
+                userNameColumn.HeaderText = "User name";
+                phoneNumberColumn.HeaderText = "Phone";
+                workerCodeColumn.HeaderText = "Code";
+                btnAddDoorkeeper.Text = "Add doorkeeper";
+                btnUpdateDoorkeeper.Text = "Update doorkeeper";
             }
         }
         private void SetTheme()
         {
 
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddDoorkeeper_Click(object sender, EventArgs e)
+        {
+            new AddDoorkeeperForm(null, selectedLanguage, selectedTheme).ShowDialog();
+            FillGridDrivers();
+
+        }
+
+        private void btnUpdateDoorkeeper_Click(object sender, EventArgs e)
+        {
+            Worker selectedDoorkeeper = (Worker)dGVDoorkeepers.SelectedRows[0].Tag;
+            new AddDoorkeeperForm(selectedDoorkeeper, selectedLanguage, selectedTheme).ShowDialog();
+            FillGridDrivers();
         }
     }
 }

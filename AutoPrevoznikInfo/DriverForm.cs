@@ -88,6 +88,7 @@ namespace AutoPrevoznikInfo
                 tabPage1.Text = "Raspored";
                 tabPage2.Text = "Obavjestenja";
                 lblWorkerType.Text = "Vozac";
+                btnLogout.Text = "Odjava";
             }
             else
             {
@@ -100,6 +101,7 @@ namespace AutoPrevoznikInfo
                 tabPage1.Text = "Schedule";
                 tabPage2.Text = "Messages";
                 lblWorkerType.Text = "Driver";
+                btnLogout.Text = "Logout";
             }
         }
         private void SetTheme()

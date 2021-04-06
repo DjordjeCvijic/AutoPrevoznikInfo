@@ -129,6 +129,30 @@ namespace AutoPrevoznikInfo.DataAccess
             reader.Close();
             return result;
         }
+        public List<Worker> GetDoorkeeper()
+        {
+            List<Worker> result = new List<Worker>();
+            List<int> listOfDoorkeeper = new List<int>();
+
+            
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * from doorkeeper";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                listOfDoorkeeper.Add(reader.GetInt32(0));
+
+            }
+            reader.Close();
+            conn.Close();
+
+            foreach (int i in listOfDoorkeeper)
+                result.Add(GetWorkerWithID(i));
+            return result;
+
+        }
 
         public void AddDriver(Driver driver)
         {
@@ -172,6 +196,36 @@ namespace AutoPrevoznikInfo.DataAccess
             conn.Close();
 
         }
+
+        public void AddDoorkeeper(Worker doorkeeper)
+        {
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            //dodavanje u tabelu worker
+            cmd.CommandText = "INSERT INTO worker (workerID, worker_code, first_name, last_name, username, password, phone_number, " +
+                "worker_type) " +
+                "VALUES (@workerID, @worker_code, @first_name, @last_name, @user_name, @password, @phone_number, @worker_type)";
+            cmd.Parameters.AddWithValue("@workerID", doorkeeper.WorkerID);
+            cmd.Parameters.AddWithValue("@worker_code", doorkeeper.WorkerCode);
+            cmd.Parameters.AddWithValue("@first_name", doorkeeper.FirstName);
+            cmd.Parameters.AddWithValue("@last_name", doorkeeper.LastName);
+            cmd.Parameters.AddWithValue("@user_name", doorkeeper.Username);
+            cmd.Parameters.AddWithValue("@password", doorkeeper.Password);
+            cmd.Parameters.AddWithValue("@phone_number", doorkeeper.PhoneNumber);
+            cmd.Parameters.AddWithValue("@worker_type", doorkeeper.WorkerType);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            //dodavanje u tabelu doorkeeper
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO doorkeeper(doorkeeperID) VALUES(@doorkeeperID)";
+            cmd.Parameters.AddWithValue("@doorkeeperID", doorkeeper.WorkerID);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
         public int CountWorkers()
         {
   
@@ -185,7 +239,7 @@ namespace AutoPrevoznikInfo.DataAccess
             conn.Close();
             return count;
         }
-        public void updateDriver(Driver driverToUpdate)
+        public void UpdateDriver(Driver driverToUpdate)
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
@@ -223,6 +277,25 @@ namespace AutoPrevoznikInfo.DataAccess
                 cmd.ExecuteNonQuery();
             }
 
+            conn.Close();
+        }
+        public void UpdateDoorkeeper(Worker doorkeeperToUpdate)
+        {
+
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "UPDATE worker SET worker_code=@worker_code, first_name=@first_name, last_name=@last_name, username=@username, password=@password," +
+                " phone_number=@phone_number, worker_type=@worker_type WHERE worker.workerID=@workerID";
+            cmd.Parameters.AddWithValue("@workerID", doorkeeperToUpdate.WorkerID);
+            cmd.Parameters.AddWithValue("@worker_code", doorkeeperToUpdate.WorkerCode);
+            cmd.Parameters.AddWithValue("@first_name", doorkeeperToUpdate.FirstName);
+            cmd.Parameters.AddWithValue("@last_name", doorkeeperToUpdate.LastName);
+            cmd.Parameters.AddWithValue("@username", doorkeeperToUpdate.Username);
+            cmd.Parameters.AddWithValue("@password", doorkeeperToUpdate.Password);
+            cmd.Parameters.AddWithValue("@phone_number", doorkeeperToUpdate.PhoneNumber);
+            cmd.Parameters.AddWithValue("@worker_type", doorkeeperToUpdate.WorkerType);
+            cmd.ExecuteNonQuery();
             conn.Close();
         }
         public bool CheckIfUsernameUnique(string username)

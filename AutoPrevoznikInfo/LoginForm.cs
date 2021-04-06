@@ -18,7 +18,7 @@ namespace AutoPrevoznikInfo
     {
         private List<Worker> workers;
         private Worker loggedInWorker = null;
-        private string ConfigFileName = "ConfigFile.txt";
+        //private string ConfigFileName = "ConfigFile.txt";
         private string selectedLanguage = "S";
         public LoginForm()
         {
