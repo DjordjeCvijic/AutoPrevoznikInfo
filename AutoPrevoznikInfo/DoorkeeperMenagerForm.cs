@@ -51,6 +51,7 @@ namespace AutoPrevoznikInfo
                 row.CreateCells(dGVDoorkeepers, w.FirstName, w.LastName, w.Username, w.PhoneNumber, w.WorkerCode);
                 dGVDoorkeepers.Rows.Add(row);
             }
+            setDataGridColorTab1();
         }
 
         private void SetSerbianLanguage(object sender, EventArgs e)
@@ -135,7 +136,7 @@ namespace AutoPrevoznikInfo
             if (selectedTheme.Equals("W"))
             {
                 //meni na vrhu:
-                menuStrip1.BackColor = Control.DefaultBackColor;
+                menuStrip1.BackColor = Color.Silver;
 
                 tsmiSerbian.BackColor = Control.DefaultBackColor;
                 tsmiEnglish.BackColor = Control.DefaultBackColor;
@@ -168,7 +169,7 @@ namespace AutoPrevoznikInfo
                 btnUpdateDoorkeeper.ForeColor = Color.Black;
                 btnSendMessage.BackColor = Color.Silver;
                 btnSendMessage.ForeColor = Color.Black;
-                setDataGridColor("W");
+                setDataGridColorTab1();
 
             }
             else
@@ -206,15 +207,15 @@ namespace AutoPrevoznikInfo
                 btnUpdateDoorkeeper.ForeColor = Color.White;
                 btnSendMessage.BackColor = Color.FromArgb(163, 128, 209);
                 btnSendMessage.ForeColor = Color.White;
-                setDataGridColor("D");
+                setDataGridColorTab1();
 
 
             }
         }
 
-        private void setDataGridColor(string v)
+        private void setDataGridColorTab1()
         {
-            if (v.Equals("W"))
+            if (selectedTheme.Equals("W"))
             {
                 dGVDoorkeepers.BackgroundColor = Color.White;
                 dGVDoorkeepers.ColumnHeadersDefaultCellStyle.BackColor = Color.Silver;

@@ -56,6 +56,7 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxFirstName
             // 
+            this.tBoxFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxFirstName.Location = new System.Drawing.Point(31, 71);
             this.tBoxFirstName.Name = "tBoxFirstName";
             this.tBoxFirstName.Size = new System.Drawing.Size(153, 27);
@@ -63,6 +64,7 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxLastName
             // 
+            this.tBoxLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxLastName.Location = new System.Drawing.Point(218, 71);
             this.tBoxLastName.Name = "tBoxLastName";
             this.tBoxLastName.Size = new System.Drawing.Size(150, 27);
@@ -79,6 +81,7 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxUsername
             // 
+            this.tBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxUsername.Location = new System.Drawing.Point(31, 167);
             this.tBoxUsername.Name = "tBoxUsername";
             this.tBoxUsername.Size = new System.Drawing.Size(153, 27);
@@ -95,6 +98,7 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxPassword
             // 
+            this.tBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxPassword.Location = new System.Drawing.Point(218, 167);
             this.tBoxPassword.Name = "tBoxPassword";
             this.tBoxPassword.Size = new System.Drawing.Size(150, 27);
@@ -111,6 +115,7 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxPhoneNumber
             // 
+            this.tBoxPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxPhoneNumber.Location = new System.Drawing.Point(31, 254);
             this.tBoxPhoneNumber.Name = "tBoxPhoneNumber";
             this.tBoxPhoneNumber.Size = new System.Drawing.Size(153, 27);
@@ -127,10 +132,13 @@ namespace AutoPrevoznikInfo
             // 
             // btnSave
             // 
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Location = new System.Drawing.Point(283, 394);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(109, 40);
             this.btnSave.TabIndex = 10;
+            this.btnSave.TabStop = false;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

@@ -80,6 +80,61 @@ namespace AutoPrevoznikInfo
         }
         private void SetTheme(string selectedTheme)
         {
+            if (selectedTheme.Equals("W"))
+            {
+                this.BackColor = Control.DefaultBackColor;
+                lblFirstName.ForeColor = Color.Black;
+                lblLastName.ForeColor = Color.Black;
+                lblUsername.ForeColor = Color.Black;
+                lblPassword.ForeColor = Color.Black;
+                lblPhone.ForeColor = Color.Black;
+                lblTakeBus.ForeColor = Color.Black;
+
+                btnSave.BackColor = Color.Silver;
+                btnSave.ForeColor = Color.Black;
+
+                //borderSile fixed single za sve tBox preok gui nastimati
+                tBoxFirstName.BackColor = Color.White;
+                tBoxFirstName.ForeColor = Color.Black;
+                tBoxLastName.BackColor = Color.White;
+                tBoxLastName.ForeColor = Color.Black;
+                tBoxUsername.BackColor = Color.White;
+                tBoxUsername.ForeColor = Color.Black;
+                tBoxPassword.BackColor = Color.White;
+                tBoxPassword.ForeColor = Color.Black;
+                tBoxPhoneNumber.BackColor = Color.White;
+                tBoxPhoneNumber.ForeColor = Color.Black;
+
+                lBoxTakeBus.BackColor = Color.White;
+                lBoxTakeBus.ForeColor = Color.Black;
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(39, 38, 40);//tamnija crna
+                lblFirstName.ForeColor = Color.DarkGray;
+                lblLastName.ForeColor = Color.DarkGray;
+                lblUsername.ForeColor = Color.DarkGray;
+                lblPassword.ForeColor = Color.DarkGray;
+                lblPhone.ForeColor = Color.DarkGray;
+                lblTakeBus.ForeColor = Color.DarkGray;
+
+                btnSave.BackColor = Color.FromArgb(163, 128, 209); //ljubicasta
+                btnSave.ForeColor = Color.White;
+
+                tBoxFirstName.BackColor = Color.FromArgb(71, 70, 72);//najsvijetlija siva
+                tBoxFirstName.ForeColor = Color.White;
+                tBoxLastName.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxLastName.ForeColor = Color.White;
+                tBoxUsername.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxUsername.ForeColor = Color.White;
+                tBoxPassword.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxPassword.ForeColor = Color.White;
+                tBoxPhoneNumber.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxPhoneNumber.ForeColor = Color.White;
+
+                lBoxTakeBus.BackColor = Color.FromArgb(71, 70, 72);
+                lBoxTakeBus.ForeColor = Color.White;
+            }
 
         }
 

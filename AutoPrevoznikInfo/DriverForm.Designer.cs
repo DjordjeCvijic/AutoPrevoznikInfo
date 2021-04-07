@@ -45,14 +45,14 @@ namespace AutoPrevoznikInfo
             this.tabControlRight = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dGVDrivers = new System.Windows.Forms.DataGridView();
-            this.firstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tBoxMessage = new System.Windows.Forms.TextBox();
             this.lBoxSenderList = new System.Windows.Forms.ListBox();
+            this.firstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enterTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exitTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -167,8 +167,8 @@ namespace AutoPrevoznikInfo
             // 
             // tabControlRight
             // 
-            this.tabControlRight.Controls.Add(this.tabPage1);
             this.tabControlRight.Controls.Add(this.tabPage2);
+            this.tabControlRight.Controls.Add(this.tabPage1);
             this.tabControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControlRight.Location = new System.Drawing.Point(243, 28);
             this.tabControlRight.Name = "tabControlRight";
@@ -184,7 +184,7 @@ namespace AutoPrevoznikInfo
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(983, 632);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Raspored";
+            this.tabPage1.Text = "Evidencija ulazaka";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // dGVDrivers
@@ -200,9 +200,9 @@ namespace AutoPrevoznikInfo
             this.dGVDrivers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.firstNameColumn,
             this.lastNameColumn,
-            this.userNameColumn,
-            this.phoneNumberColumn,
-            this.workerCodeColumn});
+            this.dateColumn,
+            this.enterTimeColumn,
+            this.exitTimeColumn});
             this.dGVDrivers.EnableHeadersVisualStyles = false;
             this.dGVDrivers.Location = new System.Drawing.Point(31, 94);
             this.dGVDrivers.MultiSelect = false;
@@ -215,42 +215,6 @@ namespace AutoPrevoznikInfo
             this.dGVDrivers.Size = new System.Drawing.Size(689, 261);
             this.dGVDrivers.TabIndex = 0;
             // 
-            // firstNameColumn
-            // 
-            this.firstNameColumn.HeaderText = "Ime";
-            this.firstNameColumn.MinimumWidth = 6;
-            this.firstNameColumn.Name = "firstNameColumn";
-            this.firstNameColumn.ReadOnly = true;
-            this.firstNameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // lastNameColumn
-            // 
-            this.lastNameColumn.HeaderText = "Prezime";
-            this.lastNameColumn.MinimumWidth = 6;
-            this.lastNameColumn.Name = "lastNameColumn";
-            this.lastNameColumn.ReadOnly = true;
-            // 
-            // userNameColumn
-            // 
-            this.userNameColumn.HeaderText = "Korisnicko ime";
-            this.userNameColumn.MinimumWidth = 6;
-            this.userNameColumn.Name = "userNameColumn";
-            this.userNameColumn.ReadOnly = true;
-            // 
-            // phoneNumberColumn
-            // 
-            this.phoneNumberColumn.HeaderText = "Broj telefona";
-            this.phoneNumberColumn.MinimumWidth = 6;
-            this.phoneNumberColumn.Name = "phoneNumberColumn";
-            this.phoneNumberColumn.ReadOnly = true;
-            // 
-            // workerCodeColumn
-            // 
-            this.workerCodeColumn.HeaderText = "Sifra";
-            this.workerCodeColumn.MinimumWidth = 6;
-            this.workerCodeColumn.Name = "workerCodeColumn";
-            this.workerCodeColumn.ReadOnly = true;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tBoxMessage);
@@ -258,7 +222,7 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(990, 632);
+            this.tabPage2.Size = new System.Drawing.Size(983, 632);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Obavjestenja";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -280,6 +244,42 @@ namespace AutoPrevoznikInfo
             this.lBoxSenderList.Size = new System.Drawing.Size(280, 424);
             this.lBoxSenderList.TabIndex = 0;
             this.lBoxSenderList.SelectedIndexChanged += new System.EventHandler(this.lBoxSenderList_SelectedIndexChanged);
+            // 
+            // firstNameColumn
+            // 
+            this.firstNameColumn.HeaderText = "Ime";
+            this.firstNameColumn.MinimumWidth = 6;
+            this.firstNameColumn.Name = "firstNameColumn";
+            this.firstNameColumn.ReadOnly = true;
+            this.firstNameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // lastNameColumn
+            // 
+            this.lastNameColumn.HeaderText = "Prezime";
+            this.lastNameColumn.MinimumWidth = 6;
+            this.lastNameColumn.Name = "lastNameColumn";
+            this.lastNameColumn.ReadOnly = true;
+            // 
+            // dateColumn
+            // 
+            this.dateColumn.HeaderText = "Datum";
+            this.dateColumn.MinimumWidth = 6;
+            this.dateColumn.Name = "dateColumn";
+            this.dateColumn.ReadOnly = true;
+            // 
+            // enterTimeColumn
+            // 
+            this.enterTimeColumn.HeaderText = "Vrijeme ulaska";
+            this.enterTimeColumn.MinimumWidth = 6;
+            this.enterTimeColumn.Name = "enterTimeColumn";
+            this.enterTimeColumn.ReadOnly = true;
+            // 
+            // exitTimeColumn
+            // 
+            this.exitTimeColumn.HeaderText = "Vrijeme izlaska";
+            this.exitTimeColumn.MinimumWidth = 6;
+            this.exitTimeColumn.Name = "exitTimeColumn";
+            this.exitTimeColumn.ReadOnly = true;
             // 
             // DriverForm
             // 
@@ -326,13 +326,13 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.TabControl tabControlRight;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dGVDrivers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn workerCodeColumn;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox lBoxSenderList;
         private System.Windows.Forms.TextBox tBoxMessage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn enterTimeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exitTimeColumn;
     }
 }

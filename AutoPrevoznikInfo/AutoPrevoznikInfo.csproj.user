@@ -7,6 +7,9 @@
     <Compile Update="AddDriverForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AddWorkerEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DoorkeeperForm.cs">
       <SubType>Form</SubType>
     </Compile>

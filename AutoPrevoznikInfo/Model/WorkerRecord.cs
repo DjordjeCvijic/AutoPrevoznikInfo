@@ -11,7 +11,7 @@ namespace AutoPrevoznikInfo.Model
         public string Date { get; set; }
         public string EnterTime { get; set; }
         public string ExitTime { get; set; }
-        public string Nope { get; set; }
+        public string Note { get; set; }
 
     }
 }

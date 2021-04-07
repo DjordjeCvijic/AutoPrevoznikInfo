@@ -158,7 +158,7 @@ namespace AutoPrevoznikInfo
                 btnUpdateDriver.ForeColor = Color.Black;
                 btnSendMessage.BackColor = Color.Silver;
                 btnSendMessage.ForeColor = Color.Black;
-                setDataGridColor("W");
+                setDataGridColorTab1();
 
             }
             else
@@ -196,13 +196,13 @@ namespace AutoPrevoznikInfo
                 btnUpdateDriver.ForeColor = Color.White;
                 btnSendMessage.BackColor = Color.FromArgb(163, 128, 209);
                 btnSendMessage.ForeColor = Color.White;
-                setDataGridColor("D");
+                setDataGridColorTab1();
                 }
             }
 
-        private void setDataGridColor(string v)
+        private void setDataGridColorTab1()
         {
-            if (v.Equals("W"))
+            if (selectedTheme.Equals("W"))
             {
                 dGVDrivers.BackgroundColor = Color.White;
                 dGVDrivers.ColumnHeadersDefaultCellStyle.BackColor = Color.Silver;
@@ -251,7 +251,7 @@ namespace AutoPrevoznikInfo
                 row.CreateCells(dGVDrivers, d.FirstName, d.LastName, d.Username, d.PhoneNumber, d.WorkerCode);
                 dGVDrivers.Rows.Add(row);
             }
-          
+            setDataGridColorTab1();
         }
 
         private void btnAddWorker_Click(object sender, EventArgs e)

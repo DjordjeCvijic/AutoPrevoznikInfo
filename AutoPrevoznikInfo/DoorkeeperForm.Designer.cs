@@ -44,12 +44,14 @@ namespace AutoPrevoznikInfo
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControlRight = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dGVDrivers = new System.Windows.Forms.DataGridView();
+            this.btnAddExitTime = new System.Windows.Forms.Button();
+            this.btnAddEntry = new System.Windows.Forms.Button();
+            this.dGVWorkerRecord = new System.Windows.Forms.DataGridView();
             this.firstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enterTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exitTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tBoxMessage = new System.Windows.Forms.TextBox();
             this.lBoxSenderList = new System.Windows.Forms.ListBox();
@@ -58,7 +60,7 @@ namespace AutoPrevoznikInfo
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlRight.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGVDrivers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVWorkerRecord)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,12 +150,16 @@ namespace AutoPrevoznikInfo
             // 
             // btnLogout
             // 
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Location = new System.Drawing.Point(23, 573);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(188, 46);
             this.btnLogout.TabIndex = 1;
+            this.btnLogout.TabStop = false;
             this.btnLogout.Text = "button1";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // pictureBox1
             // 
@@ -178,42 +184,71 @@ namespace AutoPrevoznikInfo
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dGVDrivers);
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage1.Controls.Add(this.btnAddExitTime);
+            this.tabPage1.Controls.Add(this.btnAddEntry);
+            this.tabPage1.Controls.Add(this.dGVWorkerRecord);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(983, 619);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Raspored";
+            this.tabPage1.Text = "Evidencija radnika";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dGVDrivers
+            // btnAddExitTime
             // 
-            this.dGVDrivers.AllowUserToAddRows = false;
-            this.dGVDrivers.AllowUserToDeleteRows = false;
-            this.dGVDrivers.AllowUserToResizeColumns = false;
-            this.dGVDrivers.AllowUserToResizeRows = false;
-            this.dGVDrivers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dGVDrivers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dGVDrivers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dGVDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGVDrivers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btnAddExitTime.FlatAppearance.BorderSize = 0;
+            this.btnAddExitTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddExitTime.Location = new System.Drawing.Point(802, 183);
+            this.btnAddExitTime.Name = "btnAddExitTime";
+            this.btnAddExitTime.Size = new System.Drawing.Size(141, 46);
+            this.btnAddExitTime.TabIndex = 3;
+            this.btnAddExitTime.TabStop = false;
+            this.btnAddExitTime.Text = "zabiljezi izlazak";
+            this.btnAddExitTime.UseVisualStyleBackColor = true;
+            this.btnAddExitTime.Click += new System.EventHandler(this.btnAddExitTime_Click);
+            // 
+            // btnAddEntry
+            // 
+            this.btnAddEntry.FlatAppearance.BorderSize = 0;
+            this.btnAddEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEntry.Location = new System.Drawing.Point(802, 89);
+            this.btnAddEntry.Name = "btnAddEntry";
+            this.btnAddEntry.Size = new System.Drawing.Size(141, 39);
+            this.btnAddEntry.TabIndex = 2;
+            this.btnAddEntry.TabStop = false;
+            this.btnAddEntry.Text = "dodaj ulazak";
+            this.btnAddEntry.UseVisualStyleBackColor = true;
+            this.btnAddEntry.Click += new System.EventHandler(this.btnAddEntry_Click);
+            // 
+            // dGVWorkerRecord
+            // 
+            this.dGVWorkerRecord.AllowUserToAddRows = false;
+            this.dGVWorkerRecord.AllowUserToDeleteRows = false;
+            this.dGVWorkerRecord.AllowUserToResizeColumns = false;
+            this.dGVWorkerRecord.AllowUserToResizeRows = false;
+            this.dGVWorkerRecord.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGVWorkerRecord.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dGVWorkerRecord.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dGVWorkerRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVWorkerRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.firstNameColumn,
             this.lastNameColumn,
-            this.userNameColumn,
-            this.phoneNumberColumn,
-            this.workerCodeColumn});
-            this.dGVDrivers.EnableHeadersVisualStyles = false;
-            this.dGVDrivers.Location = new System.Drawing.Point(31, 94);
-            this.dGVDrivers.MultiSelect = false;
-            this.dGVDrivers.Name = "dGVDrivers";
-            this.dGVDrivers.ReadOnly = true;
-            this.dGVDrivers.RowHeadersVisible = false;
-            this.dGVDrivers.RowHeadersWidth = 51;
-            this.dGVDrivers.RowTemplate.Height = 29;
-            this.dGVDrivers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGVDrivers.Size = new System.Drawing.Size(689, 261);
-            this.dGVDrivers.TabIndex = 0;
+            this.dateColumn,
+            this.enterTimeColumn,
+            this.exitTimeColumn});
+            this.dGVWorkerRecord.EnableHeadersVisualStyles = false;
+            this.dGVWorkerRecord.Location = new System.Drawing.Point(59, 66);
+            this.dGVWorkerRecord.MultiSelect = false;
+            this.dGVWorkerRecord.Name = "dGVWorkerRecord";
+            this.dGVWorkerRecord.ReadOnly = true;
+            this.dGVWorkerRecord.RowHeadersVisible = false;
+            this.dGVWorkerRecord.RowHeadersWidth = 51;
+            this.dGVWorkerRecord.RowTemplate.Height = 29;
+            this.dGVWorkerRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGVWorkerRecord.Size = new System.Drawing.Size(689, 261);
+            this.dGVWorkerRecord.TabIndex = 1;
             // 
             // firstNameColumn
             // 
@@ -230,26 +265,26 @@ namespace AutoPrevoznikInfo
             this.lastNameColumn.Name = "lastNameColumn";
             this.lastNameColumn.ReadOnly = true;
             // 
-            // userNameColumn
+            // dateColumn
             // 
-            this.userNameColumn.HeaderText = "Korisnicko ime";
-            this.userNameColumn.MinimumWidth = 6;
-            this.userNameColumn.Name = "userNameColumn";
-            this.userNameColumn.ReadOnly = true;
+            this.dateColumn.HeaderText = "Datum";
+            this.dateColumn.MinimumWidth = 6;
+            this.dateColumn.Name = "dateColumn";
+            this.dateColumn.ReadOnly = true;
             // 
-            // phoneNumberColumn
+            // enterTimeColumn
             // 
-            this.phoneNumberColumn.HeaderText = "Broj telefona";
-            this.phoneNumberColumn.MinimumWidth = 6;
-            this.phoneNumberColumn.Name = "phoneNumberColumn";
-            this.phoneNumberColumn.ReadOnly = true;
+            this.enterTimeColumn.HeaderText = "Vrijeme ulaska";
+            this.enterTimeColumn.MinimumWidth = 6;
+            this.enterTimeColumn.Name = "enterTimeColumn";
+            this.enterTimeColumn.ReadOnly = true;
             // 
-            // workerCodeColumn
+            // exitTimeColumn
             // 
-            this.workerCodeColumn.HeaderText = "Sifra";
-            this.workerCodeColumn.MinimumWidth = 6;
-            this.workerCodeColumn.Name = "workerCodeColumn";
-            this.workerCodeColumn.ReadOnly = true;
+            this.exitTimeColumn.HeaderText = "Vrijeme izlaska";
+            this.exitTimeColumn.MinimumWidth = 6;
+            this.exitTimeColumn.Name = "exitTimeColumn";
+            this.exitTimeColumn.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -258,7 +293,7 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(990, 619);
+            this.tabPage2.Size = new System.Drawing.Size(983, 619);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Obavjestenja";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -295,14 +330,14 @@ namespace AutoPrevoznikInfo
             this.MinimizeBox = false;
             this.Name = "DoorkeeperForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DoorkeeperForm";
+            this.Text = "AutoPrevoznikInfo";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControlRight.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dGVDrivers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVWorkerRecord)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -325,14 +360,16 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabControl tabControlRight;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView dGVDrivers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn workerCodeColumn;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox tBoxMessage;
         private System.Windows.Forms.ListBox lBoxSenderList;
+        private System.Windows.Forms.DataGridView dGVWorkerRecord;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn enterTimeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exitTimeColumn;
+        private System.Windows.Forms.Button btnAddEntry;
+        private System.Windows.Forms.Button btnAddExitTime;
     }
 }

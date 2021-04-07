@@ -92,3 +92,4 @@ D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznik
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddDriverForm.resources
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.SendMessageForm.resources
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddDoorkeeperForm.resources
+D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddWorkerEntryForm.resources
