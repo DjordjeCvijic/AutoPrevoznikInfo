@@ -93,3 +93,7 @@ D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznik
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.SendMessageForm.resources
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddDoorkeeperForm.resources
 D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddWorkerEntryForm.resources
+D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddShiftScheduleForm.resources
+D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.ShiftScheduleForm.resources
+D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddBusForm.resources
+D:\GIT\AutoPrevoznikInfo\AutoPrevoznikInfo\obj\Debug\netcoreapp3.1\AutoPrevoznikInfo.AddDriverShiftScheduleForm.resources

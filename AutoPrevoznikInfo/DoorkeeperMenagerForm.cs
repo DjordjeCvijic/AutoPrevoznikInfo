@@ -17,6 +17,7 @@ namespace AutoPrevoznikInfo
         private string selectedLanguage;
         private string selectedTheme="W";
         private WorkerDataAccess workerDA=new WorkerDataAccess();
+        private ShiftScheduleDataAccess shiftScheduleDA = new ShiftScheduleDataAccess();
         public DoorkeeperMenagerForm(Worker w,string l)
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace AutoPrevoznikInfo
             SetLanguage();
             FillGridDrivers();
             this.dGVDoorkeepers.ColumnHeadersDefaultCellStyle.SelectionBackColor = this.dGVDoorkeepers.ColumnHeadersDefaultCellStyle.BackColor;
+            selectedTheme = loggedInWorker.Theme;
             SetTheme();
         }
 
@@ -99,15 +101,25 @@ namespace AutoPrevoznikInfo
                 btnLogout.Text = "Odjava";
                 lblWorkerType.Text = "Sef portira";
                 tabPage1.Text = "Portiri";
-                tabPage2.Text = "Autobusi";//
+                tabPage2.Text = "Raspored smijena";
                 firstNameColumn.HeaderText = "Ime";
                 lastNameColumn.HeaderText = "Prezime";
                 userNameColumn.HeaderText = "Korisnicko ime";
                 phoneNumberColumn.HeaderText = "Telefon";
                 workerCodeColumn.HeaderText = "Sifra";
                 btnAddDoorkeeper.Text = "Dodaj portira";
+                btnDeleteDoorkeeper.Text = "Obrisi portira";
                 btnUpdateDoorkeeper.Text = "Izmijeni portira";
                 btnSendMessage.Text = "Posalji poruku";
+
+                lblSelectDate.Text = "Izaberi datum:";
+                btnAddShift.Text = "Dodaj smjenu";
+                firstNameColumn2.HeaderText = "Ime";
+                lastNameColumn2.HeaderText = "Prezime";
+                workerCodeColumn2.HeaderText = "Sifra";
+                startTimeColumn2.HeaderText = "Pocetak smjene";
+                endTimeColumn2.HeaderText = "Kraj smjene";
+                btnDeleteShift.Text = "Izbrisi smjenu";
             }
             else
             {
@@ -120,15 +132,25 @@ namespace AutoPrevoznikInfo
                 btnLogout.Text = "Logout";
                 lblWorkerType.Text = "Doorkeeper Menager";
                 tabPage1.Text = "Doorkeepers";
-                tabPage2.Text = "Autobusi";//
+                tabPage2.Text = "Shift schedule";
                 firstNameColumn.HeaderText = "First name";
                 lastNameColumn.HeaderText = "Last name";
                 userNameColumn.HeaderText = "User name";
                 phoneNumberColumn.HeaderText = "Phone";
                 workerCodeColumn.HeaderText = "Code";
                 btnAddDoorkeeper.Text = "Add doorkeeper";
+                btnDeleteDoorkeeper.Text = "Delete doorkeeper";
                 btnUpdateDoorkeeper.Text = "Update doorkeeper";
                 btnSendMessage.Text = "Send message";
+
+                lblSelectDate.Text = "Choose date:";
+                btnAddShift.Text = "Add scift";
+                firstNameColumn2.HeaderText = "First name";
+                lastNameColumn2.HeaderText = "Last name";
+                workerCodeColumn2.HeaderText = "Code";
+                startTimeColumn2.HeaderText = "Start time";
+                endTimeColumn2.HeaderText ="End time";
+                btnDeleteShift.Text = "Delete shift";
             }
         }
         private void SetTheme()
@@ -169,6 +191,18 @@ namespace AutoPrevoznikInfo
                 btnUpdateDoorkeeper.ForeColor = Color.Black;
                 btnSendMessage.BackColor = Color.Silver;
                 btnSendMessage.ForeColor = Color.Black;
+
+                //desni panel2:
+                tabPage2.BackColor = Color.White;
+                calendar.BackColor = Color.White;
+                calendar.ForeColor = Color.Black;
+                lblSelectDate.ForeColor = Color.Black;
+                btnAddShift.BackColor = Color.Silver;
+                btnAddShift.ForeColor = Color.Black;
+                btnDeleteShift.BackColor = Color.Silver;
+                btnDeleteShift.ForeColor = Color.Black;
+
+                setDataGridColorTab2();
                 setDataGridColorTab1();
 
             }
@@ -192,8 +226,8 @@ namespace AutoPrevoznikInfo
 
                 //lijevi meni
                 panelLeft.BackColor = Color.FromArgb(39, 38, 40);
-                lblWorkerName.ForeColor = Color.White;
-                lblWorkerType.ForeColor = Color.White;
+                lblWorkerName.ForeColor = Color.DarkGray;
+                lblWorkerType.ForeColor = Color.DarkGray;
                 btnLogout.BackColor = Color.FromArgb(163, 128, 209);
                 btnLogout.ForeColor = Color.White;
 
@@ -207,9 +241,53 @@ namespace AutoPrevoznikInfo
                 btnUpdateDoorkeeper.ForeColor = Color.White;
                 btnSendMessage.BackColor = Color.FromArgb(163, 128, 209);
                 btnSendMessage.ForeColor = Color.White;
+
+                //desni panel2:
+                tabPage2.BackColor = Color.FromArgb(39, 38, 40);
+                calendar.BackColor = Color.FromArgb(71, 70, 72);
+                calendar.ForeColor = Color.White;
+                lblSelectDate.ForeColor = Color.DarkGray;
+                btnAddShift.BackColor = Color.FromArgb(71, 70, 72);
+                btnAddShift.ForeColor = Color.White;
+                btnDeleteShift.BackColor = Color.FromArgb(71, 70, 72); ;
+                btnDeleteShift.ForeColor = Color.White;
+
+                setDataGridColorTab2();
+
                 setDataGridColorTab1();
 
 
+            }
+        }
+
+        private void setDataGridColorTab2()
+        {
+            if (selectedTheme.Equals("W"))
+            {
+                dGVSchedule.BackgroundColor = Color.White;
+                dGVSchedule.ColumnHeadersDefaultCellStyle.BackColor = Color.Silver;
+                dGVSchedule.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                dGVSchedule.ColumnHeadersDefaultCellStyle.SelectionBackColor = dGVSchedule.ColumnHeadersDefaultCellStyle.BackColor;
+                dGVSchedule.ForeColor = Color.Black;
+                for (int i = 0; i < dGVSchedule.RowCount; i++)
+                {
+                    for (int j = 0; j < dGVSchedule.ColumnCount; j++)
+                        dGVSchedule.Rows[i].Cells[j].Style.BackColor = Color.White;
+                }
+
+            }
+            else
+            {
+                dGVSchedule.BackgroundColor = Color.FromArgb(39, 38, 40);
+                dGVSchedule.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(39, 38, 40);
+                dGVSchedule.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(163, 128, 209);
+                dGVSchedule.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(39, 38, 40);
+                dGVSchedule.ForeColor = Color.White;
+                for (int i = 0; i < dGVSchedule.RowCount; i++)
+                {
+                    for (int j = 0; j < dGVSchedule.ColumnCount; j++)
+                        dGVSchedule.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(51, 51, 53);
+                }
             }
         }
 
@@ -246,6 +324,11 @@ namespace AutoPrevoznikInfo
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            if (!selectedTheme.Equals(loggedInWorker.Theme))
+            {
+                loggedInWorker.Theme = selectedTheme;
+                workerDA.UpdateWorker(loggedInWorker);
+            }
             this.Close();
         }
 
@@ -289,6 +372,69 @@ namespace AutoPrevoznikInfo
         {
             Worker selectWorker = (Worker)dGVDoorkeepers.SelectedRows[0].Tag;
             new SendMessageForm(loggedInWorker, selectWorker, selectedLanguage, selectedTheme).ShowDialog();
+        }
+
+        private void calendar_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            
+            string selectedDate = calendar.SelectionRange.Start.ToString("yyyy-MM-dd");
+            
+            FillGridShifts(selectedDate);
+        }
+        private void FillGridShifts(string selectedDate)
+        {
+            List<ShiftSchedule> shifts = shiftScheduleDA.GetDoorkeeperShiftSchedule();
+            List<ShiftSchedule> shiftsToShow = new List<ShiftSchedule>();
+            foreach (ShiftSchedule s in shifts)
+            {
+                if (DateTime.Compare(DateTime.Parse(selectedDate), DateTime.Parse(s.Date)) == 0)
+                {
+                    shiftsToShow.Add(s);
+                }
+            }
+
+            dGVSchedule.Rows.Clear();
+            foreach (ShiftSchedule s in shiftsToShow)
+            {
+                DataGridViewRow row = new DataGridViewRow()
+                {
+                    Tag = s
+                };
+                row.CreateCells(dGVSchedule, s.Worker.FirstName, s.Worker.LastName, s.Worker.WorkerCode, s.StartTime, s.EndTime);
+                dGVSchedule.Rows.Add(row);
+            }
+            setDataGridColorTab2();
+        }
+
+        private void btnAddShift_Click(object sender, EventArgs e)
+        {
+            string selectedDate = calendar.SelectionRange.Start.ToString("yyyy-MM-dd");
+            new AddShiftScheduleForm(selectedDate,selectedLanguage,selectedTheme).ShowDialog();
+            FillGridShifts(selectedDate);
+        }
+
+        private void btnDeleteShift_Click(object sender, EventArgs e)
+        {
+            ShiftSchedule shiftToDelete=(ShiftSchedule)dGVSchedule.SelectedRows[0].Tag;
+            string messageText, headText;
+            if (selectedLanguage.Equals("S"))
+            {
+                messageText = "Da li zelite izbrisati izabranu smjenu ?";
+                headText = "Brisanje";
+            }
+            else
+            {
+                messageText = "Do you want to delete selected shift ?";
+                headText = "Delete";
+            }
+            DialogResult dr = MessageBox.Show(messageText, headText, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                shiftScheduleDA.DeleteShiftSchedule(shiftToDelete);
+                string selectedDate = calendar.SelectionRange.Start.ToString("yyyy-MM-dd");
+
+                FillGridShifts(selectedDate);
+            }
         }
     }
 }

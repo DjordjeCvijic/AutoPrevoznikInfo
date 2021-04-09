@@ -55,12 +55,24 @@ namespace AutoPrevoznikInfo
             this.phoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnDeleteShift = new System.Windows.Forms.Button();
+            this.btnAddShift = new System.Windows.Forms.Button();
+            this.lblSelectDate = new System.Windows.Forms.Label();
+            this.dGVSchedule = new System.Windows.Forms.DataGridView();
+            this.firstNameColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workerCodeColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calendar = new System.Windows.Forms.MonthCalendar();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlRight.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVDoorkeepers)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSchedule)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -195,7 +207,7 @@ namespace AutoPrevoznikInfo
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(983, 603);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Vozaci";
+            this.tabPage1.Text = "Porrtiri";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnSendMessage
@@ -203,9 +215,9 @@ namespace AutoPrevoznikInfo
             this.btnSendMessage.BackColor = System.Drawing.Color.Silver;
             this.btnSendMessage.FlatAppearance.BorderSize = 0;
             this.btnSendMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendMessage.Location = new System.Drawing.Point(785, 278);
+            this.btnSendMessage.Location = new System.Drawing.Point(786, 327);
             this.btnSendMessage.Name = "btnSendMessage";
-            this.btnSendMessage.Size = new System.Drawing.Size(168, 29);
+            this.btnSendMessage.Size = new System.Drawing.Size(168, 54);
             this.btnSendMessage.TabIndex = 7;
             this.btnSendMessage.TabStop = false;
             this.btnSendMessage.Text = "posalji poruku";
@@ -217,9 +229,9 @@ namespace AutoPrevoznikInfo
             this.btnDeleteDoorkeeper.BackColor = System.Drawing.Color.Silver;
             this.btnDeleteDoorkeeper.FlatAppearance.BorderSize = 0;
             this.btnDeleteDoorkeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteDoorkeeper.Location = new System.Drawing.Point(785, 215);
+            this.btnDeleteDoorkeeper.Location = new System.Drawing.Point(786, 252);
             this.btnDeleteDoorkeeper.Name = "btnDeleteDoorkeeper";
-            this.btnDeleteDoorkeeper.Size = new System.Drawing.Size(168, 29);
+            this.btnDeleteDoorkeeper.Size = new System.Drawing.Size(168, 54);
             this.btnDeleteDoorkeeper.TabIndex = 6;
             this.btnDeleteDoorkeeper.TabStop = false;
             this.btnDeleteDoorkeeper.Text = "Obrisi";
@@ -231,9 +243,9 @@ namespace AutoPrevoznikInfo
             this.btnUpdateDoorkeeper.BackColor = System.Drawing.Color.Silver;
             this.btnUpdateDoorkeeper.FlatAppearance.BorderSize = 0;
             this.btnUpdateDoorkeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateDoorkeeper.Location = new System.Drawing.Point(785, 159);
+            this.btnUpdateDoorkeeper.Location = new System.Drawing.Point(786, 172);
             this.btnUpdateDoorkeeper.Name = "btnUpdateDoorkeeper";
-            this.btnUpdateDoorkeeper.Size = new System.Drawing.Size(168, 30);
+            this.btnUpdateDoorkeeper.Size = new System.Drawing.Size(168, 54);
             this.btnUpdateDoorkeeper.TabIndex = 5;
             this.btnUpdateDoorkeeper.TabStop = false;
             this.btnUpdateDoorkeeper.Text = "izmijeni";
@@ -247,7 +259,7 @@ namespace AutoPrevoznikInfo
             this.btnAddDoorkeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDoorkeeper.Location = new System.Drawing.Point(785, 94);
             this.btnAddDoorkeeper.Name = "btnAddDoorkeeper";
-            this.btnAddDoorkeeper.Size = new System.Drawing.Size(168, 31);
+            this.btnAddDoorkeeper.Size = new System.Drawing.Size(169, 54);
             this.btnAddDoorkeeper.TabIndex = 4;
             this.btnAddDoorkeeper.TabStop = false;
             this.btnAddDoorkeeper.Text = "dodaj";
@@ -279,7 +291,7 @@ namespace AutoPrevoznikInfo
             this.dGVDoorkeepers.RowHeadersWidth = 51;
             this.dGVDoorkeepers.RowTemplate.Height = 29;
             this.dGVDoorkeepers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGVDoorkeepers.Size = new System.Drawing.Size(689, 261);
+            this.dGVDoorkeepers.Size = new System.Drawing.Size(689, 377);
             this.dGVDoorkeepers.TabIndex = 0;
             // 
             // firstNameColumn
@@ -320,13 +332,127 @@ namespace AutoPrevoznikInfo
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnDeleteShift);
+            this.tabPage2.Controls.Add(this.btnAddShift);
+            this.tabPage2.Controls.Add(this.lblSelectDate);
+            this.tabPage2.Controls.Add(this.dGVSchedule);
+            this.tabPage2.Controls.Add(this.calendar);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(983, 603);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "neoznaceno";
+            this.tabPage2.Text = "Raspored smijena";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteShift
+            // 
+            this.btnDeleteShift.FlatAppearance.BorderSize = 0;
+            this.btnDeleteShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteShift.Location = new System.Drawing.Point(64, 482);
+            this.btnDeleteShift.Name = "btnDeleteShift";
+            this.btnDeleteShift.Size = new System.Drawing.Size(161, 50);
+            this.btnDeleteShift.TabIndex = 9;
+            this.btnDeleteShift.TabStop = false;
+            this.btnDeleteShift.Text = "izbrisi smjenu";
+            this.btnDeleteShift.UseVisualStyleBackColor = true;
+            this.btnDeleteShift.Click += new System.EventHandler(this.btnDeleteShift_Click);
+            // 
+            // btnAddShift
+            // 
+            this.btnAddShift.FlatAppearance.BorderSize = 0;
+            this.btnAddShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddShift.Location = new System.Drawing.Point(64, 400);
+            this.btnAddShift.Name = "btnAddShift";
+            this.btnAddShift.Size = new System.Drawing.Size(161, 50);
+            this.btnAddShift.TabIndex = 8;
+            this.btnAddShift.TabStop = false;
+            this.btnAddShift.Text = "dodaj smjenu";
+            this.btnAddShift.UseVisualStyleBackColor = true;
+            this.btnAddShift.Click += new System.EventHandler(this.btnAddShift_Click);
+            // 
+            // lblSelectDate
+            // 
+            this.lblSelectDate.AutoSize = true;
+            this.lblSelectDate.Location = new System.Drawing.Point(9, 50);
+            this.lblSelectDate.Name = "lblSelectDate";
+            this.lblSelectDate.Size = new System.Drawing.Size(104, 20);
+            this.lblSelectDate.TabIndex = 7;
+            this.lblSelectDate.Text = "izaberi datum:";
+            // 
+            // dGVSchedule
+            // 
+            this.dGVSchedule.AllowUserToAddRows = false;
+            this.dGVSchedule.AllowUserToDeleteRows = false;
+            this.dGVSchedule.AllowUserToResizeColumns = false;
+            this.dGVSchedule.AllowUserToResizeRows = false;
+            this.dGVSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGVSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dGVSchedule.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dGVSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.firstNameColumn2,
+            this.lastNameColumn2,
+            this.workerCodeColumn2,
+            this.startTimeColumn2,
+            this.endTimeColumn2});
+            this.dGVSchedule.EnableHeadersVisualStyles = false;
+            this.dGVSchedule.Location = new System.Drawing.Point(291, 74);
+            this.dGVSchedule.MultiSelect = false;
+            this.dGVSchedule.Name = "dGVSchedule";
+            this.dGVSchedule.ReadOnly = true;
+            this.dGVSchedule.RowHeadersVisible = false;
+            this.dGVSchedule.RowHeadersWidth = 51;
+            this.dGVSchedule.RowTemplate.Height = 29;
+            this.dGVSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGVSchedule.Size = new System.Drawing.Size(677, 429);
+            this.dGVSchedule.TabIndex = 6;
+            // 
+            // firstNameColumn2
+            // 
+            this.firstNameColumn2.HeaderText = "Ime";
+            this.firstNameColumn2.MinimumWidth = 6;
+            this.firstNameColumn2.Name = "firstNameColumn2";
+            this.firstNameColumn2.ReadOnly = true;
+            this.firstNameColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // lastNameColumn2
+            // 
+            this.lastNameColumn2.HeaderText = "Prezime";
+            this.lastNameColumn2.MinimumWidth = 6;
+            this.lastNameColumn2.Name = "lastNameColumn2";
+            this.lastNameColumn2.ReadOnly = true;
+            // 
+            // workerCodeColumn2
+            // 
+            this.workerCodeColumn2.HeaderText = "Sifra";
+            this.workerCodeColumn2.MinimumWidth = 6;
+            this.workerCodeColumn2.Name = "workerCodeColumn2";
+            this.workerCodeColumn2.ReadOnly = true;
+            // 
+            // startTimeColumn2
+            // 
+            this.startTimeColumn2.HeaderText = "Poceta smjene";
+            this.startTimeColumn2.MinimumWidth = 6;
+            this.startTimeColumn2.Name = "startTimeColumn2";
+            this.startTimeColumn2.ReadOnly = true;
+            // 
+            // endTimeColumn2
+            // 
+            this.endTimeColumn2.HeaderText = "Kraj smjene";
+            this.endTimeColumn2.MinimumWidth = 6;
+            this.endTimeColumn2.Name = "endTimeColumn2";
+            this.endTimeColumn2.ReadOnly = true;
+            // 
+            // calendar
+            // 
+            this.calendar.BackColor = System.Drawing.SystemColors.Window;
+            this.calendar.Location = new System.Drawing.Point(9, 74);
+            this.calendar.MaxSelectionCount = 1;
+            this.calendar.Name = "calendar";
+            this.calendar.TabIndex = 0;
+            this.calendar.TrailingForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.calendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.calendar_DateSelected);
             // 
             // DoorkeeperMenagerForm
             // 
@@ -350,6 +476,9 @@ namespace AutoPrevoznikInfo
             this.tabControlRight.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGVDoorkeepers)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSchedule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,5 +510,15 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.Button btnUpdateDoorkeeper;
         private System.Windows.Forms.Button btnDeleteDoorkeeper;
         private System.Windows.Forms.Button btnSendMessage;
+        private System.Windows.Forms.Label lblSelectDate;
+        private System.Windows.Forms.DataGridView dGVSchedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workerCodeColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endTimeColumn2;
+        private System.Windows.Forms.MonthCalendar calendar;
+        private System.Windows.Forms.Button btnAddShift;
+        private System.Windows.Forms.Button btnDeleteShift;
     }
 }

@@ -15,7 +15,7 @@ namespace AutoPrevoznikInfo
         private Worker loggedInWorker;
         private string selectedLanguage;
         private string selectedTheme="W";
-        
+        private WorkerDataAccess workerDA = new WorkerDataAccess();
 
         public DriverForm(Worker w,string l)
         {
@@ -33,6 +33,8 @@ namespace AutoPrevoznikInfo
             tsmiWhiteTheme.Click += new System.EventHandler(this.SetWhiteTheme);
             tsmiDarkTheme.Click += new System.EventHandler(this.SetDarkTheme);
             SetLanguage();
+            selectedTheme = loggedInWorker.Theme;
+            SetTheme();
             lblWorkerName.Text = loggedInWorker.FirstName + " " + loggedInWorker.LastName;
 
             MessageDataAccess messageDA = new MessageDataAccess();
@@ -85,7 +87,7 @@ namespace AutoPrevoznikInfo
                 tsmiWhiteTheme.Text = "Svijetla";
                 tsmiEnglish.Text = "Engleski";
                 tsmiSerbian.Text = "Srpski";
-                tabPage1.Text = "Raspored";
+               
                 tabPage2.Text = "Obavjestenja";
                 lblWorkerType.Text = "Vozac";
                 btnLogout.Text = "Odjava";
@@ -98,7 +100,7 @@ namespace AutoPrevoznikInfo
                 tsmiWhiteTheme.Text = "White";
                 tsmiEnglish.Text = "English";
                 tsmiSerbian.Text = "Serbian";
-                tabPage1.Text = "Schedule";
+                
                 tabPage2.Text = "Messages";
                 lblWorkerType.Text = "Driver";
                 btnLogout.Text = "Logout";
@@ -129,8 +131,18 @@ namespace AutoPrevoznikInfo
                 panelLeft.BackColor = Control.DefaultBackColor;
                 lblWorkerName.ForeColor = Color.Black;
                 lblWorkerType.ForeColor = Color.Black;
-                btnLogout.BackColor = Control.DefaultBackColor;
+                btnLogout.BackColor = Color.Silver;
                 btnLogout.ForeColor = Color.Black;
+                btnShowShiftSchedule.BackColor = Color.Silver;
+                btnShowShiftSchedule.ForeColor = Color.Black;
+                //desni panel:
+                tabPage2.BackColor = Color.White;
+                lBoxSenderList.BackColor = Color.White;
+                lBoxSenderList.ForeColor = Color.Black;
+                tBoxMessage.BackColor = Color.White;
+                tBoxMessage.ForeColor = Color.Black;
+                lblMessage.ForeColor = Color.Black;
+                lblSelectMessage.ForeColor = Color.Black;
 
             }
             else
@@ -157,7 +169,17 @@ namespace AutoPrevoznikInfo
                 lblWorkerType.ForeColor = Color.White;
                 btnLogout.BackColor = Color.FromArgb(163, 128, 209);
                 btnLogout.ForeColor = Color.White;
+                btnShowShiftSchedule.BackColor = Color.FromArgb(163, 128, 209);
+                btnShowShiftSchedule.ForeColor = Color.White;
 
+                //tab
+                tabPage2.BackColor = Color.FromArgb(39, 38, 40);
+                lBoxSenderList.BackColor = Color.FromArgb(71, 70, 72);
+                lBoxSenderList.ForeColor = Color.DarkGray;
+                tBoxMessage.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxMessage.ForeColor = Color.White;
+                lblMessage.ForeColor = Color.DarkGray;
+                lblSelectMessage.ForeColor = Color.DarkGray;
 
             }
 
@@ -168,6 +190,21 @@ namespace AutoPrevoznikInfo
             ItemHolder selectedItem = (ItemHolder)lBoxSenderList.SelectedItem;
             Model.Message messageToShow = (Model.Message)selectedItem.value;
             tBoxMessage.Text = messageToShow.MessageContent;
+        }
+
+        private void btnShowShiftSchedule_Click(object sender, EventArgs e)
+        {
+            new ShiftScheduleForm(loggedInWorker, selectedLanguage, selectedTheme).ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (!selectedTheme.Equals(loggedInWorker.Theme))
+            {
+                loggedInWorker.Theme = selectedTheme;
+                workerDA.UpdateWorker(loggedInWorker);
+            }
+            this.Close();
         }
     }
 }

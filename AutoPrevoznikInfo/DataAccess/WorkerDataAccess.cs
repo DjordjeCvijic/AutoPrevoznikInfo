@@ -25,13 +25,14 @@ namespace AutoPrevoznikInfo.DataAccess
                 result.Add(new Worker()
                 {
                     WorkerID = reader.GetInt32(0),
-                    WorkerCode= reader.GetString(1),
-                    FirstName= reader.GetString(2),
-                    LastName= reader.GetString(3),
-                    Username= reader.GetString(4),
-                    Password= reader.GetString(5),
-                    PhoneNumber= reader.GetString(6),
-                    WorkerType= reader.GetString(7)
+                    WorkerCode = reader.GetString(1),
+                    FirstName = reader.GetString(2),
+                    LastName = reader.GetString(3),
+                    Username = reader.GetString(4),
+                    Password = reader.GetString(5),
+                    PhoneNumber = reader.GetString(6),
+                    WorkerType = reader.GetString(7),
+                    Theme=reader.GetString(8)
                 });
             }
             reader.Close();
@@ -59,7 +60,8 @@ namespace AutoPrevoznikInfo.DataAccess
                     Username = reader.GetString(4),
                     Password = reader.GetString(5),
                     PhoneNumber = reader.GetString(6),
-                    WorkerType = reader.GetString(7)
+                    WorkerType = reader.GetString(7),
+                    Theme = reader.GetString(8)
                 };
             }
             reader.Close();
@@ -89,6 +91,7 @@ namespace AutoPrevoznikInfo.DataAccess
                         Password = reader.GetString(5),
                         PhoneNumber = reader.GetString(6),
                         WorkerType = reader.GetString(7),
+                        Theme = reader.GetString(8),
                         Buses = new List<Bus>()
                         
                     }) ;
@@ -153,6 +156,7 @@ namespace AutoPrevoznikInfo.DataAccess
             return result;
 
         }
+      
 
         public void AddDriver(Driver driver)
         {
@@ -161,9 +165,9 @@ namespace AutoPrevoznikInfo.DataAccess
             MySqlCommand cmd = conn.CreateCommand();
             //dodavanje u tabelu worker
             cmd.CommandText = "INSERT INTO worker (workerID, worker_code, first_name, last_name, username, password, phone_number, " +
-                "worker_type) " +
-                "VALUES (@workerID, @worker_code, @first_name, @last_name, @user_name, @password, @phone_number, @worker_type)";
-            cmd.Parameters.AddWithValue("@workerID", driver.WorkerID);
+                "worker_type, theme) " +
+                "VALUES (@workerID, @worker_code, @first_name, @last_name, @user_name, @password, @phone_number, @worker_type, @theme)";
+            cmd.Parameters.AddWithValue("@workerID",0);
             cmd.Parameters.AddWithValue("@worker_code", driver.WorkerCode);
             cmd.Parameters.AddWithValue("@first_name", driver.FirstName);
             cmd.Parameters.AddWithValue("@last_name", driver.LastName);
@@ -171,14 +175,16 @@ namespace AutoPrevoznikInfo.DataAccess
             cmd.Parameters.AddWithValue("@password", driver.Password);
             cmd.Parameters.AddWithValue("@phone_number", driver.PhoneNumber);
             cmd.Parameters.AddWithValue("@worker_type", driver.WorkerType);
+            cmd.Parameters.AddWithValue("@theme", "W");
             cmd.ExecuteNonQuery();
+            long driverId = cmd.LastInsertedId;
             conn.Close();
             //dodavanje u tabelu driver
             conn = new MySqlConnection(connectionString);
             conn.Open();
             cmd = conn.CreateCommand();
             cmd.CommandText = "INSERT INTO driver(driverID) VALUES(@driverID)";
-            cmd.Parameters.AddWithValue("@driverID", driver.WorkerID);
+            cmd.Parameters.AddWithValue("@driverID", driverId);
             cmd.ExecuteNonQuery();
             conn.Close();
             //dodavanje u tabelu bus_has_driver
@@ -188,7 +194,7 @@ namespace AutoPrevoznikInfo.DataAccess
             {
                 cmd = conn.CreateCommand();
                 cmd.CommandText = "INSERT INTO bus_has_driver(bus_busID,driver_driverID) VALUES(@bus_busID,@driver_driverID)";
-                cmd.Parameters.AddWithValue("@driver_driverID", driver.WorkerID);
+                cmd.Parameters.AddWithValue("@driver_driverID", driverId);
                 cmd.Parameters.AddWithValue("@bus_busID", b.BusId);
                 cmd.ExecuteNonQuery();
             }
@@ -204,9 +210,9 @@ namespace AutoPrevoznikInfo.DataAccess
             MySqlCommand cmd = conn.CreateCommand();
             //dodavanje u tabelu worker
             cmd.CommandText = "INSERT INTO worker (workerID, worker_code, first_name, last_name, username, password, phone_number, " +
-                "worker_type) " +
-                "VALUES (@workerID, @worker_code, @first_name, @last_name, @user_name, @password, @phone_number, @worker_type)";
-            cmd.Parameters.AddWithValue("@workerID", doorkeeper.WorkerID);
+                "worker_type, theme) " +
+                "VALUES (@workerID, @worker_code, @first_name, @last_name, @user_name, @password, @phone_number, @worker_type, @theme)";
+            cmd.Parameters.AddWithValue("@workerID", 0);
             cmd.Parameters.AddWithValue("@worker_code", doorkeeper.WorkerCode);
             cmd.Parameters.AddWithValue("@first_name", doorkeeper.FirstName);
             cmd.Parameters.AddWithValue("@last_name", doorkeeper.LastName);
@@ -214,7 +220,9 @@ namespace AutoPrevoznikInfo.DataAccess
             cmd.Parameters.AddWithValue("@password", doorkeeper.Password);
             cmd.Parameters.AddWithValue("@phone_number", doorkeeper.PhoneNumber);
             cmd.Parameters.AddWithValue("@worker_type", doorkeeper.WorkerType);
+            cmd.Parameters.AddWithValue("@theme", "W");
             cmd.ExecuteNonQuery();
+            long doorkeeperID = cmd.LastInsertedId;
             conn.Close();
 
             //dodavanje u tabelu doorkeeper
@@ -222,7 +230,7 @@ namespace AutoPrevoznikInfo.DataAccess
             conn.Open();
             cmd = conn.CreateCommand();
             cmd.CommandText = "INSERT INTO doorkeeper(doorkeeperID) VALUES(@doorkeeperID)";
-            cmd.Parameters.AddWithValue("@doorkeeperID", doorkeeper.WorkerID);
+            cmd.Parameters.AddWithValue("@doorkeeperID", doorkeeperID);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -239,13 +247,30 @@ namespace AutoPrevoznikInfo.DataAccess
             conn.Close();
             return count;
         }
+        public int GetLastID()
+        {
+            int result = 0;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * from worker ORDER BY workerID ASC";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                result = reader.GetInt32(0);
+
+            }
+            reader.Close();
+            conn.Close();
+            return result;
+        }
         public void UpdateDriver(Driver driverToUpdate)
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "UPDATE worker SET worker_code=@worker_code, first_name=@first_name, last_name=@last_name, username=@username, password=@password," +
-                " phone_number=@phone_number, worker_type=@worker_type WHERE worker.workerID=@workerID";
+                " phone_number=@phone_number, worker_type=@worker_type, theme=@theme WHERE worker.workerID=@workerID";
             cmd.Parameters.AddWithValue("@workerID", driverToUpdate.WorkerID);
             cmd.Parameters.AddWithValue("@worker_code", driverToUpdate.WorkerCode);
             cmd.Parameters.AddWithValue("@first_name", driverToUpdate.FirstName);
@@ -254,6 +279,7 @@ namespace AutoPrevoznikInfo.DataAccess
             cmd.Parameters.AddWithValue("@password", driverToUpdate.Password);
             cmd.Parameters.AddWithValue("@phone_number", driverToUpdate.PhoneNumber);
             cmd.Parameters.AddWithValue("@worker_type", driverToUpdate.WorkerType);
+            cmd.Parameters.AddWithValue("@theme", driverToUpdate.Theme);
             cmd.ExecuteNonQuery();
             conn.Close();
 
@@ -279,14 +305,14 @@ namespace AutoPrevoznikInfo.DataAccess
 
             conn.Close();
         }
-        public void UpdateDoorkeeper(Worker doorkeeperToUpdate)
+        public void UpdateWorker(Worker doorkeeperToUpdate)
         {
 
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "UPDATE worker SET worker_code=@worker_code, first_name=@first_name, last_name=@last_name, username=@username, password=@password," +
-                " phone_number=@phone_number, worker_type=@worker_type WHERE worker.workerID=@workerID";
+                " phone_number=@phone_number, worker_type=@worker_type, theme=@theme WHERE worker.workerID=@workerID";
             cmd.Parameters.AddWithValue("@workerID", doorkeeperToUpdate.WorkerID);
             cmd.Parameters.AddWithValue("@worker_code", doorkeeperToUpdate.WorkerCode);
             cmd.Parameters.AddWithValue("@first_name", doorkeeperToUpdate.FirstName);
@@ -295,6 +321,7 @@ namespace AutoPrevoznikInfo.DataAccess
             cmd.Parameters.AddWithValue("@password", doorkeeperToUpdate.Password);
             cmd.Parameters.AddWithValue("@phone_number", doorkeeperToUpdate.PhoneNumber);
             cmd.Parameters.AddWithValue("@worker_type", doorkeeperToUpdate.WorkerType);
+            cmd.Parameters.AddWithValue("@theme", doorkeeperToUpdate.Theme);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -320,9 +347,45 @@ namespace AutoPrevoznikInfo.DataAccess
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
+
+
+            //brisanje iz bus_line_has_bus
+            
+            cmd.CommandText = "DELETE FROM bus_line_has_bus WHERE driver_driverID=@driverID2";
+            cmd.Parameters.AddWithValue("@driverID2", driverToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+
+            //brisanje iz shift_schedule
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM shift_schedule WHERE worker_workerID=@driverID3";
+            cmd.Parameters.AddWithValue("@driverID3", driverToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+            //brisanje iz worker_record
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM worker_record WHERE workerID=@driverID4";
+            cmd.Parameters.AddWithValue("@driverID4", driverToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
             //brisanje iz bus_has_driver
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
             cmd.CommandText = "DELETE FROM bus_has_driver WHERE driver_driverID=@driverID";
             cmd.Parameters.AddWithValue("@driverID", driverToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+            //brisanje iz message
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM message WHERE to_workerID=@driverID5";
+            cmd.Parameters.AddWithValue("@driverID5", driverToDelete.WorkerID);
             cmd.ExecuteReader();
             conn.Close();
 
@@ -354,6 +417,31 @@ namespace AutoPrevoznikInfo.DataAccess
             cmd = conn.CreateCommand();
             cmd.CommandText = "DELETE FROM doorkeeper WHERE doorkeeperID=@doorkeeperID";
             cmd.Parameters.AddWithValue("@doorkeeperID", doorkeeperToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+
+            //brisanje iz shift_schedule
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM shift_schedule WHERE workerID=@workerID1";
+            cmd.Parameters.AddWithValue("@workerID1", doorkeeperToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+            //brisanje iz message
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM message WHERE to_workerID=@workerID2";
+            cmd.Parameters.AddWithValue("@workerID2", doorkeeperToDelete.WorkerID);
+            cmd.ExecuteReader();
+            conn.Close();
+            //brisanje iz worker_record
+            conn = new MySqlConnection(connectionString);
+            conn.Open();
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM worker_record WHERE workerID=@workerID3";
+            cmd.Parameters.AddWithValue("@workerID3", doorkeeperToDelete.WorkerID);
             cmd.ExecuteReader();
             conn.Close();
 

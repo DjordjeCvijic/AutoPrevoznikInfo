@@ -16,6 +16,7 @@ namespace AutoPrevoznikInfo
         private string selectedLanguage;
         private string selectedTheme="W";
         WorkerRecordAccesData workerRecordDA = new WorkerRecordAccesData();
+        WorkerDataAccess workerDA = new WorkerDataAccess();
         public DoorkeeperForm(Worker w,string l)
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace AutoPrevoznikInfo
                 lBoxSenderList.Items.Add(iHolder);
             }
             FillGridWorkerRecords();
+            selectedTheme = loggedInWorker.Theme;
             SetTheme();
         }
         private void SetSerbianLanguage(object sender, EventArgs e)
@@ -96,6 +98,10 @@ namespace AutoPrevoznikInfo
                 exitTimeColumn.HeaderText = "Vrijeme izlaska";
                 btnAddEntry.Text = "Zabiljezi ulazak";
                 btnAddExitTime.Text = "Zabiljezi izlazak";
+                btnShowShiftSchedule.Text = "Raspored smijena";
+                lblMessage.Text = "Poruka:";
+                lblSelectMessage.Text = "Izaberi poruku:";
+                lblRecord.Text = "Danasnja evidencija:";
             }
             else
             {
@@ -116,7 +122,11 @@ namespace AutoPrevoznikInfo
                 enterTimeColumn.HeaderText = "Entry time";
                 exitTimeColumn.HeaderText = "Exit time";
                 btnAddEntry.Text = "Add entry time";
-                btnAddExitTime.Text = "Add exit time";
+                btnAddExitTime.Text = "Add exit time"; 
+                btnShowShiftSchedule.Text = "Shift schedule";
+                lblMessage.Text = "Message:";
+                lblSelectMessage.Text = "Select message:";
+                lblRecord.Text = "Today's records:";
             }
         }
         private void SetTheme()
@@ -151,9 +161,21 @@ namespace AutoPrevoznikInfo
                 btnAddEntry.ForeColor = Color.Black;
                 btnAddExitTime.BackColor = Color.Silver;
                 btnAddExitTime.ForeColor = Color.Black;
+                lblRecord.ForeColor = Color.Black;
+
+                btnShowShiftSchedule.BackColor = Color.Silver;
+                btnShowShiftSchedule.ForeColor = Color.Black;
+
+                //tab2
+                tabPage2.BackColor = Color.White;
+                lBoxSenderList.BackColor = Color.White;
+                lBoxSenderList.ForeColor = Color.Black;
+                tBoxMessage.BackColor = Color.White;
+                tBoxMessage.ForeColor = Color.Black;
+                lblMessage.ForeColor = Color.Black;
+                lblSelectMessage.ForeColor = Color.Black;
 
                 setDataGridColorTab1();
-
             }
             else
             {
@@ -175,8 +197,8 @@ namespace AutoPrevoznikInfo
 
                 //lijevi meni
                 panelLeft.BackColor = Color.FromArgb(39, 38, 40);
-                lblWorkerName.ForeColor = Color.White;
-                lblWorkerType.ForeColor = Color.White;
+                lblWorkerName.ForeColor = Color.DarkGray;
+                lblWorkerType.ForeColor = Color.DarkGray;
                 btnLogout.BackColor = Color.FromArgb(163, 128, 209);
                 btnLogout.ForeColor = Color.White;
 
@@ -186,6 +208,18 @@ namespace AutoPrevoznikInfo
                 btnAddEntry.ForeColor = Color.White;
                 btnAddExitTime.BackColor = Color.FromArgb(163, 128, 209);
                 btnAddExitTime.ForeColor = Color.White;
+                btnShowShiftSchedule.BackColor = Color.FromArgb(163, 128, 209);
+                btnShowShiftSchedule.ForeColor = Color.White;
+                lblRecord.ForeColor = Color.DarkGray;
+
+                //tab2
+                tabPage2.BackColor = Color.FromArgb(39, 38, 40);
+                lBoxSenderList.BackColor = Color.FromArgb(71, 70, 72);
+                lBoxSenderList.ForeColor = Color.DarkGray;
+                tBoxMessage.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxMessage.ForeColor = Color.White;
+                lblMessage.ForeColor = Color.DarkGray;
+                lblSelectMessage.ForeColor = Color.DarkGray;
 
                 setDataGridColorTab1();
             }
@@ -242,15 +276,19 @@ namespace AutoPrevoznikInfo
             string exitTime;
             foreach (WorkerRecord record in records)
             {
-                DataGridViewRow row = new DataGridViewRow()
+                if (DateTime.Compare(DateTime.Today, DateTime.Parse(record.Date)) == 0)
                 {
-                    Tag = record
-                };
-                exitTime = record.ExitTime;
-                if (record.ExitTime.Equals("00:00:00"))
-                    exitTime = "-";
-                row.CreateCells(dGVWorkerRecord, record.Worker.FirstName, record.Worker.LastName, record.Date, record.EnterTime, exitTime);
-                dGVWorkerRecord.Rows.Add(row);
+                    DataGridViewRow row = new DataGridViewRow()
+                    {
+                        Tag = record
+                    };
+                    exitTime = record.ExitTime;
+                    if (record.ExitTime.Equals("00:00:00"))
+                        exitTime = "-";
+                    row.CreateCells(dGVWorkerRecord, record.Worker.FirstName, record.Worker.LastName, record.Date, record.EnterTime, exitTime);
+                    dGVWorkerRecord.Rows.Add(row);
+                }
+                
             }
             setDataGridColorTab1();
         }
@@ -289,7 +327,17 @@ namespace AutoPrevoznikInfo
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            if (!selectedTheme.Equals(loggedInWorker.Theme))
+            {
+                loggedInWorker.Theme = selectedTheme;
+                workerDA.UpdateWorker(loggedInWorker);
+            }
             this.Close();
+        }
+
+        private void btnShowShiftSchedule_Click(object sender, EventArgs e)
+        {
+            new ShiftScheduleForm(loggedInWorker, selectedLanguage, selectedTheme).ShowDialog();
         }
     }
 }

@@ -50,17 +50,18 @@ namespace AutoPrevoznikInfo
             // 
             // lBoxSelectWorker
             // 
+            this.lBoxSelectWorker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lBoxSelectWorker.FormattingEnabled = true;
             this.lBoxSelectWorker.ItemHeight = 20;
             this.lBoxSelectWorker.Location = new System.Drawing.Point(44, 62);
             this.lBoxSelectWorker.Name = "lBoxSelectWorker";
-            this.lBoxSelectWorker.Size = new System.Drawing.Size(332, 224);
+            this.lBoxSelectWorker.Size = new System.Drawing.Size(332, 222);
             this.lBoxSelectWorker.TabIndex = 1;
             // 
             // lblEntryTime
             // 
             this.lblEntryTime.AutoSize = true;
-            this.lblEntryTime.Location = new System.Drawing.Point(430, 62);
+            this.lblEntryTime.Location = new System.Drawing.Point(411, 62);
             this.lblEntryTime.Name = "lblEntryTime";
             this.lblEntryTime.Size = new System.Drawing.Size(107, 20);
             this.lblEntryTime.TabIndex = 2;
@@ -69,7 +70,7 @@ namespace AutoPrevoznikInfo
             // lblEntryTime1
             // 
             this.lblEntryTime1.AutoSize = true;
-            this.lblEntryTime1.Location = new System.Drawing.Point(430, 92);
+            this.lblEntryTime1.Location = new System.Drawing.Point(524, 62);
             this.lblEntryTime1.Name = "lblEntryTime1";
             this.lblEntryTime1.Size = new System.Drawing.Size(32, 20);
             this.lblEntryTime1.TabIndex = 3;
@@ -86,6 +87,7 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxNote
             // 
+            this.tBoxNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxNote.Location = new System.Drawing.Point(44, 375);
             this.tBoxNote.Multiline = true;
             this.tBoxNote.Name = "tBoxNote";
@@ -94,10 +96,13 @@ namespace AutoPrevoznikInfo
             // 
             // btnSave
             // 
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Location = new System.Drawing.Point(235, 513);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(171, 48);
             this.btnSave.TabIndex = 6;
+            this.btnSave.TabStop = false;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -119,6 +124,7 @@ namespace AutoPrevoznikInfo
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddWorkerEntryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddWorkerEntryForm";
             this.ResumeLayout(false);
             this.PerformLayout();

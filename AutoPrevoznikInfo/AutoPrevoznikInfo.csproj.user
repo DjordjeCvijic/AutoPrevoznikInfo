@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="AddBusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="AddDoorkeeperForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="AddDriverForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddDriverShiftScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddShiftScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="AddWorkerEntryForm.cs">
@@ -23,6 +32,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SendMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ShiftScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="TrafficMenagerForm.cs">

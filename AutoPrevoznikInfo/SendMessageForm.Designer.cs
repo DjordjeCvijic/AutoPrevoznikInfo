@@ -57,6 +57,7 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxMessage
             // 
+            this.tBoxMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxMessage.Location = new System.Drawing.Point(55, 168);
             this.tBoxMessage.Multiline = true;
             this.tBoxMessage.Name = "tBoxMessage";
@@ -74,10 +75,13 @@ namespace AutoPrevoznikInfo
             // 
             // btnSend
             // 
+            this.btnSend.FlatAppearance.BorderSize = 0;
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Location = new System.Drawing.Point(258, 480);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(140, 52);
             this.btnSend.TabIndex = 4;
+            this.btnSend.TabStop = false;
             this.btnSend.Text = "button1";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
@@ -97,6 +101,7 @@ namespace AutoPrevoznikInfo
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SendMessageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AutoPrevoznikForm";
             this.ResumeLayout(false);
             this.PerformLayout();

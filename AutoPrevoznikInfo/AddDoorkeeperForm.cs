@@ -38,6 +38,48 @@ namespace AutoPrevoznikInfo
 
         private void SetTheme(string theme)
         {
+            if (theme.Equals("W"))
+            {
+                this.BackColor = Color.White;
+                lblFirstName.ForeColor = Color.Black;
+                lblLastName.ForeColor = Color.Black;
+                lblUsername.ForeColor = Color.Black;
+                lblPassword.ForeColor = Color.Black;
+                lblPhone.ForeColor = Color.Black;
+                tBoxFirstName.BackColor = Color.White;
+                tBoxFirstName.ForeColor = Color.Black;
+                tBoxLastName.BackColor = Color.White;
+                tBoxLastName.ForeColor = Color.Black;
+                tBoxUsername.BackColor = Color.White;
+                tBoxUsername.ForeColor = Color.Black;
+                tBoxPassword.BackColor = Color.White;
+                tBoxPassword.ForeColor = Color.Black;
+                tBoxPhoneNumber.BackColor = Color.White;
+                tBoxPhoneNumber.ForeColor = Color.Black;
+                btnSave.BackColor = Color.Silver;
+                btnSave.ForeColor = Color.Black;
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(39, 38, 40);
+                lblFirstName.ForeColor = Color.DarkGray;
+                lblLastName.ForeColor = Color.DarkGray;
+                lblUsername.ForeColor = Color.DarkGray;
+                lblPassword.ForeColor = Color.DarkGray;
+                lblPhone.ForeColor = Color.DarkGray;
+                tBoxFirstName.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxFirstName.ForeColor = Color.White;
+                tBoxLastName.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxLastName.ForeColor = Color.White;
+                tBoxUsername.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxUsername.ForeColor = Color.White;
+                tBoxPassword.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxPassword.ForeColor = Color.White;
+                tBoxPhoneNumber.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxPhoneNumber.ForeColor = Color.White;
+                btnSave.BackColor = Color.FromArgb(163, 128, 209);
+                btnSave.ForeColor = Color.White;
+            }
             
         }
 
@@ -93,11 +135,11 @@ namespace AutoPrevoznikInfo
 
                 if (doorkeeperToUpdate == null)
                 {
-                    int countOfWorkers = workerDA.CountWorkers();
-                    string workerCodeToSave = "W" + (countOfWorkers + 1);
+                    int lastID = workerDA.GetLastID();
+                    string workerCodeToSave = "W" + (lastID + 1);
                     Worker newDoorkeeper = new Worker
                     {
-                        WorkerID = countOfWorkers + 1,
+                       
                         WorkerCode = workerCodeToSave,
                         FirstName = firstName,
                         LastName = lastName,
@@ -118,7 +160,7 @@ namespace AutoPrevoznikInfo
                         doorkeeperToUpdate.Password = passwordToSave;
                     doorkeeperToUpdate.PhoneNumber = phoneNumber;
 
-                    workerDA.UpdateDoorkeeper(doorkeeperToUpdate);
+                    workerDA.UpdateWorker(doorkeeperToUpdate);
                 }
 
                 this.Close();

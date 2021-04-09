@@ -43,10 +43,34 @@ namespace AutoPrevoznikInfo
         {
             if (selectedTheme.Equals("W"))
             {
+                this.BackColor = Color.White;
+                lblSelectWorker.ForeColor = Color.Black;
+                lblEntryTime.ForeColor = Color.Black; 
+                lblEntryTime1.ForeColor = Color.Black;
+                lblNote.ForeColor = Color.Black;
+                lBoxSelectWorker.BackColor = Color.White;
+                lblSelectWorker.ForeColor = Color.Black;
+                tBoxNote.BackColor = Color.White;
+                tBoxNote.ForeColor = Color.Black;
+
+                btnSave.BackColor = Color.Silver;
+                btnSave.ForeColor = Color.Black;
 
             }
             else
             {
+                this.BackColor = Color.FromArgb(39, 38, 40);
+                lblSelectWorker.ForeColor = Color.DarkGray;
+                lblEntryTime.ForeColor = Color.DarkGray;
+                lblEntryTime1.ForeColor = Color.DarkGray;
+                lblNote.ForeColor = Color.DarkGray;
+                lBoxSelectWorker.BackColor = Color.FromArgb(71, 70, 72);
+                lBoxSelectWorker.ForeColor =Color.White;
+                tBoxNote.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxNote.ForeColor = Color.White;
+
+                btnSave.BackColor = Color.FromArgb(163, 128, 209);
+                btnSave.ForeColor = Color.White;
 
             }
         }
@@ -71,17 +95,32 @@ namespace AutoPrevoznikInfo
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ItemHolder selectedItem = (ItemHolder)lBoxSelectWorker.SelectedItem;
-            Worker worker = (Worker)selectedItem.value;
-            WorkerRecord workerRecord = new WorkerRecord
+            if (lBoxSelectWorker.SelectedIndex == -1)
             {
-                Worker = worker,
-                Date = DateTime.Now.ToString("yyy-MM-dd"),
-                EnterTime=lblEntryTime1.Text,
-                Note=tBoxNote.Text
-            };
-            workerRecordDA.AddEntry(workerRecord);
-            this.Close();
+                string messageText = "Morate izabrati radnika !";
+                string headText = "Greska";
+                if (selectedLanguage.Equals("E"))
+                {
+                    messageText = "You have to choose a worker !";
+                    headText = "Error";
+                }
+                MessageBox.Show(messageText, headText, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                ItemHolder selectedItem = (ItemHolder)lBoxSelectWorker.SelectedItem;
+                Worker worker = (Worker)selectedItem.value;
+                WorkerRecord workerRecord = new WorkerRecord
+                {
+                    Worker = worker,
+                    Date = DateTime.Now.ToString("yyy-MM-dd"),
+                    EnterTime = lblEntryTime1.Text,
+                    Note = tBoxNote.Text
+                };
+                workerRecordDA.AddEntry(workerRecord);
+                this.Close();
+            }
+           
         }
     }
 }

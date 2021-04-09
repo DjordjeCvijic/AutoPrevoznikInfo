@@ -38,12 +38,14 @@ namespace AutoPrevoznikInfo
             this.tsmiWhiteTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDarkTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.btnShowShiftSchedule = new System.Windows.Forms.Button();
             this.lblWorkerType = new System.Windows.Forms.Label();
             this.lblWorkerName = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControlRight = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblRecord = new System.Windows.Forms.Label();
             this.btnAddExitTime = new System.Windows.Forms.Button();
             this.btnAddEntry = new System.Windows.Forms.Button();
             this.dGVWorkerRecord = new System.Windows.Forms.DataGridView();
@@ -53,6 +55,8 @@ namespace AutoPrevoznikInfo
             this.enterTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exitTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblSelectMessage = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.tBoxMessage = new System.Windows.Forms.TextBox();
             this.lBoxSenderList = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
@@ -120,6 +124,7 @@ namespace AutoPrevoznikInfo
             // 
             // panelLeft
             // 
+            this.panelLeft.Controls.Add(this.btnShowShiftSchedule);
             this.panelLeft.Controls.Add(this.lblWorkerType);
             this.panelLeft.Controls.Add(this.lblWorkerName);
             this.panelLeft.Controls.Add(this.btnLogout);
@@ -129,6 +134,19 @@ namespace AutoPrevoznikInfo
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(237, 652);
             this.panelLeft.TabIndex = 5;
+            // 
+            // btnShowShiftSchedule
+            // 
+            this.btnShowShiftSchedule.FlatAppearance.BorderSize = 0;
+            this.btnShowShiftSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowShiftSchedule.Location = new System.Drawing.Point(23, 505);
+            this.btnShowShiftSchedule.Name = "btnShowShiftSchedule";
+            this.btnShowShiftSchedule.Size = new System.Drawing.Size(188, 46);
+            this.btnShowShiftSchedule.TabIndex = 4;
+            this.btnShowShiftSchedule.TabStop = false;
+            this.btnShowShiftSchedule.Text = "raspore";
+            this.btnShowShiftSchedule.UseVisualStyleBackColor = true;
+            this.btnShowShiftSchedule.Click += new System.EventHandler(this.btnShowShiftSchedule_Click);
             // 
             // lblWorkerType
             // 
@@ -185,6 +203,7 @@ namespace AutoPrevoznikInfo
             // tabPage1
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage1.Controls.Add(this.lblRecord);
             this.tabPage1.Controls.Add(this.btnAddExitTime);
             this.tabPage1.Controls.Add(this.btnAddEntry);
             this.tabPage1.Controls.Add(this.dGVWorkerRecord);
@@ -196,11 +215,20 @@ namespace AutoPrevoznikInfo
             this.tabPage1.Text = "Evidencija radnika";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblRecord
+            // 
+            this.lblRecord.AutoSize = true;
+            this.lblRecord.Location = new System.Drawing.Point(60, 55);
+            this.lblRecord.Name = "lblRecord";
+            this.lblRecord.Size = new System.Drawing.Size(144, 20);
+            this.lblRecord.TabIndex = 4;
+            this.lblRecord.Text = "Danasnja evidencija:";
+            // 
             // btnAddExitTime
             // 
             this.btnAddExitTime.FlatAppearance.BorderSize = 0;
             this.btnAddExitTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddExitTime.Location = new System.Drawing.Point(802, 183);
+            this.btnAddExitTime.Location = new System.Drawing.Point(802, 159);
             this.btnAddExitTime.Name = "btnAddExitTime";
             this.btnAddExitTime.Size = new System.Drawing.Size(141, 46);
             this.btnAddExitTime.TabIndex = 3;
@@ -239,7 +267,7 @@ namespace AutoPrevoznikInfo
             this.enterTimeColumn,
             this.exitTimeColumn});
             this.dGVWorkerRecord.EnableHeadersVisualStyles = false;
-            this.dGVWorkerRecord.Location = new System.Drawing.Point(59, 66);
+            this.dGVWorkerRecord.Location = new System.Drawing.Point(60, 78);
             this.dGVWorkerRecord.MultiSelect = false;
             this.dGVWorkerRecord.Name = "dGVWorkerRecord";
             this.dGVWorkerRecord.ReadOnly = true;
@@ -247,7 +275,7 @@ namespace AutoPrevoznikInfo
             this.dGVWorkerRecord.RowHeadersWidth = 51;
             this.dGVWorkerRecord.RowTemplate.Height = 29;
             this.dGVWorkerRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGVWorkerRecord.Size = new System.Drawing.Size(689, 261);
+            this.dGVWorkerRecord.Size = new System.Drawing.Size(689, 479);
             this.dGVWorkerRecord.TabIndex = 1;
             // 
             // firstNameColumn
@@ -288,6 +316,8 @@ namespace AutoPrevoznikInfo
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblSelectMessage);
+            this.tabPage2.Controls.Add(this.lblMessage);
             this.tabPage2.Controls.Add(this.tBoxMessage);
             this.tabPage2.Controls.Add(this.lBoxSenderList);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
@@ -298,21 +328,42 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Text = "Obavjestenja";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblSelectMessage
+            // 
+            this.lblSelectMessage.AutoSize = true;
+            this.lblSelectMessage.Location = new System.Drawing.Point(47, 76);
+            this.lblSelectMessage.Name = "lblSelectMessage";
+            this.lblSelectMessage.Size = new System.Drawing.Size(107, 20);
+            this.lblSelectMessage.TabIndex = 3;
+            this.lblSelectMessage.Text = "Izaberi poruku:";
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(361, 76);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(56, 20);
+            this.lblMessage.TabIndex = 2;
+            this.lblMessage.Text = "Poruka:";
+            // 
             // tBoxMessage
             // 
+            this.tBoxMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxMessage.Location = new System.Drawing.Point(361, 99);
             this.tBoxMessage.Multiline = true;
             this.tBoxMessage.Name = "tBoxMessage";
+            this.tBoxMessage.ReadOnly = true;
             this.tBoxMessage.Size = new System.Drawing.Size(470, 424);
             this.tBoxMessage.TabIndex = 1;
             // 
             // lBoxSenderList
             // 
+            this.lBoxSenderList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lBoxSenderList.FormattingEnabled = true;
             this.lBoxSenderList.ItemHeight = 20;
             this.lBoxSenderList.Location = new System.Drawing.Point(47, 99);
             this.lBoxSenderList.Name = "lBoxSenderList";
-            this.lBoxSenderList.Size = new System.Drawing.Size(280, 424);
+            this.lBoxSenderList.Size = new System.Drawing.Size(280, 422);
             this.lBoxSenderList.TabIndex = 0;
             this.lBoxSenderList.SelectedIndexChanged += new System.EventHandler(this.lBoxSenderList_SelectedIndexChanged);
             // 
@@ -337,6 +388,7 @@ namespace AutoPrevoznikInfo
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControlRight.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVWorkerRecord)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -371,5 +423,9 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.DataGridViewTextBoxColumn exitTimeColumn;
         private System.Windows.Forms.Button btnAddEntry;
         private System.Windows.Forms.Button btnAddExitTime;
+        private System.Windows.Forms.Button btnShowShiftSchedule;
+        private System.Windows.Forms.Label lblSelectMessage;
+        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Label lblRecord;
     }
 }

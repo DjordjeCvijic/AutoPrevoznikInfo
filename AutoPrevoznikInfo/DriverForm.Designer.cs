@@ -38,27 +38,21 @@ namespace AutoPrevoznikInfo
             this.tsmiWhiteTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDarkTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.btnShowShiftSchedule = new System.Windows.Forms.Button();
             this.lblWorkerType = new System.Windows.Forms.Label();
             this.lblWorkerName = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControlRight = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dGVDrivers = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.lblSelectMessage = new System.Windows.Forms.Label();
             this.tBoxMessage = new System.Windows.Forms.TextBox();
             this.lBoxSenderList = new System.Windows.Forms.ListBox();
-            this.firstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enterTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exitTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlRight.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGVDrivers)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,6 +112,7 @@ namespace AutoPrevoznikInfo
             // 
             // panelLeft
             // 
+            this.panelLeft.Controls.Add(this.btnShowShiftSchedule);
             this.panelLeft.Controls.Add(this.lblWorkerType);
             this.panelLeft.Controls.Add(this.lblWorkerName);
             this.panelLeft.Controls.Add(this.btnLogout);
@@ -127,6 +122,19 @@ namespace AutoPrevoznikInfo
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(237, 665);
             this.panelLeft.TabIndex = 4;
+            // 
+            // btnShowShiftSchedule
+            // 
+            this.btnShowShiftSchedule.FlatAppearance.BorderSize = 0;
+            this.btnShowShiftSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowShiftSchedule.Location = new System.Drawing.Point(23, 506);
+            this.btnShowShiftSchedule.Name = "btnShowShiftSchedule";
+            this.btnShowShiftSchedule.Size = new System.Drawing.Size(188, 46);
+            this.btnShowShiftSchedule.TabIndex = 5;
+            this.btnShowShiftSchedule.TabStop = false;
+            this.btnShowShiftSchedule.Text = "raspore";
+            this.btnShowShiftSchedule.UseVisualStyleBackColor = true;
+            this.btnShowShiftSchedule.Click += new System.EventHandler(this.btnShowShiftSchedule_Click);
             // 
             // lblWorkerType
             // 
@@ -148,12 +156,16 @@ namespace AutoPrevoznikInfo
             // 
             // btnLogout
             // 
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Location = new System.Drawing.Point(23, 573);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(188, 46);
             this.btnLogout.TabIndex = 1;
-            this.btnLogout.Text = "button1";
+            this.btnLogout.TabStop = false;
+            this.btnLogout.Text = "odjavi se";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // pictureBox1
             // 
@@ -168,7 +180,6 @@ namespace AutoPrevoznikInfo
             // tabControlRight
             // 
             this.tabControlRight.Controls.Add(this.tabPage2);
-            this.tabControlRight.Controls.Add(this.tabPage1);
             this.tabControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControlRight.Location = new System.Drawing.Point(243, 28);
             this.tabControlRight.Name = "tabControlRight";
@@ -176,47 +187,10 @@ namespace AutoPrevoznikInfo
             this.tabControlRight.Size = new System.Drawing.Size(991, 665);
             this.tabControlRight.TabIndex = 5;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dGVDrivers);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(983, 632);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Evidencija ulazaka";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dGVDrivers
-            // 
-            this.dGVDrivers.AllowUserToAddRows = false;
-            this.dGVDrivers.AllowUserToDeleteRows = false;
-            this.dGVDrivers.AllowUserToResizeColumns = false;
-            this.dGVDrivers.AllowUserToResizeRows = false;
-            this.dGVDrivers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dGVDrivers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dGVDrivers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dGVDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGVDrivers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.firstNameColumn,
-            this.lastNameColumn,
-            this.dateColumn,
-            this.enterTimeColumn,
-            this.exitTimeColumn});
-            this.dGVDrivers.EnableHeadersVisualStyles = false;
-            this.dGVDrivers.Location = new System.Drawing.Point(31, 94);
-            this.dGVDrivers.MultiSelect = false;
-            this.dGVDrivers.Name = "dGVDrivers";
-            this.dGVDrivers.ReadOnly = true;
-            this.dGVDrivers.RowHeadersVisible = false;
-            this.dGVDrivers.RowHeadersWidth = 51;
-            this.dGVDrivers.RowTemplate.Height = 29;
-            this.dGVDrivers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGVDrivers.Size = new System.Drawing.Size(689, 261);
-            this.dGVDrivers.TabIndex = 0;
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblMessage);
+            this.tabPage2.Controls.Add(this.lblSelectMessage);
             this.tabPage2.Controls.Add(this.tBoxMessage);
             this.tabPage2.Controls.Add(this.lBoxSenderList);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
@@ -227,8 +201,28 @@ namespace AutoPrevoznikInfo
             this.tabPage2.Text = "Obavjestenja";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(361, 76);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(56, 20);
+            this.lblMessage.TabIndex = 5;
+            this.lblMessage.Text = "Poruka:";
+            // 
+            // lblSelectMessage
+            // 
+            this.lblSelectMessage.AutoSize = true;
+            this.lblSelectMessage.Location = new System.Drawing.Point(47, 76);
+            this.lblSelectMessage.Name = "lblSelectMessage";
+            this.lblSelectMessage.Size = new System.Drawing.Size(107, 20);
+            this.lblSelectMessage.TabIndex = 4;
+            this.lblSelectMessage.Text = "Izaberi poruku:";
+            // 
             // tBoxMessage
             // 
+            this.tBoxMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tBoxMessage.Enabled = false;
             this.tBoxMessage.Location = new System.Drawing.Point(361, 99);
             this.tBoxMessage.Multiline = true;
             this.tBoxMessage.Name = "tBoxMessage";
@@ -237,49 +231,14 @@ namespace AutoPrevoznikInfo
             // 
             // lBoxSenderList
             // 
+            this.lBoxSenderList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lBoxSenderList.FormattingEnabled = true;
             this.lBoxSenderList.ItemHeight = 20;
             this.lBoxSenderList.Location = new System.Drawing.Point(47, 99);
             this.lBoxSenderList.Name = "lBoxSenderList";
-            this.lBoxSenderList.Size = new System.Drawing.Size(280, 424);
+            this.lBoxSenderList.Size = new System.Drawing.Size(280, 422);
             this.lBoxSenderList.TabIndex = 0;
             this.lBoxSenderList.SelectedIndexChanged += new System.EventHandler(this.lBoxSenderList_SelectedIndexChanged);
-            // 
-            // firstNameColumn
-            // 
-            this.firstNameColumn.HeaderText = "Ime";
-            this.firstNameColumn.MinimumWidth = 6;
-            this.firstNameColumn.Name = "firstNameColumn";
-            this.firstNameColumn.ReadOnly = true;
-            this.firstNameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // lastNameColumn
-            // 
-            this.lastNameColumn.HeaderText = "Prezime";
-            this.lastNameColumn.MinimumWidth = 6;
-            this.lastNameColumn.Name = "lastNameColumn";
-            this.lastNameColumn.ReadOnly = true;
-            // 
-            // dateColumn
-            // 
-            this.dateColumn.HeaderText = "Datum";
-            this.dateColumn.MinimumWidth = 6;
-            this.dateColumn.Name = "dateColumn";
-            this.dateColumn.ReadOnly = true;
-            // 
-            // enterTimeColumn
-            // 
-            this.enterTimeColumn.HeaderText = "Vrijeme ulaska";
-            this.enterTimeColumn.MinimumWidth = 6;
-            this.enterTimeColumn.Name = "enterTimeColumn";
-            this.enterTimeColumn.ReadOnly = true;
-            // 
-            // exitTimeColumn
-            // 
-            this.exitTimeColumn.HeaderText = "Vrijeme izlaska";
-            this.exitTimeColumn.MinimumWidth = 6;
-            this.exitTimeColumn.Name = "exitTimeColumn";
-            this.exitTimeColumn.ReadOnly = true;
             // 
             // DriverForm
             // 
@@ -301,8 +260,6 @@ namespace AutoPrevoznikInfo
             this.panelLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControlRight.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dGVDrivers)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -324,15 +281,11 @@ namespace AutoPrevoznikInfo
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabControl tabControlRight;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView dGVDrivers;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox lBoxSenderList;
         private System.Windows.Forms.TextBox tBoxMessage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn enterTimeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn exitTimeColumn;
+        private System.Windows.Forms.Button btnShowShiftSchedule;
+        private System.Windows.Forms.Label lblSelectMessage;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

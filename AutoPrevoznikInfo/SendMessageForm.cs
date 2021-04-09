@@ -43,6 +43,29 @@ namespace AutoPrevoznikInfo
         }
         private void SetTheme(string selectedTheme)
         {
+            if (selectedTheme.Equals("W"))
+            {
+                this.BackColor = Color.White;
+                lblFromWorker.ForeColor = Color.Black;
+                lblToWorker.ForeColor = Color.Black;
+                lblMessage.ForeColor = Color.Black;
+                tBoxMessage.BackColor = Color.White;
+                tBoxMessage.ForeColor = Color.Black;
+                btnSend.BackColor = Color.Silver;
+                btnSend.ForeColor = Color.Black;
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(39, 38, 40);
+                lblFromWorker.ForeColor =Color.DarkGray;
+                lblToWorker.ForeColor = Color.DarkGray;
+                lblMessage.ForeColor = Color.DarkGray;
+                tBoxMessage.BackColor = Color.FromArgb(71, 70, 72);
+                tBoxMessage.ForeColor = Color.White;
+                btnSend.BackColor = Color.FromArgb(163, 128, 209);
+                btnSend.ForeColor = Color.White;
+
+            }
 
         }
 

@@ -172,11 +172,11 @@ namespace AutoPrevoznikInfo
                 
                 if (driverToUpdate == null)
                 {
-                    int countOfWorkers = workerDA.CountWorkers();
-                    string workerCodeToSave = "W" + (countOfWorkers + 1);
+                    int lastID = workerDA.GetLastID();
+                    string workerCodeToSave = "W" + (lastID + 1);
                     Driver newDriver = new Driver
                     {
-                        WorkerID = countOfWorkers + 1,
+                       
                         WorkerCode = workerCodeToSave,
                         FirstName = firstName,
                         LastName = lastName,
