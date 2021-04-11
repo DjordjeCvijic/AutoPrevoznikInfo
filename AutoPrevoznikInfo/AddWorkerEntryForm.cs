@@ -82,7 +82,7 @@ namespace AutoPrevoznikInfo
                 lblSelectWorker.Text = "Izaberi radnika:";
                 lblEntryTime.Text = "Vrijeme ulaska:";
                 lblNote.Text = "Napomena:";
-                btnSave.Text = "Sacuvaj";
+                btnSave.Text = "Sačuvaj";
             }
             else
             {

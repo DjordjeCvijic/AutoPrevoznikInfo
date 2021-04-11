@@ -18,7 +18,6 @@ namespace AutoPrevoznikInfo
     {
         private List<Worker> workers;
         private Worker loggedInWorker = null;
-        //private string ConfigFileName = "ConfigFile.txt";
         private string selectedLanguage = "S";
         public LoginForm()
         {
@@ -32,11 +31,7 @@ namespace AutoPrevoznikInfo
         {
             WorkerDataAccess workerDA = new WorkerDataAccess();
             workers = workerDA.GetWorkers();
-            /*if (!File.Exists(ConfigFileName)) {
-                File.Create(ConfigFileName);
-                File.WriteAllText(ConfigFileName, "Language;S" + "\n" + "Theme;W");               
-            }*/
-               
+        
         }
 
         private void OnLanguageChanged(object sender, EventArgs e)
@@ -47,9 +42,9 @@ namespace AutoPrevoznikInfo
                 selectedLanguage = "S";
                 rBtnSerbian.Text = "Srpski";
                 rBtnEnglish.Text = "Engleski";
-                lblDobroDosli.Text = "Dobro dosli";
+                lblDobroDosli.Text = "Dobro došli";
                 gBoxLanguage.Text = "Izaberite jezik";
-                lblUsername.Text = "Korisnicko ime";
+                lblUsername.Text = "Korisničko ime";
                 lblPassword.Text = "Lozinka";
                 btnLogin.Text = "Prijava";
             }
@@ -98,7 +93,15 @@ namespace AutoPrevoznikInfo
                         byte[] hash = pbkdf2.GetBytes(20);
                         for (int i = 0; i < 20; i++)
                             if (hashBytes[i + 16] != hash[i])
-                                throw new UnauthorizedAccessException("Pogresna lozinka");
+                            {
+                                string message = null;
+                                if (selectedLanguage.Equals("S"))
+                                    message = "Pogrešna lozinka. Molimo pokušajte ponovo. ";
+                                else
+                                    message = "Incorrect password. Please try again. ";
+                                throw new UnauthorizedAccessException(message);
+                            }
+                        //throw new UnauthorizedAccessException("Pogresna lozinka");
 
                         loggedInWorker = worker;
                         Form m = null;
@@ -122,27 +125,37 @@ namespace AutoPrevoznikInfo
                         m.ShowDialog();
                         tBoxUsername.Clear();
                         tBoxPassword.Clear();
-                        //this.Close();
-                        /*tbUserName.Clear();
-                        tbPassword.Clear();
-                        tbUserName.Text = "Korisničko Ime";
-                        tbUserName.ForeColor = SystemColors.WindowFrame;
-                        tbPassword.UseSystemPasswordChar = false;
-                        tbPassword.Text = "Lozinka";
-                        tbPassword.ForeColor = SystemColors.WindowFrame;
-                        btnLogin.Focus();*/
+                        
                     }
                     catch (UnauthorizedAccessException ex)
                     {
-                        //new WarningMessageForm("Pogrešna lozinka", "Unešena lozinka je pogrešna. Molimo pokušajte ponovo.").ShowDialog();
-                        MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string message = null;
+                        if (selectedLanguage.Equals("S"))
+                            message = "Greška ";
+                        else
+                            message = "Error";
+                        MessageBox.Show(ex.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       
                     }
                 }
             }
             if (!check)
             {
-                //new WarningMessageForm("Nepostojeće korisničko ime", "Uneseno korisničko ime ne postoji. Molimo pokušajte ponovo.").ShowDialog();
-                MessageBox.Show("nepostojece korisnicko ime", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string message = null;
+                string headMessage = null;
+                if (selectedLanguage.Equals("S"))
+                {
+                    headMessage = "Greška ";
+                    message = "Korisničko ime je nepostojeće. Molimo pokušajte ponovo.";
+                }
+                else
+                {
+                    headMessage = "Error";
+                    message = "Non-existent username. Please try again. ";
+                }
+                    
+                
+                MessageBox.Show(message, headMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

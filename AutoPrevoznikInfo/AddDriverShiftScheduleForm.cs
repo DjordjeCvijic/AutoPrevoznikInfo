@@ -14,6 +14,7 @@ namespace AutoPrevoznikInfo
     {
         private string selectedDate;
         private string selectedTheme;
+        private string selectedLanguage;
         public AddDriverShiftScheduleForm(string date, string language, string theme)
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace AutoPrevoznikInfo
             InitializeForm();
             SetTheme(theme);
             selectedTheme = theme;
+            selectedLanguage = language;
             SetLanguage(language);
         }
 
@@ -47,9 +49,9 @@ namespace AutoPrevoznikInfo
             if (language.Equals("S"))
             {
                 lblSelectDriver.Text = "Izaberi portira:";
-                lblStartTime.Text = "Pocetak smjene:";
+                lblStartTime.Text = "Početak smjene:";
                 lblEndTime.Text = "Kraj smjene:";
-                btnSave.Text = "Sacuvaj";
+                btnSave.Text = "Sačuvaj";
                 lblSelectBus.Text = "Izaberi autobus:";
                 lblSelectBusLine.Text = "Izaberi liniju";
             }
@@ -122,27 +124,46 @@ namespace AutoPrevoznikInfo
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (cBoxWorker.SelectedIndex == -1 || cBoxSelectBus.SelectedIndex==-1 || cBoxSelectBusLine.SelectedIndex==-1)
-                MessageBox.Show("Neka polja nisu popunjena", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            try
             {
-                ItemHolder selectedDriver = (ItemHolder)cBoxWorker.SelectedItem;
-                ItemHolder selectedBus = (ItemHolder)cBoxSelectBus.SelectedItem;
-                ItemHolder selectedBusLine = (ItemHolder)cBoxSelectBusLine.SelectedItem;
-                BusLineHasBus element = new BusLineHasBus
+                if (cBoxWorker.SelectedIndex == -1 || cBoxSelectBus.SelectedIndex == -1 || cBoxSelectBusLine.SelectedIndex == -1)
                 {
-                    BusLine = (BusLine)selectedBusLine.value,
-                    Bus = (Bus)selectedBus.value,
-                    Driver = (Worker)selectedDriver.value,
-                    Date = selectedDate,
-                    StartTime = dTPStartTime.Value.ToString("HH:mm:ss"),
-                    EndTime = dTPEndTime.Value.ToString("HH:mm:ss")
-                };
-                BusLineHasBusDataAccess busLineHasBusDA = new BusLineHasBusDataAccess();
-                busLineHasBusDA.AddBusLineHasBus(element);
+                    string message = null;
+                    if (selectedLanguage.Equals("S"))
+                        message = "Neka polja nisu popunjena. Molimo pokušajte ponovo. ";
+                    else
+                        message = "Some fields are not filled. Please try again. ";
+                    throw new ArgumentException(message);
+                }
                
-                this.Close();
+                    ItemHolder selectedDriver = (ItemHolder)cBoxWorker.SelectedItem;
+                    ItemHolder selectedBus = (ItemHolder)cBoxSelectBus.SelectedItem;
+                    ItemHolder selectedBusLine = (ItemHolder)cBoxSelectBusLine.SelectedItem;
+                    BusLineHasBus element = new BusLineHasBus
+                    {
+                        BusLine = (BusLine)selectedBusLine.value,
+                        Bus = (Bus)selectedBus.value,
+                        Driver = (Worker)selectedDriver.value,
+                        Date = selectedDate,
+                        StartTime = dTPStartTime.Value.ToString("HH:mm:ss"),
+                        EndTime = dTPEndTime.Value.ToString("HH:mm:ss")
+                    };
+                    BusLineHasBusDataAccess busLineHasBusDA = new BusLineHasBusDataAccess();
+                    busLineHasBusDA.AddBusLineHasBus(element);
+
+                    this.Close();
+                
             }
+            catch(Exception ex)
+            {
+                string message = null;
+                if (selectedLanguage.Equals("S"))
+                    message = "Greška ";
+                else
+                    message = "Error";
+                MessageBox.Show(ex.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void cBox_DrawItem(object sender, DrawItemEventArgs e)

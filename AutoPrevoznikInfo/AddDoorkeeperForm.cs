@@ -15,12 +15,14 @@ namespace AutoPrevoznikInfo
     {
         private Worker doorkeeperToUpdate;
         private WorkerDataAccess workerDA = new WorkerDataAccess();
+        private string selectedLanguage;
         public AddDoorkeeperForm(Worker doorkeeperToUpdate,string language,string theme)
         {
             InitializeComponent();
             SetLanguage(language);
             SetTheme(theme);
             this.doorkeeperToUpdate = doorkeeperToUpdate;
+            selectedLanguage = language;
             InitializeForm();
             
         }
@@ -89,10 +91,10 @@ namespace AutoPrevoznikInfo
             {
                 lblFirstName.Text = "Ime:";
                 lblLastName.Text = "Prezime:";
-                lblUsername.Text = "Korisnicko ime:";
+                lblUsername.Text = "Korisničko ime:";
                 lblPassword.Text = "Lozinka:";
                 lblPhone.Text = "Broj telefona:";
-                btnSave.Text = "Sacuvaj";
+                btnSave.Text = "Sačuvaj";
             }
             else
             {
@@ -113,7 +115,15 @@ namespace AutoPrevoznikInfo
             {
                 if (tBoxFirstName.TextLength == 0 || tBoxLastName.TextLength == 0 || tBoxUsername.TextLength == 0 ||
                     tBoxPassword.TextLength == 0 || tBoxPhoneNumber.TextLength == 0)
-                    throw new ArgumentException("Neka polja nisu unesena. Molimo pokušajte ponovo. ");
+                {
+                    string message = null;
+                    if (selectedLanguage.Equals("S"))
+                        message = "Neka polja nisu popunjena. Molimo pokušajte ponovo. ";
+                    else
+                        message = "Some fields are not filled. Please try again. ";
+                    throw new ArgumentException(message);
+                }
+                    
 
                 string firstName = tBoxFirstName.Text;
                 string lastName = tBoxLastName.Text;
@@ -121,7 +131,15 @@ namespace AutoPrevoznikInfo
                 string enteredPassword = tBoxPassword.Text;
                 string phoneNumber = tBoxPhoneNumber.Text;
                 if (!workerDA.CheckIfUsernameUnique(userName) && doorkeeperToUpdate == null)
-                    throw new ArgumentException("Korisnicko ime zauzeto. Molimo pokušajte ponovo. ");
+                {
+                    string message = null;
+                    if (selectedLanguage.Equals("S"))
+                        message = "Korisnicko ime zauzeto. Molimo pokušajte ponovo. ";
+                    else
+                        message = "Another user already has this username. Please try again. ";
+                    throw new ArgumentException(message);
+                }
+                    
                 
 
                 byte[] salt1;
@@ -167,7 +185,12 @@ namespace AutoPrevoznikInfo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string message = null;
+                if (selectedLanguage.Equals("S"))
+                    message = "Greška ";
+                else
+                    message = "Error";
+                MessageBox.Show(ex.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

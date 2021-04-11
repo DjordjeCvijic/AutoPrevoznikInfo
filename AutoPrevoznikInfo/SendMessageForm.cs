@@ -13,11 +13,13 @@ namespace AutoPrevoznikInfo
     public partial class SendMessageForm : Form
     {
         private Worker FromW, ToW;
+        private string selectedLanguage;
         public SendMessageForm(Worker fromWorker,Worker toWorker,string language,string theme)
         {
             InitializeComponent();
             FromW = fromWorker;
             ToW = toWorker;
+            selectedLanguage = language;
             SetLanguage(language);
             SetTheme(theme);
         }
@@ -29,7 +31,7 @@ namespace AutoPrevoznikInfo
                 lblFromWorker.Text = "OD: " + FromW.FirstName + " " + FromW.LastName;
                 lblToWorker.Text = "ZA: " + ToW.FirstName + " " + ToW.LastName;
                 lblMessage.Text = "Poruka:";
-                btnSend.Text = "Posalji";
+                btnSend.Text = "Pošalji";
             }
             else
             {
@@ -74,7 +76,15 @@ namespace AutoPrevoznikInfo
             try
             {
                 if (tBoxMessage.TextLength == 0)
-                    throw new ArgumentException("Poruka nije unesena. Molimo pokušajte ponovo. ");
+                {
+                    string messageOfError = null;
+                    if (selectedLanguage.Equals("S"))
+                        messageOfError = "Poruka nije unesena. Molimo pokušajte ponovo. ";
+                    else
+                        messageOfError = "Message is missing. Please try again. ";
+                    throw new ArgumentException(messageOfError);
+                }
+                
                 Model.Message message = new Model.Message()
                 {
                     FromWorker = FromW,
@@ -87,7 +97,12 @@ namespace AutoPrevoznikInfo
                 this.Close();
             }
             catch(Exception ex){
-                MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string message = null;
+                if (selectedLanguage.Equals("S"))
+                    message = "Greška ";
+                else
+                    message = "Error";
+                MessageBox.Show(ex.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

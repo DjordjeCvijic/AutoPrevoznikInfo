@@ -14,11 +14,13 @@ namespace AutoPrevoznikInfo
     {
         private string selectedDate;
         private string selectedTheme;
+        private string selectedLanguage;
         public AddShiftScheduleForm(string date,string language,string theme)
         {
             InitializeComponent();
             selectedDate = date;
             selectedTheme = theme;
+            selectedLanguage = language;
             InitializeForm();
             SetTheme(theme);
             SetLanguage(language);
@@ -40,9 +42,9 @@ namespace AutoPrevoznikInfo
             if (language.Equals("S"))
             {
                 lblSelectDoorkeeper.Text = "Izaberi portira:";
-                lblStartTime.Text = "Pocetak smjene:";
+                lblStartTime.Text = "Početak smjene:";
                 lblEndTime.Text = "Kraj smjene:";
-                btnSave.Text = "Sacuvaj";
+                btnSave.Text = "Sačuvaj";
 
             }
             else
@@ -86,9 +88,22 @@ namespace AutoPrevoznikInfo
         }
 
         private void btnSave_Click(object sender, EventArgs e)
-        { 
-            if(cBoxWorker.SelectedIndex==-1)
-                MessageBox.Show("Portir mora biti izabran", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        {
+            if (cBoxWorker.SelectedIndex == -1)
+            {
+                string headMessage = null;
+                if (selectedLanguage.Equals("S"))
+                    headMessage = "Greška ";
+                else
+                    headMessage = "Error";
+                string message = null;
+                if (selectedLanguage.Equals("S"))
+                    message = "Neka polja nisu popunjena. Molimo pokušajte ponovo. ";
+                else
+                    message = "Some fields are not filled. Please try again. ";
+                MessageBox.Show(message, headMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
             else
             {
                 ItemHolder selectedDoorkeeper =(ItemHolder)cBoxWorker.SelectedItem;

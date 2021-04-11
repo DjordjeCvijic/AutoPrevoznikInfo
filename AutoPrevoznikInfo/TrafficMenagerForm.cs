@@ -89,37 +89,37 @@ namespace AutoPrevoznikInfo
                 tsmiEnglish.Text = "Engleski";
                 tsmiSerbian.Text = "Srpski";
                 btnLogout.Text = "Odjava";
-                lblWorkerType.Text = "Menadzer saobracaja";
-                tabPage1.Text = "Vozaci";
+                lblWorkerType.Text = "Menadžer saobraćaja";
+                tabPage1.Text = "Vozači";
                 tabPage2.Text = "Autobusi";
                 firstNameColumn.HeaderText = "Ime";
                 lastNameColumn.HeaderText = "Prezime";
-                userNameColumn.HeaderText = "Korisnicko ime";
+                userNameColumn.HeaderText = "Korisničko ime";
                 phoneNumberColumn.HeaderText = "Telefon";
-                workerCodeColumn.HeaderText = "Sifra";
-                btnAddWorker.Text = "Dodaj vozaca";
+                workerCodeColumn.HeaderText = "Šifra";
+                btnAddWorker.Text = "Dodaj vozača";
                 btnUpdateDriver.Text = "Izmijeni podatke";
                 btnSendMessage.Text = "Posalji poruku";
 
                 btnAddBus.Text = "Dodaj autobus";
                 btnEditBus.Text = "Izmijeni autobus";
-                btnDeleteBus.Text = "Izbrisi autobus";
-                busGarageNumberColumn.HeaderText = "Garazni broj";
+                btnDeleteBus.Text = "Izbriši autobus";
+                busGarageNumberColumn.HeaderText = "Garažni broj";
                 busTypeColumn.HeaderText = "Tip autobusa";
                 numberOfSeatsColumn.HeaderText = "Broj sjedista";
                 numberOfDoorsColumn.HeaderText = "Broj vrata";
-                busCapacityComun.HeaderText = "Capacitet";
+                busCapacityComun.HeaderText = "Kapacitet";
 
                 lblSelectDate.Text = "Izaberi datum:";
                 btnAddShift.Text = "Dodaj smjenu";
                 firstNameColumn2.HeaderText = "Ime";
                 lastNameColumn2.HeaderText = "Prezime";
-                workerCodeColumn2.HeaderText = "Sifra";
-                startTimeColumn2.HeaderText = "Pocetak smjene";
+                workerCodeColumn2.HeaderText = "Šifra";
+                startTimeColumn2.HeaderText = "Početak smjene";
                 endTimeColumn2.HeaderText = "Kraj smjene";
                 busColumn.HeaderText = "Autobus";
                 busLineColumn.HeaderText = "Linija";
-                btnDeleteShift.Text = "Izbrisi smjenu";
+                btnDeleteShift.Text = "Izbriši smjenu";
 
             }
             else
@@ -320,12 +320,12 @@ namespace AutoPrevoznikInfo
             string messageText, headText;
             if (selectedLanguage.Equals("S"))
             {
-                messageText = "Da li zelite izbrisati vozaca?";
+                messageText = "Da li želite izbrisati vozača ?";
                 headText = "Brisanje";
             }
             else
             {
-                messageText = "Do you want to delete the driver?";
+                messageText = "Do you want to delete the driver ?";
                 headText = "Delete";
             }
             DialogResult dr = MessageBox.Show(messageText, headText, MessageBoxButtons.YesNo,MessageBoxIcon.Question);
@@ -361,12 +361,12 @@ namespace AutoPrevoznikInfo
             string messageText, headText;
             if (selectedLanguage.Equals("S"))
             {
-                messageText = "Da li zelite izbrisati autobus?";
+                messageText = "Da li želite izbrisati autobus ?";
                 headText = "Brisanje";
             }
             else
             {
-                messageText = "Do you want to delete the bus?";
+                messageText = "Do you want to delete the bus ?";
                 headText = "Delete";
             }
             DialogResult dr = MessageBox.Show(messageText, headText, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -562,7 +562,7 @@ namespace AutoPrevoznikInfo
             string messageText, headText;
             if (selectedLanguage.Equals("S"))
             {
-                messageText = "Da li zelite izbrisati izabranu smjenu ?";
+                messageText = "Da li želite izbrisati izabranu smjenu ?";
                 headText = "Brisanje";
             }
             else

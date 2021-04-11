@@ -36,9 +36,9 @@ namespace AutoPrevoznikInfo
         {
             if (selectedLanguage.Equals("S"))
             {
-                lblShiftScedule.Text = "Raspored smijena:";
+                lblShiftScedule.Text = "Raspored smjena:";
                 dateColumn.HeaderText = "Datum";
-                startTimeColumn.HeaderText = "Pocetak smjene";
+                startTimeColumn.HeaderText = "Početak smjene";
                 endTimeColumn.HeaderText = "Kraj smjene";
                 
             }

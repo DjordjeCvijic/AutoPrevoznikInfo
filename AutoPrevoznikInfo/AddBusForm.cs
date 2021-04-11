@@ -15,6 +15,7 @@ namespace AutoPrevoznikInfo
         private Bus busToUpdate;
         private BusDataAccess busDA = new BusDataAccess();
         private string selectedTheme;
+        private string selectedLanguage;
         public AddBusForm(Bus bus, string language, string theme)
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace AutoPrevoznikInfo
             SetTheme(theme);
             busToUpdate = bus;
             selectedTheme = theme;
+            selectedLanguage = language;
             InitializeForm(language);
         }
 
@@ -63,18 +65,18 @@ namespace AutoPrevoznikInfo
             if (language.Equals("S"))
             {
                 this.BackColor = Color.White;
-                lblSelectType.Text = "Tip vozila";
-                lblNumOfSeats.Text = "Broj sjedista";
-                lblNumOfDoors.Text = "Broj vrata";
-                lblSelectType.Text = "Kapacitet autobusa";
-                btnSave.Text = "Sacuvaj";
+                lblSelectType.Text = "Tip vozila:";
+                lblNumOfSeats.Text = "Broj sjedišta:";
+                lblNumOfDoors.Text = "Broj vrata:";
+                lblSelectType.Text = "Kapacitet autobusa:";
+                btnSave.Text = "Sačuvaj";
             }
             else
             {
-                lblSelectType.Text = "Type of bus";
-                lblNumOfSeats.Text = "Number od seats";
-                lblNumOfDoors.Text = "Number of doors";
-                lblSelectType.Text = "Bus capacity";
+                lblSelectType.Text = "Type of bus:";
+                lblNumOfSeats.Text = "Number od seats:";
+                lblNumOfDoors.Text = "Number of doors:";
+                lblSelectType.Text = "Bus capacity:";
                 btnSave.Text = "Save";
             }
         }
@@ -127,8 +129,16 @@ namespace AutoPrevoznikInfo
             try
             {
                 if (cBoxSelectBusType.SelectedIndex == -1 || tBoxNumOfSeats.TextLength == 0 || tBoxNumOfDoors.TextLength == 0 ||
-                    tBoxCapacity.TextLength == 0 )
-                    throw new ArgumentException("Neka polja nisu unesena. Molimo pokušajte ponovo. ");
+                    tBoxCapacity.TextLength == 0)
+                {
+                    string message = null;
+                    if (selectedLanguage.Equals("S"))
+                        message = "Neka polja nisu popunjena. Molimo pokušajte ponovo. ";
+                    else
+                        message = "Some fields are not filled. Please try again. ";
+                    throw new ArgumentException(message);
+                }
+                   
 
                 int numOfSeats = int.Parse(tBoxNumOfSeats.Text);
                 int numOfDoors = int.Parse(tBoxNumOfDoors.Text);
@@ -167,7 +177,12 @@ namespace AutoPrevoznikInfo
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string message = null;
+                if (selectedLanguage.Equals("S"))
+                    message = "Greška ";
+                else
+                    message = "Error";
+                MessageBox.Show(ex.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

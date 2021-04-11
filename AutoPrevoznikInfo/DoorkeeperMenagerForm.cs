@@ -99,27 +99,27 @@ namespace AutoPrevoznikInfo
                 tsmiEnglish.Text = "Engleski";
                 tsmiSerbian.Text = "Srpski";
                 btnLogout.Text = "Odjava";
-                lblWorkerType.Text = "Sef portira";
+                lblWorkerType.Text = "Šef portira";
                 tabPage1.Text = "Portiri";
-                tabPage2.Text = "Raspored smijena";
+                tabPage2.Text = "Raspored smjena";
                 firstNameColumn.HeaderText = "Ime";
                 lastNameColumn.HeaderText = "Prezime";
-                userNameColumn.HeaderText = "Korisnicko ime";
+                userNameColumn.HeaderText = "Korisničko ime";
                 phoneNumberColumn.HeaderText = "Telefon";
-                workerCodeColumn.HeaderText = "Sifra";
+                workerCodeColumn.HeaderText = "Šifra";
                 btnAddDoorkeeper.Text = "Dodaj portira";
-                btnDeleteDoorkeeper.Text = "Obrisi portira";
-                btnUpdateDoorkeeper.Text = "Izmijeni portira";
-                btnSendMessage.Text = "Posalji poruku";
+                btnDeleteDoorkeeper.Text = "Obriši portira";
+                btnUpdateDoorkeeper.Text = "Izmijeni podatke";
+                btnSendMessage.Text = "Pošalji poruku";
 
                 lblSelectDate.Text = "Izaberi datum:";
                 btnAddShift.Text = "Dodaj smjenu";
                 firstNameColumn2.HeaderText = "Ime";
                 lastNameColumn2.HeaderText = "Prezime";
-                workerCodeColumn2.HeaderText = "Sifra";
-                startTimeColumn2.HeaderText = "Pocetak smjene";
+                workerCodeColumn2.HeaderText = "Šifra";
+                startTimeColumn2.HeaderText = "Početak smjene";
                 endTimeColumn2.HeaderText = "Kraj smjene";
-                btnDeleteShift.Text = "Izbrisi smjenu";
+                btnDeleteShift.Text = "Izbriši smjenu";
             }
             else
             {
@@ -352,7 +352,7 @@ namespace AutoPrevoznikInfo
             string messageText, headText;
             if (selectedLanguage.Equals("S"))
             {
-                messageText = "Da li zelite izbrisati portira?";
+                messageText = "Da li želite izbrisati portira ?";
                 headText = "Brisanje";
             }
             else
@@ -419,7 +419,7 @@ namespace AutoPrevoznikInfo
             string messageText, headText;
             if (selectedLanguage.Equals("S"))
             {
-                messageText = "Da li zelite izbrisati izabranu smjenu ?";
+                messageText = "Da li želite izbrisati izabranu smjenu ?";
                 headText = "Brisanje";
             }
             else

@@ -88,8 +88,8 @@ namespace AutoPrevoznikInfo
                 tsmiEnglish.Text = "Engleski";
                 tsmiSerbian.Text = "Srpski";
                
-                tabPage2.Text = "Obavjestenja";
-                lblWorkerType.Text = "Vozac";
+                tabPage2.Text = "Obavještenja";
+                lblWorkerType.Text = "Vozač";
                 btnLogout.Text = "Odjava";
             }
             else
