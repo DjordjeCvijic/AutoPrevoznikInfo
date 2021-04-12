@@ -48,21 +48,23 @@ namespace AutoPrevoznikInfo
         {
             if (language.Equals("S"))
             {
-                lblSelectDriver.Text = "Izaberi portira:";
+                lblSelectDriver.Text = "Izaberi vozača:";
+                lblSelectBus.Text = "Izaberite autobus:";
+                lblSelectBusLine.Text = "Izaberite autobusku liniju:";
                 lblStartTime.Text = "Početak smjene:";
                 lblEndTime.Text = "Kraj smjene:";
                 btnSave.Text = "Sačuvaj";
-                lblSelectBus.Text = "Izaberi autobus:";
-                lblSelectBusLine.Text = "Izaberi liniju";
+                
             }
             else
             {
-                lblSelectDriver.Text = "Select doorkeeper:";
+                lblSelectDriver.Text = "Select driver:";
+                lblSelectBus.Text = "Select bus:";
+                lblSelectBusLine.Text = "Select bus line:";
                 lblStartTime.Text = "Start time:";
                 lblEndTime.Text = "End time:";
                 btnSave.Text = "Save";
-                lblSelectBus.Text = "Izaberi autobus:";
-                lblSelectBusLine.Text = "Izaberi liniju";
+                
             }
         }
 

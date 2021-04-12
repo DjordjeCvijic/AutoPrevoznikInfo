@@ -19,6 +19,7 @@ namespace AutoPrevoznikInfo
         private List<Worker> workers;
         private Worker loggedInWorker = null;
         private string selectedLanguage = "S";
+        WorkerDataAccess workerDA = new WorkerDataAccess();
         public LoginForm()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace AutoPrevoznikInfo
 
         private void InitializeWorm()
         {
-            WorkerDataAccess workerDA = new WorkerDataAccess();
+            
             workers = workerDA.GetWorkers();
         
         }
@@ -75,7 +76,8 @@ namespace AutoPrevoznikInfo
             string savedPasswordHash = Convert.ToBase64String(hashBytes1);
             Console.WriteLine("");*/
 
-
+            workers.Clear();
+            workers = workerDA.GetWorkers();
             string username = tBoxUsername.Text;
             string password = tBoxPassword.Text;
             bool check = false;

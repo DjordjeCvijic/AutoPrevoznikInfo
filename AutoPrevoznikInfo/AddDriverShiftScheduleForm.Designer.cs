@@ -60,7 +60,7 @@ namespace AutoPrevoznikInfo
             this.dTPEndTime.Name = "dTPEndTime";
             this.dTPEndTime.ShowUpDown = true;
             this.dTPEndTime.Size = new System.Drawing.Size(123, 27);
-            this.dTPEndTime.TabIndex = 13;
+            this.dTPEndTime.TabIndex = 4;
             // 
             // lblStartTime
             // 
@@ -79,7 +79,7 @@ namespace AutoPrevoznikInfo
             this.dTPStartTime.Name = "dTPStartTime";
             this.dTPStartTime.ShowUpDown = true;
             this.dTPStartTime.Size = new System.Drawing.Size(123, 27);
-            this.dTPStartTime.TabIndex = 11;
+            this.dTPStartTime.TabIndex = 3;
             // 
             // btnSave
             // 
@@ -88,8 +88,7 @@ namespace AutoPrevoznikInfo
             this.btnSave.Location = new System.Drawing.Point(282, 304);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(165, 56);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.TabStop = false;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -111,7 +110,7 @@ namespace AutoPrevoznikInfo
             this.cBoxWorker.Location = new System.Drawing.Point(37, 81);
             this.cBoxWorker.Name = "cBoxWorker";
             this.cBoxWorker.Size = new System.Drawing.Size(183, 28);
-            this.cBoxWorker.TabIndex = 8;
+            this.cBoxWorker.TabIndex = 0;
             this.cBoxWorker.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cBox_DrawItem);
             this.cBoxWorker.SelectedIndexChanged += new System.EventHandler(this.cBoxWorker_SelectedIndexChanged);
             // 
@@ -132,7 +131,7 @@ namespace AutoPrevoznikInfo
             this.cBoxSelectBus.Location = new System.Drawing.Point(264, 81);
             this.cBoxSelectBus.Name = "cBoxSelectBus";
             this.cBoxSelectBus.Size = new System.Drawing.Size(183, 28);
-            this.cBoxSelectBus.TabIndex = 15;
+            this.cBoxSelectBus.TabIndex = 1;
             this.cBoxSelectBus.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cBox_DrawItem);
             // 
             // lblSelectBusLine
@@ -152,7 +151,7 @@ namespace AutoPrevoznikInfo
             this.cBoxSelectBusLine.Location = new System.Drawing.Point(494, 81);
             this.cBoxSelectBusLine.Name = "cBoxSelectBusLine";
             this.cBoxSelectBusLine.Size = new System.Drawing.Size(183, 28);
-            this.cBoxSelectBusLine.TabIndex = 17;
+            this.cBoxSelectBusLine.TabIndex = 2;
             this.cBoxSelectBusLine.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cBox_DrawItem);
             // 
             // AddDriverShiftScheduleForm

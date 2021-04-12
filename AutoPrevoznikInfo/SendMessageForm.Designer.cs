@@ -62,7 +62,7 @@ namespace AutoPrevoznikInfo
             this.tBoxMessage.Multiline = true;
             this.tBoxMessage.Name = "tBoxMessage";
             this.tBoxMessage.Size = new System.Drawing.Size(587, 276);
-            this.tBoxMessage.TabIndex = 2;
+            this.tBoxMessage.TabIndex = 0;
             // 
             // lblMessage
             // 
@@ -80,8 +80,7 @@ namespace AutoPrevoznikInfo
             this.btnSend.Location = new System.Drawing.Point(258, 480);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(140, 52);
-            this.btnSend.TabIndex = 4;
-            this.btnSend.TabStop = false;
+            this.btnSend.TabIndex = 1;
             this.btnSend.Text = "button1";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);

@@ -87,8 +87,10 @@ namespace AutoPrevoznikInfo
                 tsmiWhiteTheme.Text = "Svijetla";
                 tsmiEnglish.Text = "Engleski";
                 tsmiSerbian.Text = "Srpski";
-               
-                tabPage2.Text = "Obavještenja";
+                btnShowShiftSchedule.Text = "Raspored smjena";
+                tabPage2.Text = "Poruke";
+                lblSelectMessage.Text = "Izaberite poruku:";
+                lblMessage.Text = "Poruka:";
                 lblWorkerType.Text = "Vozač";
                 btnLogout.Text = "Odjava";
             }
@@ -100,8 +102,10 @@ namespace AutoPrevoznikInfo
                 tsmiWhiteTheme.Text = "White";
                 tsmiEnglish.Text = "English";
                 tsmiSerbian.Text = "Serbian";
-                
+                btnShowShiftSchedule.Text = "Shift schedule";
                 tabPage2.Text = "Messages";
+                lblSelectMessage.Text = "Select a message:";
+                lblMessage.Text = "Message:";
                 lblWorkerType.Text = "Driver";
                 btnLogout.Text = "Logout";
             }

@@ -87,7 +87,7 @@ namespace AutoPrevoznikInfo
                 tsmiWhiteTheme.Text = "Svijetla";
                 tsmiEnglish.Text = "Engleski";
                 tsmiSerbian.Text = "Srpski";
-                tabPage2.Text = "Obavještenja";
+                tabPage2.Text = "Poruke";
                 lblWorkerType.Text = "Portir";
                 btnLogout.Text = "Odjava";
                 tabPage1.Text = "Evidencija radnika";
@@ -125,7 +125,7 @@ namespace AutoPrevoznikInfo
                 btnAddExitTime.Text = "Add exit time"; 
                 btnShowShiftSchedule.Text = "Shift schedule";
                 lblMessage.Text = "Message:";
-                lblSelectMessage.Text = "Select message:";
+                lblSelectMessage.Text = "Select a message:";
                 lblRecord.Text = "Today's records:";
             }
         }
@@ -302,7 +302,7 @@ namespace AutoPrevoznikInfo
                 string messageText, headText;
                 if (selectedLanguage.Equals("S"))
                 {
-                    messageText = selectedWorkerRecord.Worker.FirstName + " " + selectedWorkerRecord.Worker.LastName + ", vrijeme izlaska:" + exitTime;
+                    messageText = selectedWorkerRecord.Worker.FirstName + " " + selectedWorkerRecord.Worker.LastName + ", vrijeme izlaska: " + exitTime;
                     headText = "Izlazak";
                 }
                 else

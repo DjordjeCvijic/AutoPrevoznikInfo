@@ -189,6 +189,7 @@ namespace AutoPrevoznikInfo
             // 
             // tabPage2
             // 
+            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage2.Controls.Add(this.lblMessage);
             this.tabPage2.Controls.Add(this.lblSelectMessage);
             this.tabPage2.Controls.Add(this.tBoxMessage);
@@ -222,10 +223,10 @@ namespace AutoPrevoznikInfo
             // tBoxMessage
             // 
             this.tBoxMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tBoxMessage.Enabled = false;
             this.tBoxMessage.Location = new System.Drawing.Point(361, 99);
             this.tBoxMessage.Multiline = true;
             this.tBoxMessage.Name = "tBoxMessage";
+            this.tBoxMessage.ReadOnly = true;
             this.tBoxMessage.Size = new System.Drawing.Size(470, 424);
             this.tBoxMessage.TabIndex = 1;
             // 

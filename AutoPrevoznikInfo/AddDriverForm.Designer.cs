@@ -51,7 +51,7 @@ namespace AutoPrevoznikInfo
             this.lblFirstName.Location = new System.Drawing.Point(31, 48);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(37, 20);
-            this.lblFirstName.TabIndex = 0;
+            this.lblFirstName.TabIndex = 7;
             this.lblFirstName.Text = "Ime:";
             // 
             // tBoxFirstName
@@ -60,7 +60,7 @@ namespace AutoPrevoznikInfo
             this.tBoxFirstName.Location = new System.Drawing.Point(31, 71);
             this.tBoxFirstName.Name = "tBoxFirstName";
             this.tBoxFirstName.Size = new System.Drawing.Size(153, 27);
-            this.tBoxFirstName.TabIndex = 1;
+            this.tBoxFirstName.TabIndex = 0;
             // 
             // tBoxLastName
             // 
@@ -68,7 +68,7 @@ namespace AutoPrevoznikInfo
             this.tBoxLastName.Location = new System.Drawing.Point(218, 71);
             this.tBoxLastName.Name = "tBoxLastName";
             this.tBoxLastName.Size = new System.Drawing.Size(150, 27);
-            this.tBoxLastName.TabIndex = 3;
+            this.tBoxLastName.TabIndex = 1;
             // 
             // lblLastName
             // 
@@ -76,7 +76,7 @@ namespace AutoPrevoznikInfo
             this.lblLastName.Location = new System.Drawing.Point(218, 48);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(65, 20);
-            this.lblLastName.TabIndex = 2;
+            this.lblLastName.TabIndex = 7;
             this.lblLastName.Text = "Prezime:";
             // 
             // tBoxUsername
@@ -85,7 +85,7 @@ namespace AutoPrevoznikInfo
             this.tBoxUsername.Location = new System.Drawing.Point(31, 167);
             this.tBoxUsername.Name = "tBoxUsername";
             this.tBoxUsername.Size = new System.Drawing.Size(153, 27);
-            this.tBoxUsername.TabIndex = 5;
+            this.tBoxUsername.TabIndex = 2;
             // 
             // lblUsername
             // 
@@ -93,7 +93,7 @@ namespace AutoPrevoznikInfo
             this.lblUsername.Location = new System.Drawing.Point(31, 144);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(109, 20);
-            this.lblUsername.TabIndex = 4;
+            this.lblUsername.TabIndex = 7;
             this.lblUsername.Text = "Korisnicko ime:";
             // 
             // tBoxPassword
@@ -102,7 +102,7 @@ namespace AutoPrevoznikInfo
             this.tBoxPassword.Location = new System.Drawing.Point(218, 167);
             this.tBoxPassword.Name = "tBoxPassword";
             this.tBoxPassword.Size = new System.Drawing.Size(150, 27);
-            this.tBoxPassword.TabIndex = 7;
+            this.tBoxPassword.TabIndex = 3;
             // 
             // lblPassword
             // 
@@ -110,7 +110,7 @@ namespace AutoPrevoznikInfo
             this.lblPassword.Location = new System.Drawing.Point(218, 144);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(62, 20);
-            this.lblPassword.TabIndex = 6;
+            this.lblPassword.TabIndex = 7;
             this.lblPassword.Text = "Lozinka:";
             // 
             // tBoxPhoneNumber
@@ -119,7 +119,7 @@ namespace AutoPrevoznikInfo
             this.tBoxPhoneNumber.Location = new System.Drawing.Point(31, 254);
             this.tBoxPhoneNumber.Name = "tBoxPhoneNumber";
             this.tBoxPhoneNumber.Size = new System.Drawing.Size(153, 27);
-            this.tBoxPhoneNumber.TabIndex = 9;
+            this.tBoxPhoneNumber.TabIndex = 4;
             // 
             // lblPhone
             // 
@@ -127,7 +127,7 @@ namespace AutoPrevoznikInfo
             this.lblPhone.Location = new System.Drawing.Point(31, 231);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(95, 20);
-            this.lblPhone.TabIndex = 8;
+            this.lblPhone.TabIndex = 7;
             this.lblPhone.Text = "Broj telefona";
             // 
             // btnSave
@@ -137,7 +137,7 @@ namespace AutoPrevoznikInfo
             this.btnSave.Location = new System.Drawing.Point(283, 394);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(109, 40);
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 5;
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@ namespace AutoPrevoznikInfo
             this.lBoxTakeBus.Name = "lBoxTakeBus";
             this.lBoxTakeBus.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lBoxTakeBus.Size = new System.Drawing.Size(296, 262);
-            this.lBoxTakeBus.TabIndex = 11;
+            this.lBoxTakeBus.TabIndex = 6;
             // 
             // lblTakeBus
             // 

@@ -41,7 +41,7 @@ namespace AutoPrevoznikInfo
         {
             if (language.Equals("S"))
             {
-                lblSelectDoorkeeper.Text = "Izaberi portira:";
+                lblSelectDoorkeeper.Text = "Izaberite portira:";
                 lblStartTime.Text = "Početak smjene:";
                 lblEndTime.Text = "Kraj smjene:";
                 btnSave.Text = "Sačuvaj";

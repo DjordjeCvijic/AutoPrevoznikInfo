@@ -108,11 +108,11 @@ namespace AutoPrevoznikInfo
                 phoneNumberColumn.HeaderText = "Telefon";
                 workerCodeColumn.HeaderText = "Šifra";
                 btnAddDoorkeeper.Text = "Dodaj portira";
-                btnDeleteDoorkeeper.Text = "Obriši portira";
+                btnDeleteDoorkeeper.Text = "Obriši podatke";
                 btnUpdateDoorkeeper.Text = "Izmijeni podatke";
                 btnSendMessage.Text = "Pošalji poruku";
 
-                lblSelectDate.Text = "Izaberi datum:";
+                lblSelectDate.Text = "Izaberite datum:";
                 btnAddShift.Text = "Dodaj smjenu";
                 firstNameColumn2.HeaderText = "Ime";
                 lastNameColumn2.HeaderText = "Prezime";
@@ -139,8 +139,8 @@ namespace AutoPrevoznikInfo
                 phoneNumberColumn.HeaderText = "Phone";
                 workerCodeColumn.HeaderText = "Code";
                 btnAddDoorkeeper.Text = "Add doorkeeper";
-                btnDeleteDoorkeeper.Text = "Delete doorkeeper";
-                btnUpdateDoorkeeper.Text = "Update doorkeeper";
+                btnDeleteDoorkeeper.Text = "Delete data";
+                btnUpdateDoorkeeper.Text = "Update data";
                 btnSendMessage.Text = "Send message";
 
                 lblSelectDate.Text = "Choose date:";

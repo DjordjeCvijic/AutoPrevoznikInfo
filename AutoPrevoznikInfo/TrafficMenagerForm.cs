@@ -92,18 +92,20 @@ namespace AutoPrevoznikInfo
                 lblWorkerType.Text = "Menadžer saobraćaja";
                 tabPage1.Text = "Vozači";
                 tabPage2.Text = "Autobusi";
+                tabPage3.Text = "Raspored smjena";
                 firstNameColumn.HeaderText = "Ime";
                 lastNameColumn.HeaderText = "Prezime";
                 userNameColumn.HeaderText = "Korisničko ime";
                 phoneNumberColumn.HeaderText = "Telefon";
                 workerCodeColumn.HeaderText = "Šifra";
                 btnAddWorker.Text = "Dodaj vozača";
+                btnDelete.Text = "Obriši podatke";
                 btnUpdateDriver.Text = "Izmijeni podatke";
-                btnSendMessage.Text = "Posalji poruku";
+                btnSendMessage.Text = "Pošalji poruku";
 
                 btnAddBus.Text = "Dodaj autobus";
-                btnEditBus.Text = "Izmijeni autobus";
-                btnDeleteBus.Text = "Izbriši autobus";
+                btnEditBus.Text = "Izmijeni podatke";
+                btnDeleteBus.Text = "Izbriši podatke";
                 busGarageNumberColumn.HeaderText = "Garažni broj";
                 busTypeColumn.HeaderText = "Tip autobusa";
                 numberOfSeatsColumn.HeaderText = "Broj sjedista";
@@ -135,17 +137,19 @@ namespace AutoPrevoznikInfo
                 lblWorkerType.Text = "Traffic manager";
                 tabPage1.Text = "Drivers";
                 tabPage2.Text = "Buses";
+                tabPage3.Text = "Shift schedule";
                 firstNameColumn.HeaderText = "First name";
                 lastNameColumn.HeaderText = "Last name";
                 userNameColumn.HeaderText = "User name";
                 phoneNumberColumn.HeaderText = "Phone";
                 workerCodeColumn.HeaderText = "Code";
                 btnAddWorker.Text = "Add driver";
-                btnUpdateDriver.Text = "Update driver";
+                btnDelete.Text = "Delete data";
+                btnUpdateDriver.Text = "Update data";
                 btnSendMessage.Text = "Send message";
                 btnAddBus.Text = "Add bus";
-                btnEditBus.Text = "Edit bus";
-                btnDeleteBus.Text = "Delete bus";
+                btnEditBus.Text = "Edit data";
+                btnDeleteBus.Text = "Delete data";
                 busGarageNumberColumn.HeaderText = "Garage number";
                 busTypeColumn.HeaderText = "Bus type";
                 numberOfSeatsColumn.HeaderText = "Number of seats";
@@ -153,16 +157,17 @@ namespace AutoPrevoznikInfo
                 busCapacityComun.HeaderText = "Capacity";
 
                 lblSelectDate.Text = "Choose date:";
-                btnAddShift.Text = "Add scift";
+                btnAddShift.Text = "Add shift";
                 firstNameColumn2.HeaderText = "First name";
                 lastNameColumn2.HeaderText = "Last name";
                 workerCodeColumn2.HeaderText = "Code";
                 startTimeColumn2.HeaderText = "Start time";
                 endTimeColumn2.HeaderText = "End time";
-                busColumn.HeaderText = "Autobus";
-                busLineColumn.HeaderText = "Linija";
+                busColumn.HeaderText = "Buses";
+                busLineColumn.HeaderText = "Bus lines";
                 btnDeleteShift.Text = "Delete shift";
             }
+            FillGridBuses();
         }
         private void SetTheme()
         {
@@ -283,6 +288,7 @@ namespace AutoPrevoznikInfo
                 setDataGridColorTab2();
                 setDataGridColorTab3();
             }
+           
          }
 
        

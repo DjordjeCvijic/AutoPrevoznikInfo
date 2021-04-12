@@ -67,7 +67,6 @@ namespace AutoPrevoznikInfo
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(162, 57);
             this.btnSave.TabIndex = 3;
-            this.btnSave.TabStop = false;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -80,7 +79,7 @@ namespace AutoPrevoznikInfo
             this.dTPStartTime.Name = "dTPStartTime";
             this.dTPStartTime.ShowUpDown = true;
             this.dTPStartTime.Size = new System.Drawing.Size(123, 27);
-            this.dTPStartTime.TabIndex = 4;
+            this.dTPStartTime.TabIndex = 1;
             // 
             // lblStartTime
             // 
@@ -108,7 +107,7 @@ namespace AutoPrevoznikInfo
             this.dTPEndTime.Name = "dTPEndTime";
             this.dTPEndTime.ShowUpDown = true;
             this.dTPEndTime.Size = new System.Drawing.Size(123, 27);
-            this.dTPEndTime.TabIndex = 6;
+            this.dTPEndTime.TabIndex = 2;
             // 
             // AddShiftScheduleForm
             // 

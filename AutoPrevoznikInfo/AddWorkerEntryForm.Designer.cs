@@ -102,7 +102,6 @@ namespace AutoPrevoznikInfo
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(171, 48);
             this.btnSave.TabIndex = 6;
-            this.btnSave.TabStop = false;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

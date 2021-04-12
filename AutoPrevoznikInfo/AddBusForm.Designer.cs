@@ -67,7 +67,7 @@ namespace AutoPrevoznikInfo
             this.lblCapacity.Location = new System.Drawing.Point(253, 163);
             this.lblCapacity.Name = "lblCapacity";
             this.lblCapacity.Size = new System.Drawing.Size(137, 20);
-            this.lblCapacity.TabIndex = 2;
+            this.lblCapacity.TabIndex = 7;
             this.lblCapacity.Text = "Kapacitet autobusa";
             // 
             // lblNumOfDoors
@@ -76,7 +76,7 @@ namespace AutoPrevoznikInfo
             this.lblNumOfDoors.Location = new System.Drawing.Point(40, 163);
             this.lblNumOfDoors.Name = "lblNumOfDoors";
             this.lblNumOfDoors.Size = new System.Drawing.Size(76, 20);
-            this.lblNumOfDoors.TabIndex = 3;
+            this.lblNumOfDoors.TabIndex = 6;
             this.lblNumOfDoors.Text = "Broj vrata:";
             // 
             // lblNumOfSeats
@@ -85,7 +85,7 @@ namespace AutoPrevoznikInfo
             this.lblNumOfSeats.Location = new System.Drawing.Point(253, 94);
             this.lblNumOfSeats.Name = "lblNumOfSeats";
             this.lblNumOfSeats.Size = new System.Drawing.Size(93, 20);
-            this.lblNumOfSeats.TabIndex = 4;
+            this.lblNumOfSeats.TabIndex = 5;
             this.lblNumOfSeats.Text = "Broj sjedista:";
             // 
             // tBoxNumOfSeats
@@ -94,7 +94,7 @@ namespace AutoPrevoznikInfo
             this.tBoxNumOfSeats.Location = new System.Drawing.Point(396, 91);
             this.tBoxNumOfSeats.Name = "tBoxNumOfSeats";
             this.tBoxNumOfSeats.Size = new System.Drawing.Size(73, 27);
-            this.tBoxNumOfSeats.TabIndex = 5;
+            this.tBoxNumOfSeats.TabIndex = 1;
             // 
             // tBoxNumOfDoors
             // 
@@ -102,7 +102,7 @@ namespace AutoPrevoznikInfo
             this.tBoxNumOfDoors.Location = new System.Drawing.Point(172, 160);
             this.tBoxNumOfDoors.Name = "tBoxNumOfDoors";
             this.tBoxNumOfDoors.Size = new System.Drawing.Size(73, 27);
-            this.tBoxNumOfDoors.TabIndex = 6;
+            this.tBoxNumOfDoors.TabIndex = 2;
             // 
             // tBoxCapacity
             // 
@@ -110,7 +110,7 @@ namespace AutoPrevoznikInfo
             this.tBoxCapacity.Location = new System.Drawing.Point(396, 160);
             this.tBoxCapacity.Name = "tBoxCapacity";
             this.tBoxCapacity.Size = new System.Drawing.Size(73, 27);
-            this.tBoxCapacity.TabIndex = 7;
+            this.tBoxCapacity.TabIndex = 3;
             // 
             // btnSave
             // 
@@ -119,8 +119,7 @@ namespace AutoPrevoznikInfo
             this.btnSave.Location = new System.Drawing.Point(208, 250);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(149, 61);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.TabStop = false;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

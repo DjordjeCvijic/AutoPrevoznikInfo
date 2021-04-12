@@ -59,7 +59,7 @@ namespace AutoPrevoznikInfo
             this.gBoxLanguage.Location = new System.Drawing.Point(91, 82);
             this.gBoxLanguage.Name = "gBoxLanguage";
             this.gBoxLanguage.Size = new System.Drawing.Size(249, 111);
-            this.gBoxLanguage.TabIndex = 1;
+            this.gBoxLanguage.TabIndex = 7;
             this.gBoxLanguage.TabStop = false;
             this.gBoxLanguage.Text = "Izaberite jezik";
             // 
@@ -69,7 +69,7 @@ namespace AutoPrevoznikInfo
             this.rBtnEnglish.Location = new System.Drawing.Point(6, 67);
             this.rBtnEnglish.Name = "rBtnEnglish";
             this.rBtnEnglish.Size = new System.Drawing.Size(84, 24);
-            this.rBtnEnglish.TabIndex = 1;
+            this.rBtnEnglish.TabIndex = 4;
             this.rBtnEnglish.TabStop = true;
             this.rBtnEnglish.Tag = "E";
             this.rBtnEnglish.Text = "Engleski";
@@ -82,7 +82,7 @@ namespace AutoPrevoznikInfo
             this.rBtnSerbian.Location = new System.Drawing.Point(6, 26);
             this.rBtnSerbian.Name = "rBtnSerbian";
             this.rBtnSerbian.Size = new System.Drawing.Size(69, 24);
-            this.rBtnSerbian.TabIndex = 0;
+            this.rBtnSerbian.TabIndex = 3;
             this.rBtnSerbian.TabStop = true;
             this.rBtnSerbian.Tag = "S";
             this.rBtnSerbian.Text = "Srpski";
@@ -100,10 +100,11 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxUsername
             // 
+            this.tBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxUsername.Location = new System.Drawing.Point(91, 263);
             this.tBoxUsername.Name = "tBoxUsername";
             this.tBoxUsername.Size = new System.Drawing.Size(249, 27);
-            this.tBoxUsername.TabIndex = 3;
+            this.tBoxUsername.TabIndex = 0;
             // 
             // lblPassword
             // 
@@ -116,25 +117,27 @@ namespace AutoPrevoznikInfo
             // 
             // tBoxPassword
             // 
+            this.tBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tBoxPassword.Location = new System.Drawing.Point(91, 338);
             this.tBoxPassword.Name = "tBoxPassword";
             this.tBoxPassword.PasswordChar = '*';
             this.tBoxPassword.Size = new System.Drawing.Size(249, 27);
-            this.tBoxPassword.TabIndex = 5;
+            this.tBoxPassword.TabIndex = 1;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(143, 411);
+            this.btnLogin.BackColor = System.Drawing.Color.Silver;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Location = new System.Drawing.Point(145, 417);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(151, 53);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Size = new System.Drawing.Size(148, 53);
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Prijava";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.UseVisualStyleBackColor = false;
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 522);

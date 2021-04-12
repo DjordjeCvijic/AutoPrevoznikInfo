@@ -374,7 +374,7 @@ namespace AutoPrevoznikInfo
             // lblSelectDate
             // 
             this.lblSelectDate.AutoSize = true;
-            this.lblSelectDate.Location = new System.Drawing.Point(9, 50);
+            this.lblSelectDate.Location = new System.Drawing.Point(9, 45);
             this.lblSelectDate.Name = "lblSelectDate";
             this.lblSelectDate.Size = new System.Drawing.Size(104, 20);
             this.lblSelectDate.TabIndex = 7;
