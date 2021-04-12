@@ -424,7 +424,7 @@ namespace AutoPrevoznikInfo.DataAccess
             conn = new MySqlConnection(connectionString);
             conn.Open();
             cmd = conn.CreateCommand();
-            cmd.CommandText = "DELETE FROM shift_schedule WHERE workerID=@workerID1";
+            cmd.CommandText = "DELETE FROM shift_schedule WHERE worker_workerID=@workerID1";
             cmd.Parameters.AddWithValue("@workerID1", doorkeeperToDelete.WorkerID);
             cmd.ExecuteReader();
             conn.Close();

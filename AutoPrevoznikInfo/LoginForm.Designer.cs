@@ -70,7 +70,6 @@ namespace AutoPrevoznikInfo
             this.rBtnEnglish.Name = "rBtnEnglish";
             this.rBtnEnglish.Size = new System.Drawing.Size(84, 24);
             this.rBtnEnglish.TabIndex = 4;
-            this.rBtnEnglish.TabStop = true;
             this.rBtnEnglish.Tag = "E";
             this.rBtnEnglish.Text = "Engleski";
             this.rBtnEnglish.UseVisualStyleBackColor = true;
@@ -79,6 +78,7 @@ namespace AutoPrevoznikInfo
             // rBtnSerbian
             // 
             this.rBtnSerbian.AutoSize = true;
+            this.rBtnSerbian.Checked = true;
             this.rBtnSerbian.Location = new System.Drawing.Point(6, 26);
             this.rBtnSerbian.Name = "rBtnSerbian";
             this.rBtnSerbian.Size = new System.Drawing.Size(69, 24);
@@ -135,9 +135,11 @@ namespace AutoPrevoznikInfo
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Prijava";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 522);
